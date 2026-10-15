@@ -30,6 +30,7 @@ export default {
           "tint-green": token("icv-tint-green"),
           line: token("icv-line"),
           "on-dark": token("icv-on-dark"),
+          coral: token("icv-coral"),
         },
         // shadcn/ui semantic colors (kept from ShipFree, remapped to brand).
         background: "hsl(var(--background))",

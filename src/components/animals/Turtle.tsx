@@ -1,17 +1,30 @@
 import {
   AnimalSvg,
   BLUE,
+  BLUE_DEEP,
   GREEN,
   INK,
   TINT_GREEN,
   type AnimalProps,
 } from "./shared";
 
-/** Sea turtle = long-term investing. Idle: paddles. Hover: playful roll forward. */
+/** Sea turtle = long-term investing. Four flippers (far ones darker, behind the
+ * body). Idle: paddles. Hover: playful roll forward. */
 export function Turtle(props: AnimalProps) {
   return (
     <AnimalSvg kind="turtle" {...props}>
       <g className="a-body">
+        {/* far-side flippers, behind the body, paddling in counter-phase */}
+        <path
+          className="a-flipper-back-far"
+          d="M28 64c-7-3-15-2-21 2 5 5 14 6 21 2"
+          fill={BLUE_DEEP}
+        />
+        <path
+          className="a-flipper-front-far"
+          d="M80 70c8 5 13 13 11 21-5-1-10-7-13-14"
+          fill={BLUE_DEEP}
+        />
         {/* back flipper */}
         <path
           className="a-flipper-back"

@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-// Pointer-driven micro-interactions. All three:
+// Pointer-driven micro-interactions. Both:
 // - only react to a fine pointer (mouse/trackpad), never to touch,
 // - do nothing when the user prefers reduced motion,
 // - write CSS variables / transforms directly (no React re-renders).
@@ -44,41 +44,6 @@ export function TiltCard({
     >
       {children}
     </div>
-  );
-}
-
-/** Wrapper that pulls its child (a button) slightly towards the cursor. */
-export function Magnetic({
-  children,
-  className,
-  strength = 0.25,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  strength?: number;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  return (
-    <span
-      ref={ref}
-      className={cn(
-        "inline-block transition-transform duration-300 ease-out",
-        className
-      )}
-      onPointerMove={(e) => {
-        const el = ref.current;
-        if (!el || !canAnimate(e)) return;
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - (r.left + r.width / 2)) * strength;
-        const y = (e.clientY - (r.top + r.height / 2)) * strength;
-        el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-      }}
-      onPointerLeave={() => {
-        if (ref.current) ref.current.style.transform = "";
-      }}
-    >
-      {children}
-    </span>
   );
 }
 

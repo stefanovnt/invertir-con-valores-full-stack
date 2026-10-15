@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ArrowUpRight, CalendarHeart, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Magnetic } from "@/components/motion/Interactive";
 import { track } from "@/lib/analytics";
 
 type Props = {
@@ -32,7 +31,7 @@ export function CalBooking({
   if (!open) {
     return (
       <div className="flex flex-col items-start gap-4">
-        <Magnetic>
+        <div>
           <Button
             size="lg"
             onClick={() => {
@@ -43,7 +42,7 @@ export function CalBooking({
             <CalendarHeart aria-hidden="true" />
             {cta}
           </Button>
-        </Magnetic>
+        </div>
         <a
           href={calUrl}
           target="_blank"

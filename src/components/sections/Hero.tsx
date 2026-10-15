@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { GlowSurface, Magnetic } from "@/components/motion/Interactive";
+import { GlowSurface } from "@/components/motion/Interactive";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { HeroBackdrop } from "./hero/HeroBackdrop";
 import { HeroScene } from "./hero/HeroScene";
@@ -33,14 +33,14 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             {hero.subtitle}
           </p>
           <div className="mt-9 flex flex-col gap-3 animate-in fade-in fill-mode-both delay-700 duration-700 sm:flex-row sm:items-center">
-            <Magnetic>
+            <div>
               <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href={homeAnchor(locale, "guia")}>
                   {hero.primaryCta}
                   <ArrowDown aria-hidden="true" />
                 </Link>
               </Button>
-            </Magnetic>
+            </div>
             <TelegramButton
               locale={locale}
               label={hero.secondaryCta}

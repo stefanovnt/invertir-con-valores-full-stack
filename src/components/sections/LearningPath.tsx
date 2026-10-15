@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { GraduationCap, UserRound, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { TiltCard } from "@/components/motion/Interactive";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
@@ -63,35 +62,33 @@ export function LearningPath({
             const Icon = icons[o.id];
             return (
               <RevealItem as="li" key={o.id}>
-                <TiltCard className="h-full" max={4}>
-                  <article className="card flex h-full flex-col p-8">
-                    <div className="flex items-center justify-between">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gradient text-brand-deep">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
+                <article className="card flex h-full flex-col p-8">
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gradient text-brand-deep">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    {o.soon && (
+                      <span className="rounded-full bg-brand-tint-blue px-3 py-1 text-xs font-semibold text-brand-blue-ink">
+                        {dict.common.comingSoon}
                       </span>
-                      {o.soon && (
-                        <span className="rounded-full bg-brand-tint-blue px-3 py-1 text-xs font-semibold text-brand-blue-ink">
-                          {dict.common.comingSoon}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="mt-6 font-display text-2xl font-extrabold">
-                      {o.title}
-                    </h3>
-                    <p className="mt-3 flex-1 leading-relaxed text-brand-muted">
-                      {o.text}
-                    </p>
-                    <Button
-                      variant="secondary"
-                      className="mt-8 self-start"
-                      onClick={() => openFor(o.id as WaitlistOffer)}
-                      aria-haspopup="dialog"
-                    >
-                      {l.cta}
-                      <span className="sr-only">: {o.title}</span>
-                    </Button>
-                  </article>
-                </TiltCard>
+                    )}
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl font-extrabold">
+                    {o.title}
+                  </h3>
+                  <p className="mt-3 flex-1 leading-relaxed text-brand-muted">
+                    {o.text}
+                  </p>
+                  <Button
+                    variant="secondary"
+                    className="mt-8 self-start"
+                    onClick={() => openFor(o.id as WaitlistOffer)}
+                    aria-haspopup="dialog"
+                  >
+                    {l.cta}
+                    <span className="sr-only">: {o.title}</span>
+                  </Button>
+                </article>
               </RevealItem>
             );
           })}

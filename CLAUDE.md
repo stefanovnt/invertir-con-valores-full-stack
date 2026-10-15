@@ -26,7 +26,7 @@ src/app/api/leads/route.ts       single lead endpoint (zod, honeypot, rate limit
 src/lib/leads/                   providers (db, mailgun list, notify email), emails, rate limit, types
 src/lib/blog.ts, seo.ts, og.tsx  MDX loading, metadata helpers (canonical + hreflang), OG images
 src/components/animals/          Ant, Turtle, Bee, Kangaroo (original SVGs) + shared stroke/palette
-src/components/motion/           Reveal, WordReveal, Counter, Marquee, TiltCard/Magnetic/GlowSurface
+src/components/motion/           Reveal, WordReveal, Counter, Marquee, TiltCard/GlowSurface
 src/components/sections/         one file per home section, rendered from the dictionary
 src/components/consent/          ConsentProvider, CookieBanner, Analytics (Plausible after consent)
 ```
@@ -54,6 +54,7 @@ Gradient (`bg-brand-gradient`, `.bg-gradient-animated`, `.text-gradient`) is use
 - Animate only `transform`/`opacity` (and SVG stroke). No layout shift: reserve space for animated elements.
 - Hero headline reveal is pure CSS (`WordReveal`) so it starts before hydration (LCP).
 - Animals: idle loop + hover reaction via `.animal-<kind>` classes; hovering a `.group` ancestor triggers it.
+- Buttons never move on hover (no lift, no magnetic pull, no tilt around them): colour/shadow feedback only.
 - Keep it light: no 3D, no new animation libraries without a clear need.
 
 ## Accessibility

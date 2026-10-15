@@ -48,10 +48,26 @@ const it: Dictionary = {
   problem: {
     title: "Sai cosa fa la tua banca con i tuoi soldi?",
     text: "Mentre i tuoi soldi dormono sul conto, perdono valore ogni anno. E nel frattempo la tua banca li investe al posto tuo: ti dà un rendimento basso e può finanziare armi, petrolio e sfruttamento. Meriti di decidere tu.",
-    idleLabel: "Soldi fermi",
-    flowLabel: "Soldi con i tuoi valori",
-    visualAlt:
-      "Illustrazione: a sinistra monete che si spengono piano piano; a destra monete che scorrono verso il verde.",
+    bank: {
+      title: "I tuoi soldi in banca",
+      chartLabel: "Cosa possono comprare i tuoi risparmi",
+      trend: "Inflazione",
+      caption:
+        "L'inflazione si mangia i tuoi risparmi poco a poco. E la banca usa i tuoi soldi senza chiedertelo.",
+      itemsLabel: "Può finanziare",
+      items: ["Armi", "Petrolio", "Sfruttamento"],
+    },
+    invested: {
+      title: "I tuoi soldi investiti con valori",
+      chartLabel: "I tuoi soldi nel lungo periodo",
+      trend: "Crescita",
+      caption:
+        "Investiti con pazienza, possono crescere nel tempo e sostenere ciò che ti sta a cuore.",
+      itemsLabel: "Può sostenere",
+      items: ["Persone", "Animali", "Pianeta"],
+    },
+    timeStart: "Oggi",
+    timeEnd: "Negli anni",
   },
   transformation: {
     eyebrow: "La trasformazione",

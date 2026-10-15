@@ -1,20 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { LanguageMenu } from "./LanguageMenu";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  homeAnchor,
-  localeNames,
-  localePath,
-  locales,
-  stripLocale,
-  type Locale,
-} from "@/i18n/config";
+import { homeAnchor, localePath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
 type Props = {
@@ -32,8 +25,6 @@ export function Navbar({ locale, nav, common }: Props) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const pathname = usePathname() ?? "/";
-  const basePath = stripLocale(pathname);
 
   useEffect(() => {
     let frame = 0;
@@ -70,32 +61,6 @@ export function Navbar({ locale, nav, common }: Props) {
         ? homeAnchor(locale, l.anchor)
         : localePath(locale, l.href ?? "/"),
   }));
-
-  const languageLinks = (
-    <ul className="flex items-center gap-1" aria-label={common.language}>
-      {locales.map((l) => (
-        <li key={l}>
-          <Link
-            href={localePath(l, basePath)}
-            hrefLang={l}
-            lang={l}
-            aria-current={l === locale ? "true" : undefined}
-            title={localeNames[l]}
-            onClick={() => setOpen(false)}
-            className={cn(
-              "inline-flex h-9 min-w-9 items-center justify-center rounded-full px-2 text-xs font-semibold uppercase tracking-wider transition-colors",
-              l === locale
-                ? "bg-brand-deep text-white"
-                : "text-brand-muted hover:bg-brand-tint-blue hover:text-brand-deep"
-            )}
-          >
-            <span className="sr-only">{localeNames[l]}</span>
-            <span aria-hidden="true">{l}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
 
   return (
     <header
@@ -136,7 +101,7 @@ export function Navbar({ locale, nav, common }: Props) {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          {languageLinks}
+          <LanguageMenu locale={locale} label={common.language} />
           <Button asChild size={scrolled ? "sm" : "default"}>
             <Link href={homeAnchor(locale, "guia")}>{nav.cta}</Link>
           </Button>
@@ -185,7 +150,12 @@ export function Navbar({ locale, nav, common }: Props) {
             ))}
           </ul>
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-brand-line/70 pt-4">
-            {languageLinks}
+            <LanguageMenu
+              locale={locale}
+              label={common.language}
+              align="left"
+              onNavigate={() => setOpen(false)}
+            />
             <Button asChild size="sm">
               <Link
                 href={homeAnchor(locale, "guia")}

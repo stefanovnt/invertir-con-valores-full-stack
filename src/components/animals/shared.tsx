@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 
 export const INK = "#14250d";
 export const BLUE = "#1c92e1";
+/** Darker blue for limbs on the far side of the body (depth). */
+export const BLUE_DEEP = "#1572b3";
 export const GREEN = "#31b317";
 export const TINT_BLUE = "#d6ecfb";
 export const TINT_GREEN = "#d9f2d1";

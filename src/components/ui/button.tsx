@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils";
 
 // ShipFree's shadcn button, restyled with brand variants.
 // Text on the gradient is deep green (not white) to keep WCAG AA contrast.
+// Buttons never move on hover: feedback is colour/shadow only.
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 rounded-full text-center sm:whitespace-nowrap font-semibold transition-[transform,box-shadow,background-color,color] duration-200 ease-out disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:size-[1.1em] [&_svg]:shrink-0 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
+  "relative inline-flex items-center justify-center gap-2 rounded-full text-center sm:whitespace-nowrap font-semibold transition-[box-shadow,background-color,border-color,color] duration-200 ease-out disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:size-[1.1em] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -18,7 +19,7 @@ const buttonVariants = cva(
         dark: "bg-brand-deep text-white hover:bg-brand-deep/90",
         light: "bg-white text-brand-deep hover:bg-brand-tint-green",
         ghost: "text-brand-deep hover:bg-brand-tint-blue",
-        link: "rounded-md px-0 text-brand-blue-ink underline-offset-4 hover:underline motion-safe:hover:translate-y-0",
+        link: "rounded-md px-0 text-brand-blue-ink underline-offset-4 hover:underline",
       },
       size: {
         // min-height (not height) so labels can wrap on very narrow screens.

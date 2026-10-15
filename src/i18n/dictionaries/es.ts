@@ -56,11 +56,27 @@ const es = {
   problem: {
     title: "¿Sabes lo que hace tu banco con tu dinero?",
     text: "Mientras tu dinero duerme en la cuenta, pierde valor cada año. Y mientras tanto, tu banco lo invierte por ti: te da poco retorno y puede financiar armas, petróleo y explotación. Tú mereces decidir.",
-    // REVIEW
-    idleLabel: "Dinero quieto",
-    flowLabel: "Dinero con tus valores",
-    visualAlt:
-      "Ilustración: a la izquierda, monedas que se apagan poco a poco; a la derecha, monedas que fluyen hacia el verde.",
+    // REVIEW — comparison visual (no figures on purpose: illustrative only)
+    bank: {
+      title: "Tu dinero en el banco",
+      chartLabel: "Lo que pueden comprar tus ahorros",
+      trend: "Inflación",
+      caption:
+        "La inflación se come tus ahorros poco a poco. Y el banco usa tu dinero sin preguntarte.",
+      itemsLabel: "Puede financiar",
+      items: ["Armas", "Petróleo", "Explotación"],
+    },
+    invested: {
+      title: "Tu dinero invertido con valores",
+      chartLabel: "Tu dinero a largo plazo",
+      trend: "Crecimiento",
+      caption:
+        "Invertido con paciencia, puede crecer con el tiempo y apoyar lo que te importa.",
+      itemsLabel: "Puede apoyar",
+      items: ["Personas", "Animales", "Planeta"],
+    },
+    timeStart: "Hoy",
+    timeEnd: "Con los años",
   },
   transformation: {
     eyebrow: "La transformación", // REVIEW

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Turtle } from "@/components/animals";
 import { Button } from "@/components/ui/button";
-import { GlowSurface, Magnetic } from "@/components/motion/Interactive";
+import { GlowSurface } from "@/components/motion/Interactive";
 import { Reveal } from "@/components/motion/Reveal";
 import { homeAnchor, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
@@ -41,14 +41,14 @@ export function FinalCta({
           >
             {dict.title}
           </h2>
-          <Magnetic className="mt-10">
+          <div className="mt-10">
             <Button asChild size="lg" variant="dark">
               <Link href={homeAnchor(locale, "guia")}>
                 {dict.cta}
                 <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
-          </Magnetic>
+          </div>
         </Reveal>
       </div>
     </GlowSurface>

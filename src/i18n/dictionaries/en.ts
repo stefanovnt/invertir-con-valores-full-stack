@@ -47,10 +47,26 @@ const en: Dictionary = {
   problem: {
     title: "Do you know what your bank does with your money?",
     text: "While your money sleeps in your account, it loses value every year. Meanwhile, your bank invests it for you: it pays you little and may fund weapons, oil and exploitation. You deserve to decide.",
-    idleLabel: "Idle money",
-    flowLabel: "Money with your values",
-    visualAlt:
-      "Illustration: on the left, coins slowly fading; on the right, coins flowing towards green.",
+    bank: {
+      title: "Your money in the bank",
+      chartLabel: "What your savings can buy",
+      trend: "Inflation",
+      caption:
+        "Inflation slowly eats away at your savings. And the bank uses your money without asking you.",
+      itemsLabel: "May fund",
+      items: ["Weapons", "Oil", "Exploitation"],
+    },
+    invested: {
+      title: "Your money invested with values",
+      chartLabel: "Your money over the long term",
+      trend: "Growth",
+      caption:
+        "Invested patiently, it can grow over time and support what you care about.",
+      itemsLabel: "Can support",
+      items: ["People", "Animals", "Planet"],
+    },
+    timeStart: "Today",
+    timeEnd: "Over the years",
   },
   transformation: {
     eyebrow: "The transformation",
