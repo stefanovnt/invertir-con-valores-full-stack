@@ -1,30 +1,31 @@
+import "server-only";
 import { config } from "@/config";
 import formData from "form-data";
 import Mailgun from "mailgun.js";
 
-const mailgun = new Mailgun(formData);
+// Reused from ShipFree, fixed and made lazy:
+// - the sending domain comes from MAILGUN_DOMAIN (ShipFree concatenated a URL by mistake)
+// - MAILGUN_API_URL allows the EU region (https://api.eu.mailgun.net), recommended for Spain
+// - nothing is created when Mailgun is not configured
 
-const mg = mailgun.client({
-  username: "api",
-  key: process.env.MAILGUN_API_KEY || "dummy",
-});
+export const isMailgunConfigured = () =>
+  Boolean(process.env.MAILGUN_API_KEY && process.env.MAILGUN_DOMAIN);
 
-if (!process.env.MAILGUN_API_KEY && process.env.NODE_ENV === "development") {
-  console.group("⚠️ MAILGUN_API_KEY missing from .env");
-  console.error("It's not mandatory but it's required to send emails");
-  console.error("If you don't need it, remove the code from /libs/mailgun.js");
+let client: ReturnType<Mailgun["client"]> | null = null;
+
+function mg() {
+  if (!client) {
+    client = new Mailgun(formData).client({
+      username: "api",
+      key: process.env.MAILGUN_API_KEY ?? "",
+      ...(process.env.MAILGUN_API_URL ? { url: process.env.MAILGUN_API_URL } : {}),
+    });
+  }
+  return client;
 }
 
 /**
  * Sends an email using the provided parameters.
- *
- * @async
- * @param {string} to - The recipient's email address.
- * @param {string} subject - The subject of the email.
- * @param {string} text - The plain text content of the email.
- * @param {string} html - The HTML content of the email.
- * @param {string} replyTo - The email address to set as the "Reply-To" address.
- * @returns {Promise} A Promise that resolves when the email is sent.
  */
 export const sendEmail = async ({
   html,
@@ -37,20 +38,28 @@ export const sendEmail = async ({
   subject: string;
   text?: string;
   html: string;
-  replyTo: string;
+  replyTo?: string;
 }) => {
-  const data = {
+  await mg().messages.create(process.env.MAILGUN_DOMAIN ?? "", {
     from: config.mailgun.fromAdmin,
     to: [to],
     subject,
     text,
     html,
     ...(replyTo && { "h:Reply-To": replyTo }),
-  };
+  });
+};
 
-  await mg.messages.create(
-    (config.mailgun.subdomain ? `${config.mailgun.subdomain}` : "") +
-      config.domainName,
-    data
-  );
+/** Upsert a member in a Mailgun mailing list (used as the newsletter provider). */
+export const addToMailingList = async (
+  listAddress: string,
+  member: { email: string; name?: string; vars: Record<string, string> }
+) => {
+  await mg().lists.members.createMember(listAddress, {
+    address: member.email,
+    name: member.name,
+    subscribed: "yes",
+    upsert: "yes",
+    vars: JSON.stringify(member.vars),
+  });
 };

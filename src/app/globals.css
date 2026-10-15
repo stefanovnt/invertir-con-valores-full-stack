@@ -1,82 +1,457 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html {
-  scroll-behavior: smooth;
-}
 
-body {
-  ::selection {
-    background-color: #ffbe18;
-    color: #000000;
-  }
-}
-
-html,
-body {
-  height: 100%;
-}
-
+/* ==========================================================================
+   Design tokens — Invertir con Valores
+   Colors are RGB channels so Tailwind can apply opacity (bg-brand-blue/10).
+   ========================================================================== */
 @layer base {
   :root {
+    --icv-blue: 28 146 225; /* #1c92e1 primary blue */
+    --icv-green: 49 179 23; /* #31b317 primary green */
+    --icv-deep: 20 37 13; /* #14250d deep green: dark sections, footer, body text */
+    --icv-slate: 116 133 150; /* #748596 lines and decoration (not for small text) */
+
+    /* Accessible text variants (>= 4.5:1 on white). */
+    --icv-blue-ink: 21 114 179; /* #1572b3 */
+    --icv-green-ink: 35 129 15; /* #23810f */
+    --icv-muted: 84 99 114; /* #546372 secondary text */
+    --icv-on-dark: 196 210 190; /* secondary text on deep green */
+
+    /* Tints for airy backgrounds. */
+    --icv-tint-blue: 240 248 254; /* #f0f8fe */
+    --icv-tint-green: 242 250 239; /* #f2faef */
+    --icv-line: 226 232 238; /* #e2e8ee */
+
+    /* shadcn/ui semantic tokens (HSL), remapped to the brand. */
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --foreground: 102 48% 10%;
+    --primary: 204 78% 50%;
+    --primary-foreground: 102 48% 10%;
+    --muted: 204 70% 97%;
+    --muted-foreground: 210 15% 39%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 24% 91%;
+    --input: 210 18% 80%;
+    --ring: 204 78% 42%;
+    --radius: 1.25rem;
+
+    color-scheme: light;
   }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* keep anchored sections clear of the sticky navbar */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-brand-deep antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(var(--icv-green) / 0.25);
+    color: rgb(var(--icv-deep));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, consistent focus ring for keyboard users. */
+  :focus-visible {
+    outline: 3px solid rgb(var(--icv-blue-ink));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible {
+    outline-color: rgb(var(--icv-green));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
-@layer base {
-  * {
-    @apply border-border;
+
+@layer components {
+  .section {
+    @apply py-20 sm:py-28 lg:py-32;
   }
-  body {
-    @apply bg-background text-foreground;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-brand-green-ink;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-brand-gradient;
+  }
+  .h2 {
+    @apply text-balance text-3xl font-bold leading-[1.1] sm:text-4xl lg:text-5xl;
+  }
+  .lead {
+    @apply text-lg leading-relaxed text-brand-muted sm:text-xl;
+  }
+  .text-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-brand-line bg-white px-4 py-1.5 text-sm font-medium text-brand-deep;
+  }
+  .card {
+    @apply rounded-4xl border border-brand-line bg-white;
+  }
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+}
+
+/* ==========================================================================
+   Motion
+   Rule of thumb: decorative/large movement only inside
+   `prefers-reduced-motion: no-preference`. Fades are allowed everywhere.
+   ========================================================================== */
+
+/* Animated gradient used by the primary CTA and the final CTA band. */
+@keyframes icv-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.bg-gradient-animated {
+  background-image: linear-gradient(
+    110deg,
+    rgb(var(--icv-blue)),
+    rgb(var(--icv-green)),
+    rgb(var(--icv-blue))
+  );
+  background-size: 220% 100%;
+}
+
+/* Hero headline: each word fades and rises in turn (CSS so it runs before hydration). */
+@keyframes icv-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes icv-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.word-reveal > span {
+  display: inline-block;
+  animation: icv-fade-in 0.6s ease-out both;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+/* Values marquee: two identical tracks translate -50% for a seamless loop. */
+@keyframes icv-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* SVG path drawing (wave in hero, arrows). Uses pathLength="1" on the path. */
+@keyframes icv-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.draw-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Animal idle loops and hover reactions. Hover works on the animal itself
+   or on any `.group` ancestor (cards). */
+@keyframes icv-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes icv-paddle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-22deg);
+  }
+}
+@keyframes icv-paddle-back {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(16deg);
+  }
+}
+@keyframes icv-flap {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.55);
+  }
+}
+@keyframes icv-buzz {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(2px, -2px) rotate(-3deg);
+  }
+  40% {
+    transform: translate(-2px, 1px) rotate(3deg);
+  }
+  60% {
+    transform: translate(2px, 2px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(-1px, -2px) rotate(2deg);
+  }
+}
+@keyframes icv-hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(0) scale(1.06, 0.92);
+  }
+  45% {
+    transform: translateY(-16%) scale(0.96, 1.05);
+  }
+  75% {
+    transform: translateY(0) scale(1.05, 0.95);
+  }
+}
+@keyframes icv-coin-hop {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(-14px) rotate(-12deg);
+  }
+  70% {
+    transform: translateY(0) rotate(4deg);
+  }
+}
+@keyframes icv-legs {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes icv-ear {
+  0%,
+  90%,
+  100% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(-10deg);
+  }
+}
+@keyframes icv-spin-tilt {
+  0%,
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  50% {
+    transform: rotate(-8deg) translateX(4%);
+  }
+}
+
+/* Problem section: idle coins slowly lose value; flowing coins move towards green. */
+@keyframes icv-coin-fade {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 0.18;
+    transform: translateY(10px);
+  }
+}
+@keyframes icv-coin-flow {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(130px);
+    opacity: 0;
+  }
+}
+
+/* Floating shapes / avatar bubbles. */
+@keyframes icv-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+/* Form success: confetti dots burst outwards. */
+@keyframes icv-burst {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1);
+    opacity: 0;
+  }
+}
+@keyframes icv-check {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.success-check {
+  stroke-dasharray: 1;
+  animation: icv-check 0.5s 0.15s ease-out both;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bg-gradient-animated {
+    animation: icv-gradient-shift 8s ease-in-out infinite;
+  }
+  .word-reveal > span {
+    animation-name: icv-word-in;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .draw-path {
+    animation: icv-draw 2.2s 0.3s cubic-bezier(0.6, 0, 0.3, 1) both;
+  }
+  .marquee-track {
+    animation: icv-marquee 32s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  .float {
+    animation: icv-float 6s ease-in-out infinite;
+  }
+
+  /* --- animals: idle --- */
+  .animal .a-body {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: icv-bob 3.2s ease-in-out infinite;
+  }
+  .animal-turtle .a-flipper-front {
+    transform-box: fill-box;
+    transform-origin: 20% 10%;
+    animation: icv-paddle 2.4s ease-in-out infinite;
+  }
+  .animal-turtle .a-flipper-back {
+    transform-box: fill-box;
+    transform-origin: 90% 30%;
+    animation: icv-paddle-back 2.4s ease-in-out infinite;
+  }
+  .animal-bee .a-wing {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: icv-flap 0.28s ease-in-out infinite;
+  }
+  .animal-ant .a-legs {
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+    animation: icv-legs 0.9s ease-in-out infinite;
+  }
+  .animal-kangaroo .a-ear {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: icv-ear 4s ease-in-out infinite;
+  }
+
+  /* --- animals: hover reactions --- */
+  .animal-bee:hover .a-body,
+  .group:hover .animal-bee .a-body {
+    animation: icv-buzz 0.35s linear infinite;
+  }
+  .animal-kangaroo:hover .a-body,
+  .group:hover .animal-kangaroo .a-body {
+    transform-origin: 50% 100%;
+    animation: icv-hop 0.7s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+  }
+  .animal-ant:hover .a-coin,
+  .group:hover .animal-ant .a-coin {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: icv-coin-hop 0.8s ease-in-out infinite;
+  }
+  .animal-turtle:hover .a-body,
+  .group:hover .animal-turtle .a-body {
+    animation: icv-spin-tilt 1.6s ease-in-out infinite;
+  }
+  .animal-turtle:hover .a-flipper-front,
+  .group:hover .animal-turtle .a-flipper-front {
+    animation-duration: 0.9s;
+  }
+
+  .coin-fade {
+    animation: icv-coin-fade 4.5s ease-in-out infinite;
+  }
+  .coin-flow {
+    animation: icv-coin-flow 3.6s linear infinite;
+  }
+  .burst-dot {
+    animation: icv-burst 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) both;
   }
 }
