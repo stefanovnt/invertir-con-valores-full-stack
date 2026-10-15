@@ -15,12 +15,15 @@ export type AnimalProps = {
   className?: string;
   /** Accessible name. Omit for decorative use (aria-hidden). */
   title?: string;
+  /** Extra attributes, e.g. x/y/width/height when nested inside another SVG. */
+  svgProps?: React.SVGProps<SVGSVGElement>;
 };
 
 export function AnimalSvg({
   kind,
   className,
   title,
+  svgProps,
   children,
 }: AnimalProps & { kind: "ant" | "turtle" | "bee" | "kangaroo"; children: React.ReactNode }) {
   return (
@@ -35,6 +38,7 @@ export function AnimalSvg({
       strokeWidth={STROKE}
       strokeLinecap="round"
       strokeLinejoin="round"
+      {...svgProps}
     >
       {children}
     </svg>

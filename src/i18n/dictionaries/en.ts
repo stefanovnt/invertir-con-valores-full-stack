@@ -127,6 +127,12 @@ const en: Dictionary = {
     title: "A 30-minute money coffee, no strings attached",
     text: "Tell me where you are and what you want to achieve. I'll give you quick tips for your situation, without selling you anything.",
     cta: "Book my virtual coffee",
+    stepsTitle: "How it works",
+    steps: [
+      "Pick the day and time that suit you best.",
+      "Tell me where you are and what you want to achieve.",
+      "Leave with practical tips for your situation.",
+    ],
     facts: [
       { value: 30, suffix: " min", label: "of conversation" },
       { value: 1, suffix: " to 1", label: "on a video call" },

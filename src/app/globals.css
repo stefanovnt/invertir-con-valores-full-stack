@@ -103,8 +103,10 @@
   .lead {
     @apply text-lg leading-relaxed text-brand-muted sm:text-xl;
   }
+  /* Gradient text uses the darker "ink" variants to stay readable (AA). */
   .text-gradient {
-    @apply bg-brand-gradient bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(110deg, rgb(var(--icv-blue-ink)), rgb(var(--icv-green-ink)));
   }
   .chip {
     @apply inline-flex items-center rounded-full border border-brand-line bg-white px-4 py-1.5 text-sm font-medium text-brand-deep;
@@ -330,6 +332,11 @@
   }
 }
 
+/* Static fallback position (reduced motion); the animation overrides it. */
+.coin-flow {
+  transform: translateX(var(--x0, 0px));
+}
+
 /* Floating shapes / avatar bubbles. */
 @keyframes icv-float {
   0%,
@@ -449,7 +456,7 @@
     animation: icv-coin-fade 4.5s ease-in-out infinite;
   }
   .coin-flow {
-    animation: icv-coin-flow 3.6s linear infinite;
+    animation: icv-coin-flow 3.6s linear infinite backwards;
   }
   .burst-dot {
     animation: icv-burst 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) both;

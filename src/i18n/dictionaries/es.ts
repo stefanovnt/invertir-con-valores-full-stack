@@ -134,6 +134,12 @@ const es = {
     text: "Cuéntame dónde estás y qué quieres lograr. Te daré consejos rápidos para tu situación, sin venderte nada.",
     cta: "Reservar mi café virtual",
     // REVIEW
+    stepsTitle: "Así funciona", // REVIEW
+    steps: [
+      "Eliges el día y la hora que mejor te vengan.",
+      "Me cuentas dónde estás y qué quieres lograr.",
+      "Te llevas consejos prácticos para tu situación.",
+    ], // REVIEW
     facts: [
       { value: 30, suffix: " min", label: "de conversación" },
       { value: 1, suffix: " a 1", label: "por videollamada" },

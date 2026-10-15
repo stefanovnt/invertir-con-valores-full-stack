@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { cn } from "@/lib/utils";
 
 /**
  * Word-by-word headline reveal. Pure CSS (globals.css `.word-reveal`) so it

@@ -127,6 +127,12 @@ const it: Dictionary = {
     title: "Un caffè finanziario di 30 minuti, senza impegno",
     text: "Raccontami dove sei e cosa vuoi ottenere. Ti darò consigli rapidi per la tua situazione, senza venderti niente.",
     cta: "Prenota il mio caffè virtuale",
+    stepsTitle: "Come funziona",
+    steps: [
+      "Scegli il giorno e l'ora che preferisci.",
+      "Mi racconti dove sei e cosa vuoi ottenere.",
+      "Porti a casa consigli pratici per la tua situazione.",
+    ],
     facts: [
       { value: 30, suffix: " min", label: "di chiacchierata" },
       { value: 1, suffix: " a 1", label: "in videochiamata" },
