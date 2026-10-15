@@ -10,15 +10,26 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 import { waitlistOffers, type WaitlistOffer } from "@/lib/leads/types";
 
-const icons: Record<WaitlistOffer, typeof Users> = { premium: Users, coaching: UserRound, course: GraduationCap };
-const isOffer = (v: string): v is WaitlistOffer => (waitlistOffers as readonly string[]).includes(v);
+const icons: Record<WaitlistOffer, typeof Users> = {
+  premium: Users,
+  coaching: UserRound,
+  course: GraduationCap,
+};
+const isOffer = (v: string): v is WaitlistOffer =>
+  (waitlistOffers as readonly string[]).includes(v);
 
 /**
  * Soft teaser of future paid offers (no prices). Each card opens a native
  * <dialog> (focus trap, Esc to close, inert background for free) with a
  * waitlist form tagged by offer.
  */
-export function LearningPath({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function LearningPath({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const l = dict.learning;
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [offer, setOffer] = useState<WaitlistOffer | null>(null);
@@ -32,7 +43,11 @@ export function LearningPath({ locale, dict }: { locale: Locale; dict: Dictionar
   }
 
   return (
-    <section id="camino" aria-labelledby="learning-title" className="section bg-gradient-to-b from-white to-brand-tint-blue/60">
+    <section
+      id="camino"
+      aria-labelledby="learning-title"
+      className="section bg-gradient-to-b from-white to-brand-tint-blue/60"
+    >
       <div className="container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{l.eyebrow}</p>
@@ -60,8 +75,12 @@ export function LearningPath({ locale, dict }: { locale: Locale; dict: Dictionar
                         </span>
                       )}
                     </div>
-                    <h3 className="mt-6 font-display text-2xl font-bold">{o.title}</h3>
-                    <p className="mt-3 flex-1 leading-relaxed text-brand-muted">{o.text}</p>
+                    <h3 className="mt-6 font-display text-2xl font-bold">
+                      {o.title}
+                    </h3>
+                    <p className="mt-3 flex-1 leading-relaxed text-brand-muted">
+                      {o.text}
+                    </p>
                     <Button
                       variant="secondary"
                       className="mt-8 self-start"
@@ -98,7 +117,10 @@ export function LearningPath({ locale, dict }: { locale: Locale; dict: Dictionar
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
           <p className="eyebrow">{l.dialogTitle}</p>
-          <h2 id="waitlist-title" className="mt-3 pr-10 font-display text-3xl font-bold">
+          <h2
+            id="waitlist-title"
+            className="mt-3 pr-10 font-display text-3xl font-bold"
+          >
             {current?.title}
           </h2>
           <p className="mt-3 text-brand-muted">{l.dialogText}</p>

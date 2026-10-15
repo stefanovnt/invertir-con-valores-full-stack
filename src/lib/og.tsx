@@ -15,8 +15,12 @@ let fontPromise: Promise<ArrayBuffer | null> | null = null;
 function loadDisplayFont() {
   fontPromise ??= (async () => {
     try {
-      const css = await fetch("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700").then((r) => r.text());
-      const url = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/)?.[1];
+      const css = await fetch(
+        "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700"
+      ).then((r) => r.text());
+      const url = css.match(
+        /src: url\((.+?)\) format\('(?:opentype|truetype)'\)/
+      )?.[1];
       return url ? await fetch(url).then((r) => r.arrayBuffer()) : null;
     } catch {
       return null;
@@ -25,7 +29,13 @@ function loadDisplayFont() {
   return fontPromise;
 }
 
-export async function brandOgImage({ title, eyebrow }: { title: string; eyebrow: string }) {
+export async function brandOgImage({
+  title,
+  eyebrow,
+}: {
+  title: string;
+  eyebrow: string;
+}) {
   const font = await loadDisplayFont();
   return new ImageResponse(
     (
@@ -37,7 +47,8 @@ export async function brandOgImage({ title, eyebrow }: { title: string; eyebrow:
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "linear-gradient(135deg, #f0f8fe 0%, #ffffff 45%, #f2faef 100%)",
+          background:
+            "linear-gradient(135deg, #f0f8fe 0%, #ffffff 45%, #f2faef 100%)",
           color: "#14250d",
           position: "relative",
         }}
@@ -57,12 +68,29 @@ export async function brandOgImage({ title, eyebrow }: { title: string; eyebrow:
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={turtleDataUri} width={64} height={64} alt="" />
-          <div style={{ display: "flex", fontSize: 34, fontWeight: 700, ...(font ? { fontFamily: "Space Grotesk" } : {}) }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 34,
+              fontWeight: 700,
+              ...(font ? { fontFamily: "Space Grotesk" } : {}),
+            }}
+          >
             Invertir con&nbsp;<span style={{ color: "#23810f" }}>Valores</span>
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", maxWidth: 820 }}>
-          <div style={{ fontSize: 24, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "#23810f" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", maxWidth: 820 }}
+        >
+          <div
+            style={{
+              fontSize: 24,
+              fontWeight: 600,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              color: "#23810f",
+            }}
+          >
             {eyebrow}
           </div>
           <div
@@ -78,12 +106,31 @@ export async function brandOgImage({ title, eyebrow }: { title: string; eyebrow:
             {title}
           </div>
         </div>
-        <div style={{ display: "flex", width: 220, height: 10, borderRadius: 10, background: "linear-gradient(90deg, #1c92e1, #31b317)" }} />
+        <div
+          style={{
+            display: "flex",
+            width: 220,
+            height: 10,
+            borderRadius: 10,
+            background: "linear-gradient(90deg, #1c92e1, #31b317)",
+          }}
+        />
       </div>
     ),
     {
       ...ogSize,
-      ...(font ? { fonts: [{ name: "Space Grotesk", data: font, weight: 700 as const, style: "normal" as const }] } : {}),
+      ...(font
+        ? {
+            fonts: [
+              {
+                name: "Space Grotesk",
+                data: font,
+                weight: 700 as const,
+                style: "normal" as const,
+              },
+            ],
+          }
+        : {}),
     }
   );
 }

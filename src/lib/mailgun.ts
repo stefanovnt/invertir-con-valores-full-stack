@@ -18,7 +18,9 @@ function mg() {
     client = new Mailgun(formData).client({
       username: "api",
       key: process.env.MAILGUN_API_KEY ?? "",
-      ...(process.env.MAILGUN_API_URL ? { url: process.env.MAILGUN_API_URL } : {}),
+      ...(process.env.MAILGUN_API_URL
+        ? { url: process.env.MAILGUN_API_URL }
+        : {}),
     });
   }
   return client;

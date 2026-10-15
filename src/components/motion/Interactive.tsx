@@ -9,7 +9,8 @@ import { cn } from "@/lib/utils";
 // - write CSS variables / transforms directly (no React re-renders).
 
 const canAnimate = (e: React.PointerEvent) =>
-  e.pointerType === "mouse" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  e.pointerType === "mouse" &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /** Card that tilts slightly towards the cursor. */
 export function TiltCard({
@@ -25,7 +26,10 @@ export function TiltCard({
   return (
     <div
       ref={ref}
-      className={cn("transition-transform duration-300 ease-out [transform-style:preserve-3d]", className)}
+      className={cn(
+        "transition-transform duration-300 ease-out [transform-style:preserve-3d]",
+        className
+      )}
       onPointerMove={(e) => {
         const el = ref.current;
         if (!el || !canAnimate(e)) return;
@@ -57,7 +61,10 @@ export function Magnetic({
   return (
     <span
       ref={ref}
-      className={cn("inline-block transition-transform duration-300 ease-out", className)}
+      className={cn(
+        "inline-block transition-transform duration-300 ease-out",
+        className
+      )}
       onPointerMove={(e) => {
         const el = ref.current;
         if (!el || !canAnimate(e)) return;

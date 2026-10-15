@@ -19,8 +19,10 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     >
       <HeroBackdrop />
       <div className="container grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8">
-        <div>
-          <p className="eyebrow motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700">{hero.eyebrow}</p>
+        <div className="min-w-0">
+          <p className="eyebrow motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700">
+            {hero.eyebrow}
+          </p>
           <div id="hero-title">
             <WordReveal
               text={hero.title}
@@ -53,7 +55,12 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <ul className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-brand-muted animate-in fade-in fill-mode-both delay-1000 duration-700">
             {hero.trust.map((item, i) => (
               <li key={item} className="flex items-center gap-3">
-                {i > 0 && <span aria-hidden="true" className="h-1 w-1 rounded-full bg-brand-slate" />}
+                {i > 0 && (
+                  <span
+                    aria-hidden="true"
+                    className="h-1 w-1 rounded-full bg-brand-slate"
+                  />
+                )}
                 {item}
               </li>
             ))}

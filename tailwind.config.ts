@@ -9,7 +9,11 @@ const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 export default {
   content: ["./src/**/*.{ts,tsx,mdx}", "./content/**/*.mdx"],
   theme: {
-    container: { center: true, padding: "1.25rem", screens: { "2xl": "1200px" } },
+    container: {
+      center: true,
+      padding: "1.25rem",
+      screens: { "2xl": "1200px" },
+    },
     extend: {
       colors: {
         brand: {
@@ -30,8 +34,14 @@ export default {
         // shadcn/ui semantic colors (kept from ShipFree, remapped to brand).
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
-        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -42,10 +52,16 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-sans)", "ui-sans-serif", "sans-serif"],
+        display: [
+          "var(--font-display)",
+          "var(--font-sans)",
+          "ui-sans-serif",
+          "sans-serif",
+        ],
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(120deg, rgb(var(--icv-blue)), rgb(var(--icv-green)))",
+        "brand-gradient":
+          "linear-gradient(120deg, rgb(var(--icv-blue)), rgb(var(--icv-green)))",
       },
       borderRadius: {
         lg: "var(--radius)",

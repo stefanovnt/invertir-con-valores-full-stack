@@ -1,128 +1,121 @@
-# ⚡ ShipFree
+# Invertir con Valores
 
-Hi there! 👋
+Marketing website for **Invertir con Valores**, an educational brand and community that helps
+values-driven people save and invest long term without funding weapons, fossil fuels or exploitation.
 
-ShipFree is a free alternative to ShipFast, designed to simplify and optimize your shipping process. It’s built using modern web technologies like Next.js, Supabase, Stripe, LemonSqueezy, Drizzle ORM and Mailgun.
+Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS and Framer Motion, on top of
+the [ShipFree](https://github.com/idee8/shipfree) boilerplate (MIT, see `LICENSE.md`).
 
-## Features
+## Quick start
 
-- SEO Optimisation
-- User authentication with Supabase
-- Stripe and LemonSqueezy integration
-- Email notifications via Mailgun
-- Modern UI built with Next.js and TailwindCSS
-
-## Docker Setup
-
-ShipFree provides Docker configurations for both **development** and **production** environments. Below, you'll find the structure of the Docker files and the commands to get started.
-
-### Docker File Structure
-
-The Docker files are organized as follows:
-
-```
-docker
-├── dev
-│   ├── Dockerfile                  # Dockerfile for development
-│   ├── docker-compose.yml          # Base development setup
-│   ├── docker-compose.mongodb.yml  # Development setup with MongoDB
-│   └── docker-compose.postgres.yml # Development setup with PostgreSQL
-└── prod
-    ├── Dockerfile                  # Dockerfile for production
-    ├── docker-compose.yml          # Base production setup
-    ├── docker-compose.mongodb.yml  # Production setup with MongoDB
-    └── docker-compose.postgres.yml # Production setup with PostgreSQL
+```bash
+pnpm install
+cp .env.example .env.local   # every variable is optional
+pnpm dev                     # http://localhost:3000
 ```
 
-### Development Environment
-
-In development, the project runs in **watch mode**, meaning it automatically detects changes in your code and rebuilds the application. This is ideal for local development but should **never** be used in production.
-
-#### Commands for Development
-
-1. **Base Setup** (without a database):
-
-   ```bash
-   docker-compose -f docker/dev/docker-compose.yml up --build
-   ```
-
-2. **With PostgreSQL**:
-
-   ```bash
-   docker-compose -f docker/dev/docker-compose.yml -f docker/dev/docker-compose.postgres.yml up --build
-   ```
-
-3. **With MongoDB**:
-   ```bash
-   docker-compose -f docker/dev/docker-compose.yml -f docker/dev/docker-compose.mongodb.yml up --build
-   ```
-
-#### Why Watch Mode?
-
-- **Watch mode** ensures that your changes are reflected in real-time without manually restarting the server.
-- It’s perfect for development but **not suitable for production** due to performance and security concerns.
+| Script                      | What it does                                           |
+| --------------------------- | ------------------------------------------------------ |
+| `pnpm dev`                  | Dev server (Turbopack)                                 |
+| `pnpm build` / `pnpm start` | Production build / serve                               |
+| `pnpm lint`                 | ESLint                                                 |
+| `pnpm typecheck`            | Route type generation + `tsc --noEmit`                 |
+| `pnpm db:push`              | Create/update the `leads` table (needs `DATABASE_URL`) |
 
 ---
 
-### Production Environment
+## Invertir con Valores
 
-The production environment is optimized for performance and security. It uses a multi-stage build to reduce the image size and includes only the necessary dependencies.
+### Languages and URLs
 
-#### Commands for Production
+- Spanish is the default and has **no prefix**: `/`, `/blog`, `/privacidad`.
+- Italian and English live under `/it` and `/en`. `/es/...` redirects to the unprefixed URL.
+- Routing is done in `src/proxy.ts`; locale helpers are in `src/i18n/config.ts`.
 
-1. **Base Setup** (without a database):
+### Editing copy
 
-   ```bash
-   docker-compose -f docker/prod/docker-compose.yml up --build -d
-   ```
+All UI copy lives in typed dictionaries:
 
-2. **With PostgreSQL**:
+- `src/i18n/dictionaries/es.ts`: **source of truth** (Spanish, Spain)
+- `src/i18n/dictionaries/it.ts`, `en.ts`: translations. TypeScript fails if a key is missing.
 
-   ```bash
-   docker-compose -f docker/prod/docker-compose.yml -f docker/prod/docker-compose.postgres.yml up --build -d
-   ```
+Strings marked `// REVIEW` were not in the original brief and should be proofread.
+Section components (`src/components/sections/*`) only render the dictionary, so you rarely need to touch them.
 
-3. **With MongoDB**:
-   ```bash
-   docker-compose -f docker/prod/docker-compose.yml -f docker/prod/docker-compose.mongodb.yml up --build -d
-   ```
+Other content:
 
-#### Key Differences in Production
+- **Legal pages:** `content/legal/<locale>/{aviso-legal,privacidad,cookies}.mdx`. Fill in every `[TO COMPLETE]`.
+- **Founder photo:** put the image in `public/` and set `founderPhoto` in `src/config.ts`.
+- **Social links, Telegram, Cal.com, Substack:** environment variables (see `.env.example`).
 
-- **No watch mode**: The application is pre-built, and changes require a rebuild.
-- **Optimized images**: Smaller image size and faster startup times.
-- **Environment variables**: Ensure all required variables (e.g., `DATABASE_URL`, `API_KEY`) are set.
+### Adding a blog post
+
+Create `content/blog/es/<slug>.mdx` (the slug becomes the URL `/blog/<slug>`):
+
+```mdx
+---
+title: "Título del artículo"
+description: "Resumen de una o dos frases para tarjetas y SEO."
+date: 2026-11-01
+tags: ["Ahorro", "Primeros pasos"]
+animal: ant # ant | turtle | bee | kangaroo (illustrated cover)
+draft: false # true = visible with a "Borrador" badge, noindex, not in sitemap/RSS
+---
+
+Contenido en **Markdown/MDX**. Tables (GFM) are supported.
+```
+
+Reading time, tag pages (`/blog/tag/<tag>`), the RSS feed (`/rss.xml`), the sitemap and the Open Graph image
+are generated automatically. To translate a post, add the same slug under `content/blog/it/` or `content/blog/en/`.
+Locales with no posts show the Spanish ones with a notice.
+
+> The three sample posts are **drafts** (`draft: true`). Review them and set `draft: false` to publish.
+
+### Changing colours and fonts
+
+- Brand tokens are CSS variables in `src/app/globals.css` (`--icv-blue`, `--icv-green`, `--icv-deep`, …),
+  exposed to Tailwind as `brand-*` colours in `tailwind.config.ts` (`bg-brand-blue/10`, `text-brand-deep`, …).
+- Use the `*-ink` variants (`text-brand-blue-ink`, `text-brand-green-ink`, `text-brand-muted`) for text on white:
+  the pure brand blue/green do not meet WCAG AA contrast for body text.
+- Fonts (Space Grotesk for headings, Inter for body) are loaded with `next/font` in `src/app/[locale]/layout.tsx`.
+
+### Forms and leads
+
+All forms (guide, footer/blog newsletter, waitlist) post to `POST /api/leads` with a `source` tag
+(`guide`, `newsletter_footer`, `newsletter_blog`, `waitlist` + `offer`). The route validates with zod, has a
+honeypot and a per-IP rate limit, then stores the lead with every configured provider
+(`src/lib/leads/providers.ts`):
+
+| Provider                             | Enabled when                                                  |
+| ------------------------------------ | ------------------------------------------------------------- |
+| Postgres via Drizzle (`leads` table) | `DATABASE_URL`                                                |
+| Mailgun mailing list                 | `MAILGUN_API_KEY` + `MAILGUN_DOMAIN` + `MAILGUN_LIST_ADDRESS` |
+| Email notification to you            | Mailgun + `LEADS_NOTIFY_EMAIL`                                |
+
+With Mailgun configured, people also get a confirmation email in their language (with `GUIDE_URL` for the guide).
+If no provider is configured, the newsletter forms switch to a Substack link (`NEXT_PUBLIC_SUBSTACK_URL`).
+To add another provider (Brevo, Buttondown, ConvertKit…), add an entry to the `providers` array.
+
+### Analytics and cookies
+
+Set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to enable Plausible. The script loads **only after consent** in the cookie
+banner. Without it there is no banner, because the site sets no non-essential cookies. Tracked events:
+`lead_submit`, `waitlist_submit`, `telegram_click`, `cal_click`.
+
+### Deploying to Vercel
+
+1. Push this repository to GitHub and import it in Vercel (the framework and pnpm are detected automatically).
+2. Add the environment variables from `.env.example` (at least `NEXT_PUBLIC_SITE_URL`).
+3. If you use Postgres, create the table once locally: `DATABASE_URL=... pnpm db:push`.
+4. Add your domain in Vercel and make sure it matches `NEXT_PUBLIC_SITE_URL`.
+5. Optional: set up Mailgun DNS records for `MAILGUN_DOMAIN` (EU region recommended).
 
 ---
 
-### Portainer Integration
+## What changed from ShipFree
 
-Portainer is included in both development and production setups to help you manage your Docker containers via a web interface.
+Kept and adapted: Next.js/Tailwind/shadcn setup, `src/config.ts`, the Mailgun helper (fixed domain bug, EU region,
+lazy client), the Mailgun reply-forwarding webhook, the Drizzle DB layer and the UI primitives.
 
-- **Access Portainer**: `http://localhost:9000`
-- **Default credentials**: Set up during the first login.
-
----
-
-### Disclaimer
-
-- **Development Mode**: Uses watch mode for real-time updates. Not suitable for production.
-- **Production Mode**: Optimized for performance and security. Requires a rebuild for changes.
-
----
-
-## Docs
-
-For full documentation, visit: [ShipFree Docs](https://shipfree.idee8.agency/docs)
-
-## Code of Conduct
-
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
-
-## Contributing
-
-For people who want to contribute, please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
-
----
-
-Cooked for you with ❤️ by [Idee8](https://idee8.agency)
+Removed (still available in the first git commit): Supabase auth pages, dashboard, Stripe and LemonSqueezy
+checkout/webhooks, pricing/testimonials/demo sections, Docker files and their dependencies.

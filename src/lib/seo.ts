@@ -2,16 +2,26 @@
 // which does nothing in the App Router).
 import type { Metadata } from "next";
 import { config } from "@/config";
-import { defaultLocale, localePath, locales, localeTags, type Locale } from "@/i18n/config";
+import {
+  defaultLocale,
+  localePath,
+  locales,
+  localeTags,
+  type Locale,
+} from "@/i18n/config";
 
 export function absoluteUrl(path = "/"): string {
   return `${config.domainName}${path === "/" ? "" : path}` || "/";
 }
 
 /** Canonical + hreflang alternates for a path that exists in every locale. */
-export function alternatesFor(locale: Locale, path: string): Metadata["alternates"] {
+export function alternatesFor(
+  locale: Locale,
+  path: string
+): Metadata["alternates"] {
   const languages: Record<string, string> = {};
-  for (const l of locales) languages[localeTags[l]] = absoluteUrl(localePath(l, path));
+  for (const l of locales)
+    languages[localeTags[l]] = absoluteUrl(localePath(l, path));
   languages["x-default"] = absoluteUrl(localePath(defaultLocale, path));
   return { canonical: absoluteUrl(localePath(locale, path)), languages };
 }
@@ -49,7 +59,11 @@ export function pageMetadata({
       ...(title ? { title } : {}),
       description,
     },
-    twitter: { card: "summary_large_image", ...(title ? { title } : {}), description },
+    twitter: {
+      card: "summary_large_image",
+      ...(title ? { title } : {}),
+      description,
+    },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };
 }

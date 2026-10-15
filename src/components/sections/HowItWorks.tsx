@@ -1,6 +1,12 @@
 "use client";
 
-import { m, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  m,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { animals, isAnimal } from "@/components/animals";
 import { Counter } from "@/components/motion/Counter";
@@ -17,8 +23,15 @@ import type { Dictionary } from "@/i18n/dictionaries/es";
 export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
   const listRef = useRef<HTMLOListElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 75%", "end 60%"] });
-  const smooth = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    offset: ["start 75%", "end 60%"],
+  });
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    restDelta: 0.001,
+  });
   const progress = useTransform(smooth, (v) => (reduce ? 1 : v));
   const tipTop = useTransform(progress, (v) => `${v * 100}%`);
 
@@ -35,7 +48,10 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
             {dict.title}
           </h2>
           <p className="lead mt-5">
-            <Counter value={dict.steps.length} className="font-display font-bold text-brand-green-ink" />{" "}
+            <Counter
+              value={dict.steps.length}
+              className="font-display font-bold text-brand-green-ink"
+            />{" "}
             {dict.stepsCountSuffix}
           </p>
         </Reveal>
@@ -46,16 +62,38 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
             aria-hidden="true"
             className="absolute bottom-10 left-[35px] top-10 w-1 lg:left-1/2 lg:-translate-x-1/2"
           >
-            <svg viewBox="0 0 2 100" preserveAspectRatio="none" className="h-full w-full overflow-visible">
+            <svg
+              viewBox="0 0 2 100"
+              preserveAspectRatio="none"
+              className="h-full w-full overflow-visible"
+            >
               <defs>
                 {/* userSpaceOnUse: a vertical line has a zero-width bounding box */}
-                <linearGradient id="journey-line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+                <linearGradient
+                  id="journey-line"
+                  gradientUnits="userSpaceOnUse"
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="100"
+                >
                   <stop offset="0" stopColor="#1c92e1" />
                   <stop offset="1" stopColor="#31b317" />
                 </linearGradient>
               </defs>
-              <path d="M1 0V100" stroke="#748596" strokeOpacity=".25" strokeWidth="2" strokeDasharray="1 2" />
-              <m.path d="M1 0V100" stroke="url(#journey-line)" strokeWidth="2" style={{ pathLength: progress }} />
+              <path
+                d="M1 0V100"
+                stroke="#748596"
+                strokeOpacity=".25"
+                strokeWidth="2"
+                strokeDasharray="1 2"
+              />
+              <m.path
+                d="M1 0V100"
+                stroke="url(#journey-line)"
+                strokeWidth="2"
+                style={{ pathLength: progress }}
+              />
             </svg>
             <m.span
               style={{ top: tipTop }}
@@ -65,7 +103,9 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
 
           <ol ref={listRef} className="relative space-y-12 lg:space-y-20">
             {dict.steps.map((step, i) => {
-              const Animal = isAnimal(step.animal) ? animals[step.animal] : animals.ant;
+              const Animal = isAnimal(step.animal)
+                ? animals[step.animal]
+                : animals.ant;
               const left = i % 2 === 0;
               return (
                 <li
@@ -94,8 +134,15 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
                       left ? "lg:col-start-1 lg:text-right" : "lg:col-start-3"
                     )}
                   >
-                    <h3 className="font-display text-2xl font-bold sm:text-3xl">{step.title}</h3>
-                    <p className={cn("mt-2 max-w-sm text-lg leading-relaxed text-brand-muted", left && "lg:ml-auto")}>
+                    <h3 className="font-display text-2xl font-bold sm:text-3xl">
+                      {step.title}
+                    </h3>
+                    <p
+                      className={cn(
+                        "mt-2 max-w-sm text-lg leading-relaxed text-brand-muted",
+                        left && "lg:ml-auto"
+                      )}
+                    >
                       {step.text}
                     </p>
                   </Reveal>

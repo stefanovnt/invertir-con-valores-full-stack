@@ -17,7 +17,10 @@ function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
           <path d={BLOB} />
         </clipPath>
       </svg>
-      <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 bg-brand-gradient opacity-80 [clip-path:url(#about-blob)]" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 translate-x-4 translate-y-4 bg-brand-gradient opacity-80 [clip-path:url(#about-blob)]"
+      />
       <div className="relative h-full w-full overflow-hidden bg-brand-tint-blue [clip-path:url(#about-blob)]">
         {config.founderPhoto ? (
           <Image
@@ -41,9 +44,19 @@ function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
   );
 }
 
-export function About({ dict, values }: { dict: Dictionary["about"]; values: Dictionary["values"] }) {
+export function About({
+  dict,
+  values,
+}: {
+  dict: Dictionary["about"];
+  values: Dictionary["values"];
+}) {
   return (
-    <section id="sobre-mi" aria-labelledby="about-title" className="section overflow-hidden">
+    <section
+      id="sobre-mi"
+      aria-labelledby="about-title"
+      className="section overflow-hidden"
+    >
       <div className="container grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
           <BlobPhoto alt={dict.photoAlt} placeholder={dict.photoPlaceholder} />
@@ -53,7 +66,9 @@ export function About({ dict, values }: { dict: Dictionary["about"]; values: Dic
           <h2 id="about-title" className="h2 mt-4">
             {dict.title}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-brand-deep/85 sm:text-xl">{dict.text}</p>
+          <p className="mt-6 text-lg leading-relaxed text-brand-deep/85 sm:text-xl">
+            {dict.text}
+          </p>
           <RevealGroup as="ul" className="mt-8 flex flex-wrap gap-2">
             {values.items.map((v) => (
               <RevealItem as="li" key={v} className="chip">

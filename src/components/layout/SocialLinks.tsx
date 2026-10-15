@@ -1,14 +1,44 @@
-import { FaInstagram, FaTelegramPlane, FaTiktok, FaYoutube } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaTelegramPlane,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
 import { config } from "@/config";
 import { TrackedLink } from "@/components/TrackedLink";
 
 const items = [
-  { key: "youtube", label: "YouTube", href: config.social.youtube, Icon: FaYoutube },
-  { key: "instagram", label: "Instagram", href: config.social.instagram, Icon: FaInstagram },
-  { key: "tiktok", label: "TikTok", href: config.social.tiktok, Icon: FaTiktok },
-  { key: "telegram", label: "Telegram", href: config.links.telegram, Icon: FaTelegramPlane },
-  { key: "substack", label: "Substack", href: config.links.substack, Icon: SiSubstack },
+  {
+    key: "youtube",
+    label: "YouTube",
+    href: config.social.youtube,
+    Icon: FaYoutube,
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    href: config.social.instagram,
+    Icon: FaInstagram,
+  },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    href: config.social.tiktok,
+    Icon: FaTiktok,
+  },
+  {
+    key: "telegram",
+    label: "Telegram",
+    href: config.links.telegram,
+    Icon: FaTelegramPlane,
+  },
+  {
+    key: "substack",
+    label: "Substack",
+    href: config.links.substack,
+    Icon: SiSubstack,
+  },
 ] as const;
 
 /** Social icons; profiles without a URL configured are hidden. */

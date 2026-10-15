@@ -14,7 +14,13 @@ const coverTints = {
 } as const;
 
 /** Illustrated cover (no image files needed): brand tint + the post's animal. */
-export function PostCover({ post, className }: { post: Pick<PostMeta, "animal">; className?: string }) {
+export function PostCover({
+  post,
+  className,
+}: {
+  post: Pick<PostMeta, "animal">;
+  className?: string;
+}) {
   const Animal = animals[post.animal];
   return (
     <div
@@ -24,8 +30,14 @@ export function PostCover({ post, className }: { post: Pick<PostMeta, "animal">;
         className
       )}
     >
-      <div aria-hidden="true" className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-white/60" />
-      <div aria-hidden="true" className="absolute -left-6 -top-6 h-24 w-24 rounded-full border-2 border-white/80" />
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-white/60"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -left-6 -top-6 h-24 w-24 rounded-full border-2 border-white/80"
+      />
       <Animal className="relative h-1/2 w-1/2 max-w-[9rem] transition-transform duration-500 group-hover:scale-110" />
     </div>
   );
@@ -59,19 +71,27 @@ export function PostCard({
             </Link>
           ))}
           {post.draft && (
-            <span className="rounded-full bg-amber-100 px-2.5 py-1 text-amber-900">{dict.draft}</span>
+            <span className="rounded-full bg-amber-100 px-2.5 py-1 text-amber-900">
+              {dict.draft}
+            </span>
           )}
         </div>
         <Heading className="mt-4 font-display text-xl font-bold leading-snug">
           {/* The whole card is clickable through this link's ::after. */}
-          <Link href={href} className="after:absolute after:inset-0 after:content-['']">
+          <Link
+            href={href}
+            className="after:absolute after:inset-0 after:content-['']"
+          >
             {post.title}
           </Link>
         </Heading>
-        <p className="mt-2 line-clamp-3 flex-1 leading-relaxed text-brand-muted">{post.description}</p>
+        <p className="mt-2 line-clamp-3 flex-1 leading-relaxed text-brand-muted">
+          {post.description}
+        </p>
         <div className="mt-5 flex items-center justify-between text-sm text-brand-muted">
           <span>
-            <time dateTime={post.date}>{formatDate(post.date, locale)}</time> · {post.readingMinutes} {dict.readingTime}
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time> ·{" "}
+            {post.readingMinutes} {dict.readingTime}
           </span>
           <ArrowUpRight
             aria-hidden="true"

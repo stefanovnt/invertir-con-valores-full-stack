@@ -4,7 +4,8 @@
 
 const es = {
   meta: {
-    title: "Invertir con Valores · Inversión consciente para personas con valores",
+    title:
+      "Invertir con Valores · Inversión consciente para personas con valores",
     titleTemplate: "%s · Invertir con Valores",
     // REVIEW
     description:
@@ -44,7 +45,13 @@ const es = {
   },
   values: {
     label: "Nuestros valores",
-    items: ["Positividad", "Ambición", "Libertad", "Valentía", "Sostenibilidad"],
+    items: [
+      "Positividad",
+      "Ambición",
+      "Libertad",
+      "Valentía",
+      "Sostenibilidad",
+    ],
   },
   problem: {
     title: "¿Sabes lo que hace tu banco con tu dinero?",
@@ -75,14 +82,26 @@ const es = {
     // REVIEW — the number is animated
     stepsCountSuffix: "pasos, a tu ritmo",
     steps: [
-      { animal: "ant", title: "Ahorra", text: "Ordena tus finanzas y crea tu colchón." },
+      {
+        animal: "ant",
+        title: "Ahorra",
+        text: "Ordena tus finanzas y crea tu colchón.",
+      },
       {
         animal: "turtle",
         title: "Invierte",
         text: "Construye una cartera a largo plazo alineada con tus valores.",
       },
-      { animal: "bee", title: "Comparte", text: "Aprende en comunidad, sin sentirte sola." },
-      { animal: "kangaroo", title: "Crece", text: "Mentalidad para dar el salto con confianza." },
+      {
+        animal: "bee",
+        title: "Comparte",
+        text: "Aprende en comunidad, sin sentirte sola.",
+      },
+      {
+        animal: "kangaroo",
+        title: "Crece",
+        text: "Mentalidad para dar el salto con confianza.",
+      },
     ],
   },
   resources: {
@@ -116,7 +135,8 @@ const es = {
       },
     ],
     formTitle: "Recibe la guía en tu email", // REVIEW
-    formText: "Te la envío al momento. Sin spam, y puedes darte de baja cuando quieras.", // REVIEW
+    formText:
+      "Te la envío al momento. Sin spam, y puedes darte de baja cuando quieras.", // REVIEW
     submit: "Quiero mi guía gratis",
   },
   community: {
@@ -149,7 +169,8 @@ const es = {
     openInNewTab: "Abrir el calendario en una pestaña nueva",
     loading: "Cargando calendario…",
     // REVIEW — fallback when NEXT_PUBLIC_CAL_URL is empty
-    fallback: "La agenda abre muy pronto. Mientras tanto, escríbeme por Telegram o apúntate a la newsletter.",
+    fallback:
+      "La agenda abre muy pronto. Mientras tanto, escríbeme por Telegram o apúntate a la newsletter.",
     fallbackCta: "Avísame cuando abra",
   },
   learning: {
@@ -188,10 +209,12 @@ const es = {
     subscribe: "Suscribirme a la newsletter",
     // REVIEW
     pageTitle: "Blog",
-    pageDescription: "Ideas simples para ahorrar, invertir y vivir de acuerdo con tus valores.",
+    pageDescription:
+      "Ideas simples para ahorrar, invertir y vivir de acuerdo con tus valores.",
     readingTime: "min de lectura",
     draft: "Borrador",
-    draftNotice: "Artículo de ejemplo en borrador. Pendiente de revisión antes de publicarse.",
+    draftNotice:
+      "Artículo de ejemplo en borrador. Pendiente de revisión antes de publicarse.",
     tagsLabel: "Etiquetas",
     tagTitle: "Artículos sobre",
     allPosts: "Todos los artículos",
@@ -242,7 +265,8 @@ const es = {
     legalTitle: "Legal",
     socialTitle: "Sígueme", // REVIEW
     newsletterTitle: "Newsletter",
-    newsletterText: "Ideas simples para invertir con tus valores, una vez por semana.", // REVIEW
+    newsletterText:
+      "Ideas simples para invertir con tus valores, una vez por semana.", // REVIEW
     newsletterSubmit: "Suscribirme",
     substackCta: "Suscribirme en Substack",
     legal: {
@@ -262,13 +286,15 @@ const es = {
     emailPlaceholder: "tu@email.com",
     consentBefore: "He leído y acepto la ",
     consentLink: "política de privacidad",
-    consentAfter: " y quiero recibir emails de Invertir con Valores. Puedes darte de baja cuando quieras.",
+    consentAfter:
+      " y quiero recibir emails de Invertir con Valores. Puedes darte de baja cuando quieras.",
     sending: "Enviando…",
     errors: {
       name: "Escribe tu nombre.",
       email: "Escribe un email válido.",
       consent: "Necesito tu consentimiento para enviarte emails.",
-      rateLimit: "Demasiados intentos seguidos. Espera un minuto y vuelve a probar.",
+      rateLimit:
+        "Demasiados intentos seguidos. Espera un minuto y vuelve a probar.",
       server: "Algo ha fallado. Inténtalo de nuevo en un momento.",
       summary: "Revisa los campos marcados.",
     },
@@ -296,7 +322,8 @@ const es = {
   },
   legal: {
     lastUpdated: "Última actualización",
-    toComplete: "Este texto es una plantilla. Revisa los apartados marcados como [TO COMPLETE] antes de publicar.",
+    toComplete:
+      "Este texto es una plantilla. Revisa los apartados marcados como [TO COMPLETE] antes de publicar.",
   },
   emails: {
     guide: {
@@ -304,7 +331,8 @@ const es = {
       greeting: "Hola {name},",
       body: "Gracias por unirte. Aquí tienes tu guía para dar los primeros pasos y empezar a invertir de forma consciente.",
       cta: "Descargar la guía",
-      pending: "La guía está casi lista: te la enviaré en cuanto esté publicada.",
+      pending:
+        "La guía está casi lista: te la enviaré en cuanto esté publicada.",
     },
     newsletter: {
       subject: "¡Bienvenida a Invertir con Valores!",
@@ -317,7 +345,8 @@ const es = {
       body: "Te he apuntado a la lista de espera de «{offer}». Serás de las primeras personas en saberlo cuando abra.",
     },
     signature: "Un abrazo,\nStefano",
-    unsubscribe: "Recibes este email porque te has suscrito en Invertir con Valores. Responde a este correo si quieres darte de baja.",
+    unsubscribe:
+      "Recibes este email porque te has suscrito en Invertir con Valores. Responde a este correo si quieres darte de baja.",
   },
 };
 

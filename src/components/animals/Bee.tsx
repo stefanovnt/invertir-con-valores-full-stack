@@ -1,5 +1,12 @@
 import { useId } from "react";
-import { AnimalSvg, GREEN, INK, TINT_BLUE, TINT_GREEN, type AnimalProps } from "./shared";
+import {
+  AnimalSvg,
+  GREEN,
+  INK,
+  TINT_BLUE,
+  TINT_GREEN,
+  type AnimalProps,
+} from "./shared";
 
 /** Bee = community. Idle: wings flap and it floats. Hover: buzzes. */
 export function Bee(props: AnimalProps) {
@@ -13,8 +20,24 @@ export function Bee(props: AnimalProps) {
       </defs>
       <g className="a-body">
         {/* wings */}
-        <ellipse className="a-wing" cx="50" cy="38" rx="12" ry="19" transform="rotate(-22 50 38)" fill={TINT_BLUE} />
-        <ellipse className="a-wing" cx="67" cy="38" rx="10.5" ry="17" transform="rotate(18 67 38)" fill={TINT_BLUE} />
+        <ellipse
+          className="a-wing"
+          cx="50"
+          cy="38"
+          rx="12"
+          ry="19"
+          transform="rotate(-22 50 38)"
+          fill={TINT_BLUE}
+        />
+        <ellipse
+          className="a-wing"
+          cx="67"
+          cy="38"
+          rx="10.5"
+          ry="17"
+          transform="rotate(18 67 38)"
+          fill={TINT_BLUE}
+        />
         {/* stinger */}
         <path d="M32 72l-9-1 8 6" fill={INK} />
         {/* body with stripes */}

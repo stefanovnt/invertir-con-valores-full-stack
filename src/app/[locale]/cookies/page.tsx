@@ -1,6 +1,8 @@
 import { LegalPage, legalMetadata } from "@/components/legal/LegalPage";
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/cookies">) {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/cookies">) {
   return legalMetadata((await params).locale, "cookies");
 }
 

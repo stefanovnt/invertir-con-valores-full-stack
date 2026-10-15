@@ -1,4 +1,10 @@
-import { bigint, pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+import {
+  bigint,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+} from "drizzle-orm/pg-core";
 
 /**
  * Leads captured by the site (guide, newsletter, waitlist).
@@ -14,10 +20,16 @@ export const leadsTable = pgTable(
     source: text().notNull(),
     offer: text().notNull().default(""),
     locale: text().notNull(),
-    consentAt: timestamp("consent_at", { withTimezone: true }).notNull().defaultNow(),
-    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    consentAt: timestamp("consent_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
-  (t) => [uniqueIndex("leads_email_source_offer_key").on(t.email, t.source, t.offer)]
+  (t) => [
+    uniqueIndex("leads_email_source_offer_key").on(t.email, t.source, t.offer),
+  ]
 );
 
 export type NewLead = typeof leadsTable.$inferInsert;

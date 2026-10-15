@@ -34,7 +34,10 @@ function toDateString(value: unknown): string {
 
 async function readPost(locale: Locale, slug: string): Promise<Post | null> {
   try {
-    const raw = await fs.readFile(path.join(ROOT, locale, `${slug}.mdx`), "utf8");
+    const raw = await fs.readFile(
+      path.join(ROOT, locale, `${slug}.mdx`),
+      "utf8"
+    );
     const { data, content } = matter(raw);
     const words = content.split(/\s+/).filter(Boolean).length;
     const animal = String(data.animal ?? "turtle");
@@ -63,19 +66,32 @@ async function readLocale(locale: Locale): Promise<Post[]> {
     return [];
   }
   const posts = await Promise.all(
-    files.filter((f) => f.endsWith(".mdx")).map((f) => readPost(locale, f.replace(/\.mdx$/, "")))
+    files
+      .filter((f) => f.endsWith(".mdx"))
+      .map((f) => readPost(locale, f.replace(/\.mdx$/, "")))
   );
-  return posts.filter((p): p is Post => p !== null).sort((a, b) => b.date.localeCompare(a.date));
+  return posts
+    .filter((p): p is Post => p !== null)
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /** Posts for a locale, newest first. `fallback` = showing Spanish posts in another locale. */
-export async function getPosts(locale: Locale): Promise<{ posts: PostMeta[]; fallback: boolean }> {
+export async function getPosts(
+  locale: Locale
+): Promise<{ posts: PostMeta[]; fallback: boolean }> {
   const own = await readLocale(locale);
-  if (own.length > 0 || locale === defaultLocale) return { posts: own.map(stripBody), fallback: false };
-  return { posts: (await readLocale(defaultLocale)).map(stripBody), fallback: true };
+  if (own.length > 0 || locale === defaultLocale)
+    return { posts: own.map(stripBody), fallback: false };
+  return {
+    posts: (await readLocale(defaultLocale)).map(stripBody),
+    fallback: true,
+  };
 }
 
-export async function getPost(locale: Locale, slug: string): Promise<{ post: Post; fallback: boolean } | null> {
+export async function getPost(
+  locale: Locale,
+  slug: string
+): Promise<{ post: Post; fallback: boolean } | null> {
   const own = await readPost(locale, slug);
   if (own) return { post: own, fallback: false };
   if (locale === defaultLocale) return null;
@@ -102,7 +118,12 @@ export function tagSlug(tag: string): string {
 export function formatDate(date: string, locale: Locale): string {
   const d = new Date(`${date}T12:00:00Z`);
   if (Number.isNaN(d.getTime())) return date;
-  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(d);
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(d);
 }
 
 function stripBody({ body: _body, ...meta }: Post): PostMeta {

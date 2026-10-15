@@ -18,11 +18,20 @@ type Props = {
  * Newsletter signup. Uses the shared /api/leads endpoint when a lead provider
  * is configured; otherwise falls back to a link to Substack (NEXT_PUBLIC_SUBSTACK_URL).
  */
-export function NewsletterBlock({ locale, dict, source, tone = "light" }: Props) {
+export function NewsletterBlock({
+  locale,
+  dict,
+  source,
+  tone = "light",
+}: Props) {
   if (!leadsBackendReady() && config.links.substack) {
     return (
       <Button asChild variant={tone === "dark" ? "light" : "dark"}>
-        <a href={config.links.substack} target="_blank" rel="noopener noreferrer">
+        <a
+          href={config.links.substack}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {dict.footer.substackCta}
           <ArrowUpRight aria-hidden="true" />
           <span className="sr-only">{dict.common.opensNewTab}</span>

@@ -17,13 +17,30 @@ const bubbles = [
 
 function Hive() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-md" aria-hidden="true">
+    <div
+      className="relative mx-auto aspect-square w-full max-w-md"
+      aria-hidden="true"
+    >
       {/* honeycomb pattern */}
-      <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full text-brand-green/25">
+      <svg
+        viewBox="0 0 200 200"
+        className="absolute inset-0 h-full w-full text-brand-green/25"
+      >
         <defs>
           {/* pointy-top hexagon (r=16) + the shared vertical edge tiles a honeycomb */}
-          <pattern id="hive" width="27.71" height="48" patternUnits="userSpaceOnUse" patternTransform="scale(.9)">
-            <path d="M13.86 0l13.85 8v16l-13.85 8L0 24V8zM13.86 32v16" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <pattern
+            id="hive"
+            width="27.71"
+            height="48"
+            patternUnits="userSpaceOnUse"
+            patternTransform="scale(.9)"
+          >
+            <path
+              d="M13.86 0l13.85 8v16l-13.85 8L0 24V8zM13.86 32v16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
           </pattern>
           <radialGradient id="hive-fade">
             <stop offset=".35" stopColor="#fff" />
@@ -33,13 +50,24 @@ function Hive() {
             <rect width="200" height="200" fill="url(#hive-fade)" />
           </mask>
         </defs>
-        <rect width="200" height="200" fill="url(#hive)" mask="url(#hive-mask)" />
+        <rect
+          width="200"
+          height="200"
+          fill="url(#hive)"
+          mask="url(#hive-mask)"
+        />
       </svg>
       {bubbles.map((b, i) => (
         <span
           key={i}
           className={`float absolute rounded-full border-4 border-white shadow-[0_12px_30px_-16px_rgb(var(--icv-deep)/0.5)] ${b.color}`}
-          style={{ left: b.x, top: b.y, width: b.size, height: b.size, animationDelay: b.delay }}
+          style={{
+            left: b.x,
+            top: b.y,
+            width: b.size,
+            height: b.size,
+            animationDelay: b.delay,
+          }}
         />
       ))}
       <div className="group absolute inset-0 flex items-center justify-center">
@@ -51,10 +79,20 @@ function Hive() {
   );
 }
 
-export function Community({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Community({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const c = dict.community;
   return (
-    <section id="comunidad" aria-labelledby="community-title" className="section">
+    <section
+      id="comunidad"
+      aria-labelledby="community-title"
+      className="section"
+    >
       <div className="container">
         <div className="grid items-center gap-12 rounded-[2.5rem] bg-brand-tint-green/70 px-6 py-14 sm:px-12 lg:grid-cols-2 lg:px-16 lg:py-20">
           <Reveal>
@@ -63,7 +101,9 @@ export function Community({ locale, dict }: { locale: Locale; dict: Dictionary }
               {c.title}
             </h2>
             <p className="lead mt-5">{c.text}</p>
-            {!config.links.telegram && <p className="mt-4 font-medium text-brand-deep">{c.fallback}</p>}
+            {!config.links.telegram && (
+              <p className="mt-4 font-medium text-brand-deep">{c.fallback}</p>
+            )}
             <div className="mt-8">
               <TelegramButton
                 locale={locale}

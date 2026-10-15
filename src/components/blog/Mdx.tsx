@@ -6,7 +6,10 @@ import remarkGfm from "remark-gfm";
 // is trusted (written by us), but JS expressions stay blocked (mdx-remote v6 default).
 
 const components = {
-  a: ({ href = "", ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) =>
+  a: ({
+    href = "",
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) =>
     href.startsWith("/") || href.startsWith("#") ? (
       <Link href={href} {...props} />
     ) : (

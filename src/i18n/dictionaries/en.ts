@@ -71,14 +71,26 @@ const en: Dictionary = {
     title: "I'll walk with you from zero to your first conscious portfolio",
     stepsCountSuffix: "steps, at your own pace",
     steps: [
-      { animal: "ant", title: "Save", text: "Get your finances in order and build your safety net." },
+      {
+        animal: "ant",
+        title: "Save",
+        text: "Get your finances in order and build your safety net.",
+      },
       {
         animal: "turtle",
         title: "Invest",
         text: "Build a long-term portfolio aligned with your values.",
       },
-      { animal: "bee", title: "Share", text: "Learn in community, without feeling alone." },
-      { animal: "kangaroo", title: "Grow", text: "The mindset to take the leap with confidence." },
+      {
+        animal: "bee",
+        title: "Share",
+        text: "Learn in community, without feeling alone.",
+      },
+      {
+        animal: "kangaroo",
+        title: "Grow",
+        text: "The mindset to take the leap with confidence.",
+      },
     ],
   },
   resources: {
@@ -111,7 +123,8 @@ const en: Dictionary = {
       },
     ],
     formTitle: "Get the guide by email",
-    formText: "I'll send it right away. No spam, and you can unsubscribe whenever you like.",
+    formText:
+      "I'll send it right away. No spam, and you can unsubscribe whenever you like.",
     submit: "Send me the free guide",
   },
   community: {
@@ -119,7 +132,8 @@ const en: Dictionary = {
     title: "A hive of people investing with awareness",
     text: "Join our free Telegram group: ask questions, learn and meet people who share your values. We also organise in-person meetups.",
     cta: "Join on Telegram",
-    fallback: "The group opens very soon. Leave your email and I'll let you know.",
+    fallback:
+      "The group opens very soon. Leave your email and I'll let you know.",
     fallbackCta: "Let me know",
   },
   coaching: {
@@ -141,7 +155,8 @@ const en: Dictionary = {
     embedTitle: "Calendar to book the money coffee",
     openInNewTab: "Open the calendar in a new tab",
     loading: "Loading calendar…",
-    fallback: "Booking opens very soon. In the meantime, message me on Telegram or join the newsletter.",
+    fallback:
+      "Booking opens very soon. In the meantime, message me on Telegram or join the newsletter.",
     fallbackCta: "Tell me when it opens",
   },
   learning: {
@@ -170,7 +185,8 @@ const en: Dictionary = {
       },
     ],
     dialogTitle: "Waitlist",
-    dialogText: "Leave your email and I'll let you know as soon as it opens. No spam.",
+    dialogText:
+      "Leave your email and I'll let you know as soon as it opens. No spam.",
     submit: "Add me",
   },
   blog: {
@@ -179,7 +195,8 @@ const en: Dictionary = {
     viewAll: "See all articles",
     subscribe: "Subscribe to the newsletter",
     pageTitle: "Blog",
-    pageDescription: "Simple ideas to save, invest and live in line with your values.",
+    pageDescription:
+      "Simple ideas to save, invest and live in line with your values.",
     readingTime: "min read",
     draft: "Draft",
     draftNotice: "Sample draft article. To be reviewed before publishing.",
@@ -253,7 +270,8 @@ const en: Dictionary = {
     emailPlaceholder: "you@email.com",
     consentBefore: "I have read and accept the ",
     consentLink: "privacy policy",
-    consentAfter: " and want to receive emails from Invertir con Valores. You can unsubscribe at any time.",
+    consentAfter:
+      " and want to receive emails from Invertir con Valores. You can unsubscribe at any time.",
     sending: "Sending…",
     errors: {
       name: "Please enter your name.",
@@ -287,7 +305,8 @@ const en: Dictionary = {
   },
   legal: {
     lastUpdated: "Last updated",
-    toComplete: "This text is a template. Review the sections marked [TO COMPLETE] before publishing.",
+    toComplete:
+      "This text is a template. Review the sections marked [TO COMPLETE] before publishing.",
   },
   emails: {
     guide: {
@@ -295,7 +314,8 @@ const en: Dictionary = {
       greeting: "Hi {name},",
       body: "Thanks for joining. Here is your guide to take your first steps and start investing consciously.",
       cta: "Download the guide",
-      pending: "The guide is almost ready: I'll send it to you as soon as it's published.",
+      pending:
+        "The guide is almost ready: I'll send it to you as soon as it's published.",
     },
     newsletter: {
       subject: "Welcome to Invertir con Valores!",
@@ -308,7 +328,8 @@ const en: Dictionary = {
       body: "I've added you to the waitlist for “{offer}”. You'll be among the first to know when it opens.",
     },
     signature: "Warmly,\nStefano",
-    unsubscribe: "You're receiving this email because you subscribed at Invertir con Valores. Reply to this email if you'd like to unsubscribe.",
+    unsubscribe:
+      "You're receiving this email because you subscribed at Invertir con Valores. Reply to this email if you'd like to unsubscribe.",
   },
 };
 

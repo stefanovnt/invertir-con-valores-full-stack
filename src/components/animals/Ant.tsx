@@ -26,8 +26,20 @@ export function Ant(props: AnimalProps) {
         {/* coin */}
         <g className="a-coin">
           <circle cx="42" cy="40" r="14" fill={BLUE} />
-          <circle cx="42" cy="40" r="8.5" stroke="#fff" strokeOpacity=".8" strokeWidth="2" />
-          <path d="M42 35v10" stroke="#fff" strokeOpacity=".8" strokeWidth="2" />
+          <circle
+            cx="42"
+            cy="40"
+            r="8.5"
+            stroke="#fff"
+            strokeOpacity=".8"
+            strokeWidth="2"
+          />
+          <path
+            d="M42 35v10"
+            stroke="#fff"
+            strokeOpacity=".8"
+            strokeWidth="2"
+          />
         </g>
       </g>
     </AnimalSvg>

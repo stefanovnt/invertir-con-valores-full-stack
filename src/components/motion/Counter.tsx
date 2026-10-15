@@ -8,7 +8,15 @@ import { useEffect, useRef } from "react";
  * rendered on the server, so no-JS users, crawlers and reduced-motion users
  * just see the number.
  */
-export function Counter({ value, suffix = "", className }: { value: number; suffix?: string; className?: string }) {
+export function Counter({
+  value,
+  suffix = "",
+  className,
+}: {
+  value: number;
+  suffix?: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 // ShipFree's shadcn button, restyled with brand variants.
 // Text on the gradient is deep green (not white) to keep WCAG AA contrast.
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold transition-[transform,box-shadow,background-color,color] duration-200 ease-out disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:size-[1.1em] [&_svg]:shrink-0 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
+  "relative inline-flex items-center justify-center gap-2 rounded-full text-center sm:whitespace-nowrap font-semibold transition-[transform,box-shadow,background-color,color] duration-200 ease-out disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:size-[1.1em] [&_svg]:shrink-0 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
   {
     variants: {
       variant: {
@@ -21,9 +21,10 @@ const buttonVariants = cva(
         link: "rounded-md px-0 text-brand-blue-ink underline-offset-4 hover:underline motion-safe:hover:translate-y-0",
       },
       size: {
-        sm: "h-10 px-4 text-sm",
-        default: "h-12 px-6 text-base",
-        lg: "h-14 px-8 text-base sm:text-lg",
+        // min-height (not height) so labels can wrap on very narrow screens.
+        sm: "min-h-10 px-4 py-1.5 text-sm",
+        default: "min-h-12 px-6 py-2.5 text-base",
+        lg: "min-h-14 px-8 py-3 text-base sm:text-lg",
         icon: "h-11 w-11",
       },
     },
@@ -44,7 +45,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
     );
   }
 );

@@ -10,7 +10,10 @@ export async function POST(req: NextRequest) {
   // Get your HTTP webhook signing key from Mailgun and set MAILGUN_SIGNING_KEY.
   const signingKey = process.env.MAILGUN_SIGNING_KEY;
   if (!signingKey) {
-    return NextResponse.json({ error: "Webhook not configured" }, { status: 404 });
+    return NextResponse.json(
+      { error: "Webhook not configured" },
+      { status: 404 }
+    );
   }
 
   try {
@@ -20,9 +23,13 @@ export async function POST(req: NextRequest) {
     const token = formData.get("token")?.toString() ?? "";
     const signature = formData.get("signature")?.toString() ?? "";
 
-    const hash = crypto.createHmac("sha256", signingKey).update(timestamp + token).digest("hex");
+    const hash = crypto
+      .createHmac("sha256", signingKey)
+      .update(timestamp + token)
+      .digest("hex");
     const valid =
-      signature.length === hash.length && crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature));
+      signature.length === hash.length &&
+      crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature));
     if (!valid) {
       return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }

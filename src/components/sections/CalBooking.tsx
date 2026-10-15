@@ -18,7 +18,13 @@ type Props = {
  * Cal.com booking as a click-to-load facade: no third-party iframe (and no
  * cookies) until the visitor asks for it, which keeps the page fast.
  */
-export function CalBooking({ calUrl, cta, embedTitle, openInNewTab, loading }: Props) {
+export function CalBooking({
+  calUrl,
+  cta,
+  embedTitle,
+  openInNewTab,
+  loading,
+}: Props) {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const embedUrl = `${calUrl}${calUrl.includes("?") ? "&" : "?"}embed=true&theme=light&layout=month_view`;
@@ -56,7 +62,10 @@ export function CalBooking({ calUrl, cta, embedTitle, openInNewTab, loading }: P
     <div className="w-full">
       <div className="relative h-[640px] overflow-hidden rounded-3xl border border-brand-line bg-white">
         {!loaded && (
-          <p className="absolute inset-0 flex items-center justify-center gap-2 text-brand-muted" role="status">
+          <p
+            className="absolute inset-0 flex items-center justify-center gap-2 text-brand-muted"
+            role="status"
+          >
             <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
             {loading}
           </p>

@@ -5,7 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Turtle } from "@/components/animals";
-import { isLocale, localePath, defaultLocale, type Locale } from "@/i18n/config";
+import {
+  isLocale,
+  localePath,
+  defaultLocale,
+  type Locale,
+} from "@/i18n/config";
 
 const copy: Record<Locale, { title: string; text: string; cta: string }> = {
   es: {

@@ -5,16 +5,35 @@ import { cn } from "@/lib/utils";
  * track slides by -50%; the duplicate is hidden from assistive tech. Pauses on
  * hover and is static with reduced motion.
  */
-export function Marquee({ items, label, className }: { items: string[]; label: string; className?: string }) {
+export function Marquee({
+  items,
+  label,
+  className,
+}: {
+  items: string[];
+  label: string;
+  className?: string;
+}) {
   const row = (hidden: boolean) => (
-    <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center" {...(!hidden && { "aria-label": label })}>
+    <ul
+      aria-hidden={hidden || undefined}
+      className="flex shrink-0 items-center"
+      {...(!hidden && { "aria-label": label })}
+    >
       {items.map((item) => (
         <li key={item} className="flex items-center">
           <span className="whitespace-nowrap px-6 font-display text-3xl font-bold tracking-tight sm:px-10 sm:text-5xl">
             {item}
           </span>
-          <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 sm:h-7 sm:w-7" aria-hidden="true">
-            <path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z" fill="url(#marquee-star)" />
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 shrink-0 sm:h-7 sm:w-7"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"
+              fill="url(#marquee-star)"
+            />
           </svg>
         </li>
       ))}

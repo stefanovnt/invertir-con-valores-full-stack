@@ -9,10 +9,20 @@ import type { Dictionary } from "@/i18n/dictionaries/es";
 
 const icons = [BookOpen, ClipboardCheck, Calculator, Table2];
 
-export function Resources({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Resources({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const r = dict.resources;
   return (
-    <section id="recursos" aria-labelledby="resources-title" className="section">
+    <section
+      id="recursos"
+      aria-labelledby="resources-title"
+      className="section"
+    >
       <div className="container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{r.eyebrow}</p>
@@ -21,7 +31,10 @@ export function Resources({ locale, dict }: { locale: Locale; dict: Dictionary }
           </h2>
         </Reveal>
 
-        <RevealGroup as="ul" className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup
+          as="ul"
+          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {r.cards.map((card, i) => {
             const Icon = icons[i] ?? BookOpen;
             return (
@@ -40,14 +53,20 @@ export function Resources({ locale, dict }: { locale: Locale; dict: Dictionary }
                       <span
                         className={cn(
                           "rounded-full px-3 py-1 text-xs font-semibold",
-                          card.soon ? "bg-white text-brand-muted ring-1 ring-brand-line" : "bg-brand-tint-green text-brand-green-ink"
+                          card.soon
+                            ? "bg-white text-brand-muted ring-1 ring-brand-line"
+                            : "bg-brand-tint-green text-brand-green-ink"
                         )}
                       >
                         {card.badge}
                       </span>
                     </div>
-                    <h3 className="mt-6 font-display text-xl font-bold leading-snug">{card.title}</h3>
-                    <p className="mt-3 leading-relaxed text-brand-muted">{card.text}</p>
+                    <h3 className="mt-6 font-display text-xl font-bold leading-snug">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 leading-relaxed text-brand-muted">
+                      {card.text}
+                    </p>
                   </article>
                 </TiltCard>
               </RevealItem>
@@ -64,10 +83,18 @@ export function Resources({ locale, dict }: { locale: Locale; dict: Dictionary }
             <div className="group grid gap-10 rounded-[calc(2.5rem-2px)] bg-white p-7 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
               <div>
                 <Ant className="h-24 w-24" />
-                <h3 className="mt-4 font-display text-3xl font-bold sm:text-4xl">{r.formTitle}</h3>
+                <h3 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
+                  {r.formTitle}
+                </h3>
                 <p className="lead mt-3">{r.formText}</p>
               </div>
-              <LeadForm locale={locale} dict={dict.forms} source="guide" withName submitLabel={r.submit} />
+              <LeadForm
+                locale={locale}
+                dict={dict.forms}
+                source="guide"
+                withName
+                submitLabel={r.submit}
+              />
             </div>
           </div>
         </Reveal>

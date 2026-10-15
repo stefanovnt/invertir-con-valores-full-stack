@@ -3,7 +3,8 @@ import type { Dictionary } from "./es";
 
 const it: Dictionary = {
   meta: {
-    title: "Invertir con Valores · Investimenti consapevoli per persone con valori",
+    title:
+      "Invertir con Valores · Investimenti consapevoli per persone con valori",
     titleTemplate: "%s · Invertir con Valores",
     description:
       "Impara a investire in modo redditizio e consapevole, senza finanziare armi né sfruttamento. Guida gratuita, community su Telegram e un caffè finanziario di 30 minuti.",
@@ -71,14 +72,26 @@ const it: Dictionary = {
     title: "Ti accompagno da zero fino al tuo primo portafoglio consapevole",
     stepsCountSuffix: "passi, al tuo ritmo",
     steps: [
-      { animal: "ant", title: "Risparmia", text: "Metti ordine nelle tue finanze e crea il tuo cuscinetto." },
+      {
+        animal: "ant",
+        title: "Risparmia",
+        text: "Metti ordine nelle tue finanze e crea il tuo cuscinetto.",
+      },
       {
         animal: "turtle",
         title: "Investi",
         text: "Costruisci un portafoglio di lungo periodo allineato ai tuoi valori.",
       },
-      { animal: "bee", title: "Condividi", text: "Impara in community, senza sentirti sola." },
-      { animal: "kangaroo", title: "Cresci", text: "La mentalità giusta per fare il salto con fiducia." },
+      {
+        animal: "bee",
+        title: "Condividi",
+        text: "Impara in community, senza sentirti sola.",
+      },
+      {
+        animal: "kangaroo",
+        title: "Cresci",
+        text: "La mentalità giusta per fare il salto con fiducia.",
+      },
     ],
   },
   resources: {
@@ -111,7 +124,8 @@ const it: Dictionary = {
       },
     ],
     formTitle: "Ricevi la guida via email",
-    formText: "Te la mando subito. Niente spam, e puoi disiscriverti quando vuoi.",
+    formText:
+      "Te la mando subito. Niente spam, e puoi disiscriverti quando vuoi.",
     submit: "Voglio la mia guida gratis",
   },
   community: {
@@ -141,7 +155,8 @@ const it: Dictionary = {
     embedTitle: "Calendario per prenotare il caffè finanziario",
     openInNewTab: "Apri il calendario in una nuova scheda",
     loading: "Caricamento del calendario…",
-    fallback: "L'agenda apre a breve. Nel frattempo scrivimi su Telegram o iscriviti alla newsletter.",
+    fallback:
+      "L'agenda apre a breve. Nel frattempo scrivimi su Telegram o iscriviti alla newsletter.",
     fallbackCta: "Avvisami quando apre",
   },
   learning: {
@@ -179,10 +194,12 @@ const it: Dictionary = {
     viewAll: "Vedi tutti gli articoli",
     subscribe: "Iscriviti alla newsletter",
     pageTitle: "Blog",
-    pageDescription: "Idee semplici per risparmiare, investire e vivere in linea con i tuoi valori.",
+    pageDescription:
+      "Idee semplici per risparmiare, investire e vivere in linea con i tuoi valori.",
     readingTime: "min di lettura",
     draft: "Bozza",
-    draftNotice: "Articolo di esempio in bozza. Da rivedere prima della pubblicazione.",
+    draftNotice:
+      "Articolo di esempio in bozza. Da rivedere prima della pubblicazione.",
     tagsLabel: "Tag",
     tagTitle: "Articoli su",
     allPosts: "Tutti gli articoli",
@@ -233,7 +250,8 @@ const it: Dictionary = {
     legalTitle: "Note legali",
     socialTitle: "Seguimi",
     newsletterTitle: "Newsletter",
-    newsletterText: "Idee semplici per investire con i tuoi valori, una volta a settimana.",
+    newsletterText:
+      "Idee semplici per investire con i tuoi valori, una volta a settimana.",
     newsletterSubmit: "Iscrivimi",
     substackCta: "Iscriviti su Substack",
     legal: {
@@ -253,7 +271,8 @@ const it: Dictionary = {
     emailPlaceholder: "tu@email.com",
     consentBefore: "Ho letto e accetto la ",
     consentLink: "privacy policy",
-    consentAfter: " e voglio ricevere email da Invertir con Valores. Puoi disiscriverti quando vuoi.",
+    consentAfter:
+      " e voglio ricevere email da Invertir con Valores. Puoi disiscriverti quando vuoi.",
     sending: "Invio in corso…",
     errors: {
       name: "Scrivi il tuo nome.",
@@ -287,7 +306,8 @@ const it: Dictionary = {
   },
   legal: {
     lastUpdated: "Ultimo aggiornamento",
-    toComplete: "Questo testo è un modello. Rivedi le parti segnate come [TO COMPLETE] prima di pubblicare.",
+    toComplete:
+      "Questo testo è un modello. Rivedi le parti segnate come [TO COMPLETE] prima di pubblicare.",
   },
   emails: {
     guide: {
@@ -308,7 +328,8 @@ const it: Dictionary = {
       body: "Ti ho iscritta alla lista d'attesa di «{offer}». Sarai tra le prime persone a saperlo quando aprirà.",
     },
     signature: "Un abbraccio,\nStefano",
-    unsubscribe: "Ricevi questa email perché ti sei iscritta su Invertir con Valores. Rispondi a questa email se vuoi disiscriverti.",
+    unsubscribe:
+      "Ricevi questa email perché ti sei iscritta su Invertir con Valores. Rispondi a questa email se vuoi disiscriverti.",
   },
 };
 

@@ -1,6 +1,11 @@
 // Shared between the client forms and the /api/leads route.
 
-export const leadSources = ["guide", "newsletter_footer", "newsletter_blog", "waitlist"] as const;
+export const leadSources = [
+  "guide",
+  "newsletter_footer",
+  "newsletter_blog",
+  "waitlist",
+] as const;
 export type LeadSource = (typeof leadSources)[number];
 
 export const waitlistOffers = ["premium", "coaching", "course"] as const;

@@ -8,7 +8,9 @@ import { absoluteUrl } from "@/lib/seo";
 const pages = ["/", "/blog", "/aviso-legal", "/privacidad", "/cookies"];
 
 function languages(path: string) {
-  return Object.fromEntries(locales.map((l) => [localeTags[l], absoluteUrl(localePath(l, path))]));
+  return Object.fromEntries(
+    locales.map((l) => [localeTags[l], absoluteUrl(localePath(l, path))])
+  );
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

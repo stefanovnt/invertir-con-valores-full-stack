@@ -8,7 +8,12 @@ const DOTS = Array.from({ length: 12 }, (_, i) => {
   return {
     dx: `${Math.round(Math.cos(angle) * distance)}px`,
     dy: `${Math.round(Math.sin(angle) * distance)}px`,
-    color: i % 3 === 0 ? "rgb(var(--icv-blue))" : i % 3 === 1 ? "rgb(var(--icv-green))" : "rgb(var(--icv-deep))",
+    color:
+      i % 3 === 0
+        ? "rgb(var(--icv-blue))"
+        : i % 3 === 1
+          ? "rgb(var(--icv-green))"
+          : "rgb(var(--icv-deep))",
     size: 6 + (i % 2) * 3,
     delay: `${(i % 4) * 40}ms`,
   };
@@ -33,7 +38,10 @@ export function SuccessBurst() {
           }
         />
       ))}
-      <svg viewBox="0 0 80 80" className="relative h-20 w-20 motion-safe:animate-in motion-safe:zoom-in-50 motion-safe:duration-500">
+      <svg
+        viewBox="0 0 80 80"
+        className="relative h-20 w-20 motion-safe:animate-in motion-safe:zoom-in-50 motion-safe:duration-500"
+      >
         <circle cx="40" cy="40" r="34" fill="rgb(var(--icv-green))" />
         <path
           d="M26 41l9 9 19-20"

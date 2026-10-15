@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import Script from "next/script";
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
@@ -34,7 +40,13 @@ function readChoice(): Choice | null {
   }
 }
 
-export function ConsentProvider({ enabled, children }: { enabled: boolean; children: React.ReactNode }) {
+export function ConsentProvider({
+  enabled,
+  children,
+}: {
+  enabled: boolean;
+  children: React.ReactNode;
+}) {
   const [choice, setChoice] = useState<Choice | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
@@ -69,7 +81,9 @@ export function ConsentProvider({ enabled, children }: { enabled: boolean; child
   const reopen = useCallback(() => setOpen(true), []);
 
   return (
-    <ConsentContext.Provider value={{ enabled, choice, ready, open, decide, reopen }}>
+    <ConsentContext.Provider
+      value={{ enabled, choice, ready, open, decide, reopen }}
+    >
       {children}
     </ConsentContext.Provider>
   );
@@ -81,7 +95,13 @@ function useConsent() {
   return ctx;
 }
 
-export function CookieBanner({ dict, privacyHref }: { dict: Dictionary["cookies"]; privacyHref: string }) {
+export function CookieBanner({
+  dict,
+  privacyHref,
+}: {
+  dict: Dictionary["cookies"];
+  privacyHref: string;
+}) {
   const { enabled, ready, open, decide } = useConsent();
   if (!enabled || !ready || !open) return null;
 
@@ -92,7 +112,10 @@ export function CookieBanner({ dict, privacyHref }: { dict: Dictionary["cookies"
     >
       <p className="text-sm leading-relaxed text-brand-deep">
         {dict.text}{" "}
-        <Link href={privacyHref} className="font-semibold text-brand-blue-ink underline underline-offset-2">
+        <Link
+          href={privacyHref}
+          className="font-semibold text-brand-blue-ink underline underline-offset-2"
+        >
           {dict.more}
         </Link>
       </p>
@@ -113,7 +136,11 @@ export function ManageCookiesButton({ label }: { label: string }) {
   const { enabled, reopen } = useConsent();
   if (!enabled) return null;
   return (
-    <button type="button" onClick={reopen} className="text-left hover:text-white hover:underline">
+    <button
+      type="button"
+      onClick={reopen}
+      className="text-left hover:text-white hover:underline"
+    >
       {label}
     </button>
   );

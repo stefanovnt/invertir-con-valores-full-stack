@@ -65,7 +65,10 @@ export function Navbar({ locale, nav, common }: Props) {
 
   const links = nav.links.map((l) => ({
     label: l.label,
-    href: "anchor" in l && l.anchor ? homeAnchor(locale, l.anchor) : localePath(locale, l.href ?? "/"),
+    href:
+      "anchor" in l && l.anchor
+        ? homeAnchor(locale, l.anchor)
+        : localePath(locale, l.href ?? "/"),
   }));
 
   const languageLinks = (
@@ -109,7 +112,11 @@ export function Navbar({ locale, nav, common }: Props) {
           scrolled ? "h-16" : "h-20"
         )}
       >
-        <Link href={localePath(locale, "/")} className="shrink-0 rounded-lg" aria-label="Invertir con Valores">
+        <Link
+          href={localePath(locale, "/")}
+          className="shrink-0 rounded-lg"
+          aria-label="Invertir con Valores"
+        >
           <Logo />
         </Link>
 
@@ -148,7 +155,11 @@ export function Navbar({ locale, nav, common }: Props) {
             aria-label={open ? common.closeMenu : common.openMenu}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full text-brand-deep hover:bg-brand-tint-blue"
           >
-            {open ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
+            {open ? (
+              <X className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            )}
           </button>
         </div>
       </div>
@@ -176,7 +187,10 @@ export function Navbar({ locale, nav, common }: Props) {
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-brand-line/70 pt-4">
             {languageLinks}
             <Button asChild size="sm">
-              <Link href={homeAnchor(locale, "guia")} onClick={() => setOpen(false)}>
+              <Link
+                href={homeAnchor(locale, "guia")}
+                onClick={() => setOpen(false)}
+              >
                 {nav.cta}
               </Link>
             </Button>

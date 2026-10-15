@@ -8,10 +8,17 @@ import { absoluteUrl } from "@/lib/seo";
 export const dynamic = "force-static";
 
 const esc = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 
 export async function GET() {
-  const [posts, dict] = await Promise.all([getPublishedPosts(defaultLocale), getDictionary(defaultLocale)]);
+  const [posts, dict] = await Promise.all([
+    getPublishedPosts(defaultLocale),
+    getDictionary(defaultLocale),
+  ]);
   const blogUrl = absoluteUrl(localePath(defaultLocale, "/blog"));
 
   const items = posts

@@ -16,7 +16,11 @@ export function Faq({ dict }: { dict: Dictionary["faq"] }) {
   const baseId = useId();
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="section bg-brand-tint-blue/50">
+    <section
+      id="faq"
+      aria-labelledby="faq-title"
+      className="section bg-brand-tint-blue/50"
+    >
       <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal>
           <p className="eyebrow">{dict.eyebrow}</p>
@@ -46,7 +50,8 @@ export function Faq({ dict }: { dict: Dictionary["faq"] }) {
                         aria-hidden="true"
                         className={cn(
                           "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-line transition-[transform,background-color] duration-300",
-                          isOpen && "rotate-45 border-transparent bg-brand-gradient"
+                          isOpen &&
+                            "rotate-45 border-transparent bg-brand-gradient"
                         )}
                       >
                         <Plus className="h-5 w-5" />
@@ -60,11 +65,15 @@ export function Faq({ dict }: { dict: Dictionary["faq"] }) {
                     inert={!isOpen}
                     className={cn(
                       "grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none",
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
                     )}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-lg leading-relaxed text-brand-muted sm:px-8">{item.a}</p>
+                      <p className="px-6 pb-6 text-lg leading-relaxed text-brand-muted sm:px-8">
+                        {item.a}
+                      </p>
                     </div>
                   </div>
                 </li>

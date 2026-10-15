@@ -25,7 +25,10 @@ export function AnimalSvg({
   title,
   svgProps,
   children,
-}: AnimalProps & { kind: "ant" | "turtle" | "bee" | "kangaroo"; children: React.ReactNode }) {
+}: AnimalProps & {
+  kind: "ant" | "turtle" | "bee" | "kangaroo";
+  children: React.ReactNode;
+}) {
   return (
     <svg
       viewBox="0 0 120 120"

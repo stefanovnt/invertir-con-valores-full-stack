@@ -12,7 +12,8 @@ export function proxy(request: NextRequest) {
 
   if (first === defaultLocale) {
     // Generated metadata images live under /es internally; serve them directly.
-    if (/\/(opengraph|twitter)-image/.test(pathname)) return NextResponse.next();
+    if (/\/(opengraph|twitter)-image/.test(pathname))
+      return NextResponse.next();
     const url = request.nextUrl.clone();
     url.pathname = pathname.slice(defaultLocale.length + 1) || "/";
     return NextResponse.redirect(url, 308);

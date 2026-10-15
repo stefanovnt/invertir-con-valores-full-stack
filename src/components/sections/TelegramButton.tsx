@@ -17,7 +17,15 @@ type Props = {
 } & Pick<ButtonProps, "variant" | "size" | "className">;
 
 /** Telegram CTA with tracking; degrades to the email form when no URL is set. */
-export function TelegramButton({ locale, label, fallbackLabel, fallbackAnchor = "guia", location, newTabLabel, ...button }: Props) {
+export function TelegramButton({
+  locale,
+  label,
+  fallbackLabel,
+  fallbackAnchor = "guia",
+  location,
+  newTabLabel,
+  ...button
+}: Props) {
   if (!config.links.telegram) {
     return (
       <Button asChild {...button}>

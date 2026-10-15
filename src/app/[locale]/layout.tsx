@@ -6,13 +6,25 @@ import { config } from "@/config";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import { Analytics, ConsentProvider, CookieBanner } from "@/components/consent/Consent";
-import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/components/seo/JsonLd";
+import {
+  Analytics,
+  ConsentProvider,
+  CookieBanner,
+} from "@/components/consent/Consent";
+import {
+  JsonLd,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/components/seo/JsonLd";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { isLocale, localePath, locales, localeTags } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
@@ -31,7 +43,9 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: LayoutProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
@@ -45,14 +59,20 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   };
 }
 
-export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: LayoutProps<"/[locale]">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const analyticsEnabled = Boolean(config.analytics.plausibleDomain);
 
   return (
-    <html lang={localeTags[locale]} className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang={localeTags[locale]}
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+    >
       <body>
         <a
           href="#main"
@@ -68,10 +88,21 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             </main>
             <Footer locale={locale} dict={dict} />
           </MotionProvider>
-          <CookieBanner dict={dict.cookies} privacyHref={localePath(locale, "/cookies")} />
-          <Analytics domain={config.analytics.plausibleDomain} src={config.analytics.plausibleSrc} />
+          <CookieBanner
+            dict={dict.cookies}
+            privacyHref={localePath(locale, "/cookies")}
+          />
+          <Analytics
+            domain={config.analytics.plausibleDomain}
+            src={config.analytics.plausibleSrc}
+          />
         </ConsentProvider>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd(locale, dict.meta.description)]} />
+        <JsonLd
+          data={[
+            organizationJsonLd(),
+            websiteJsonLd(locale, dict.meta.description),
+          ]}
+        />
       </body>
     </html>
   );

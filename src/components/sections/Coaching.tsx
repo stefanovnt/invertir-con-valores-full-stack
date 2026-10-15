@@ -10,13 +10,26 @@ import { TelegramButton } from "./TelegramButton";
 import { homeAnchor, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
-export function Coaching({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Coaching({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const c = dict.coaching;
   return (
-    <section id="coaching" aria-labelledby="coaching-title" className="section pt-0 sm:pt-0 lg:pt-0">
+    <section
+      id="coaching"
+      aria-labelledby="coaching-title"
+      className="section pt-0 sm:pt-0 lg:pt-0"
+    >
       <div className="container">
         <div className="card relative overflow-hidden p-7 sm:p-12 lg:p-16">
-          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-blue/10 blur-3xl" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-blue/10 blur-3xl"
+          />
           <div className="relative grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <Reveal>
               <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-tint-green text-brand-green-ink">
@@ -37,18 +50,25 @@ export function Coaching({ locale, dict }: { locale: Locale; dict: Dictionary })
                         suffix={f.suffix}
                         className="block font-display text-3xl font-bold text-brand-deep sm:text-4xl"
                       />
-                      <span className="mt-1 block text-sm text-brand-muted">{f.label}</span>
+                      <span className="mt-1 block text-sm text-brand-muted">
+                        {f.label}
+                      </span>
                     </dd>
                   </div>
                 ))}
               </dl>
             </Reveal>
 
-            <Reveal delay={0.1} className="group flex flex-col items-start justify-center">
+            <Reveal
+              delay={0.1}
+              className="group flex flex-col items-start justify-center"
+            >
               <div className="mb-8 flex w-full items-start gap-5 rounded-3xl bg-brand-tint-green/60 p-6 sm:p-8">
                 <Turtle className="hidden h-20 w-20 shrink-0 sm:block" />
                 <div>
-                  <h3 className="font-display text-lg font-bold">{c.stepsTitle}</h3>
+                  <h3 className="font-display text-lg font-bold">
+                    {c.stepsTitle}
+                  </h3>
                   <ol className="mt-3 space-y-3">
                     {c.steps.map((step, i) => (
                       <li key={step} className="flex gap-3 text-brand-deep">
@@ -85,7 +105,9 @@ export function Coaching({ locale, dict }: { locale: Locale; dict: Dictionary })
                       />
                     ) : null}
                     <Button asChild variant="secondary">
-                      <Link href={homeAnchor(locale, "guia")}>{c.fallbackCta}</Link>
+                      <Link href={homeAnchor(locale, "guia")}>
+                        {c.fallbackCta}
+                      </Link>
                     </Button>
                   </div>
                 </div>

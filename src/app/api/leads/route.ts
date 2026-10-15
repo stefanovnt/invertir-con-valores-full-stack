@@ -5,7 +5,12 @@ import { locales } from "@/i18n/config";
 import { sendLeadConfirmation } from "@/lib/leads/emails";
 import { saveLead } from "@/lib/leads/providers";
 import { rateLimit } from "@/lib/leads/rate-limit";
-import { leadSources, waitlistOffers, type LeadField, type LeadResponse } from "@/lib/leads/types";
+import {
+  leadSources,
+  waitlistOffers,
+  type LeadField,
+  type LeadResponse,
+} from "@/lib/leads/types";
 
 // One endpoint for every form: lead magnet (guide), newsletter (footer/blog)
 // and waitlist (tagged by offer). The "source" field tells them apart.
@@ -33,10 +38,15 @@ const json = (body: LeadResponse, status = 200, headers?: HeadersInit) =>
   NextResponse.json(body, { status, headers });
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "local";
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "local";
   const limit = rateLimit(ip);
   if (!limit.allowed) {
-    return json({ ok: false, error: "rate_limit" }, 429, { "Retry-After": String(limit.retryAfter) });
+    return json({ ok: false, error: "rate_limit" }, 429, {
+      "Retry-After": String(limit.retryAfter),
+    });
   }
 
   let body: unknown;
@@ -52,7 +62,10 @@ export async function POST(req: NextRequest) {
       ...new Set(
         parsed.error.issues
           .map((i) => i.path[0])
-          .filter((f): f is LeadField => f === "name" || f === "email" || f === "consent")
+          .filter(
+            (f): f is LeadField =>
+              f === "name" || f === "email" || f === "consent"
+          )
       ),
     ];
     return json({ ok: false, error: "validation", fields }, 400);
@@ -64,7 +77,8 @@ export async function POST(req: NextRequest) {
   const lead = { email, name, source, offer, locale };
 
   const result = await saveLead(lead);
-  if (result === "not_configured") return json({ ok: false, error: "not_configured" }, 503);
+  if (result === "not_configured")
+    return json({ ok: false, error: "not_configured" }, 503);
   if (result === "failed") return json({ ok: false, error: "server" }, 502);
 
   // The confirmation email is best effort: the lead is already stored.

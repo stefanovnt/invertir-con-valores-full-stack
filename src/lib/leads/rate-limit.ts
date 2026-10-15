@@ -6,7 +6,10 @@ const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 5;
 const hits = new Map<string, { count: number; resetAt: number }>();
 
-export function rateLimit(key: string, now = Date.now()): { allowed: boolean; retryAfter: number } {
+export function rateLimit(
+  key: string,
+  now = Date.now()
+): { allowed: boolean; retryAfter: number } {
   // Opportunistic cleanup so the map can't grow forever.
   if (hits.size > 5_000) {
     for (const [k, v] of hits) if (v.resetAt <= now) hits.delete(k);

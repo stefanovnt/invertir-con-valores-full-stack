@@ -16,7 +16,13 @@ type RevealProps = {
   as?: "div" | "li" | "section" | "article" | "span";
 };
 
-export function Reveal({ children, className, delay = 0, y = 24, as = "div" }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  y = 24,
+  as = "div",
+}: RevealProps) {
   const Comp = m[as];
   return (
     <Comp

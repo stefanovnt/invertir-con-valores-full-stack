@@ -14,7 +14,8 @@ export async function generateStaticParams() {
   const params: { locale: string; tag: string }[] = [];
   for (const locale of locales) {
     const { posts } = await getPosts(locale);
-    for (const tag of new Set(posts.flatMap((p) => p.tags.map(tagSlug)))) params.push({ locale, tag });
+    for (const tag of new Set(posts.flatMap((p) => p.tags.map(tagSlug))))
+      params.push({ locale, tag });
   }
   return params;
 }
@@ -26,10 +27,15 @@ async function load(locale: Locale, slug: string) {
   return { matching, label };
 }
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/blog/tag/[tag]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/blog/tag/[tag]">): Promise<Metadata> {
   const { locale, tag } = await params;
   if (!isLocale(locale)) return {};
-  const [{ blog }, { label }] = await Promise.all([getDictionary(locale), load(locale, tag)]);
+  const [{ blog }, { label }] = await Promise.all([
+    getDictionary(locale),
+    load(locale, tag),
+  ]);
   if (!label) return {};
   // Tag listings are thin pages: keep them out of the index, follow links.
   return pageMetadata({
@@ -41,10 +47,15 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/tag
   });
 }
 
-export default async function TagPage({ params }: PageProps<"/[locale]/blog/tag/[tag]">) {
+export default async function TagPage({
+  params,
+}: PageProps<"/[locale]/blog/tag/[tag]">) {
   const { locale, tag } = await params;
   if (!isLocale(locale)) notFound();
-  const [dict, { matching, label }] = await Promise.all([getDictionary(locale), load(locale, tag)]);
+  const [dict, { matching, label }] = await Promise.all([
+    getDictionary(locale),
+    load(locale, tag),
+  ]);
   if (!label) notFound();
 
   return (
@@ -63,7 +74,12 @@ export default async function TagPage({ params }: PageProps<"/[locale]/blog/tag/
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {matching.map((post) => (
             <li key={post.slug}>
-              <PostCard post={post} locale={locale} dict={dict.blog} headingLevel="h2" />
+              <PostCard
+                post={post}
+                locale={locale}
+                dict={dict.blog}
+                headingLevel="h2"
+              />
             </li>
           ))}
         </ul>

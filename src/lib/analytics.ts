@@ -1,9 +1,16 @@
 // Tiny analytics facade. Plausible is only loaded after cookie consent
 // (see components/consent), so until then every call is a no-op.
 
-export type AnalyticsEvent = "lead_submit" | "telegram_click" | "cal_click" | "waitlist_submit";
+export type AnalyticsEvent =
+  | "lead_submit"
+  | "telegram_click"
+  | "cal_click"
+  | "waitlist_submit";
 
-type Plausible = (event: string, options?: { props?: Record<string, string> }) => void;
+type Plausible = (
+  event: string,
+  options?: { props?: Record<string, string> }
+) => void;
 
 declare global {
   interface Window {

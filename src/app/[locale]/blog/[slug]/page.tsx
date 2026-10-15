@@ -8,7 +8,13 @@ import { NewsletterBlock } from "@/components/forms/NewsletterBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { config } from "@/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { defaultLocale, isLocale, localePath, locales, localeTags } from "@/i18n/config";
+import {
+  defaultLocale,
+  isLocale,
+  localePath,
+  locales,
+  localeTags,
+} from "@/i18n/config";
 import { formatDate, getPost, getPosts, tagSlug } from "@/lib/blog";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
@@ -23,7 +29,9 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/blog/[slug]">): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!isLocale(locale)) return {};
   const found = await getPost(locale, slug);
@@ -42,12 +50,23 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[sl
   return {
     ...meta,
     // A fallback (Spanish post shown under /it or /en) points to the original.
-    alternates: { canonical: absoluteUrl(localePath(fallback ? defaultLocale : locale, `/blog/${slug}`)) },
-    openGraph: { ...meta.openGraph, type: "article", publishedTime: post.date, tags: post.tags },
+    alternates: {
+      canonical: absoluteUrl(
+        localePath(fallback ? defaultLocale : locale, `/blog/${slug}`)
+      ),
+    },
+    openGraph: {
+      ...meta.openGraph,
+      type: "article",
+      publishedTime: post.date,
+      tags: post.tags,
+    },
   };
 }
 
-export default async function PostPage({ params }: PageProps<"/[locale]/blog/[slug]">) {
+export default async function PostPage({
+  params,
+}: PageProps<"/[locale]/blog/[slug]">) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
   const found = await getPost(locale, slug);
@@ -58,7 +77,10 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
   const url = absoluteUrl(localePath(locale, `/blog/${slug}`));
 
   return (
-    <article lang={fallback ? localeTags[post.contentLocale] : undefined} className="pb-24 pt-28 sm:pt-36">
+    <article
+      lang={fallback ? localeTags[post.contentLocale] : undefined}
+      className="pb-24 pt-28 sm:pt-36"
+    >
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -85,7 +107,10 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
         </Link>
 
         <header className="mt-8">
-          <ul className="flex flex-wrap gap-2 text-xs font-semibold" aria-label={dict.blog.tagsLabel}>
+          <ul
+            className="flex flex-wrap gap-2 text-xs font-semibold"
+            aria-label={dict.blog.tagsLabel}
+          >
             {post.tags.map((tag) => (
               <li key={tag}>
                 <Link
@@ -97,11 +122,14 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
               </li>
             ))}
           </ul>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.08] sm:text-5xl">{post.title}</h1>
+          <h1 className="mt-5 text-4xl font-bold leading-[1.08] sm:text-5xl">
+            {post.title}
+          </h1>
           <p className="lead mt-5">{post.description}</p>
           <p className="mt-6 text-sm text-brand-muted">
-            {config.founder} · <time dateTime={post.date}>{formatDate(post.date, locale)}</time> · {post.readingMinutes}{" "}
-            {dict.blog.readingTime}
+            {config.founder} ·{" "}
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time> ·{" "}
+            {post.readingMinutes} {dict.blog.readingTime}
           </p>
         </header>
 
@@ -132,13 +160,20 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
           {dict.blog.disclaimer}
         </aside>
 
-        <section aria-labelledby="post-newsletter" className="card mt-12 p-7 sm:p-10">
+        <section
+          aria-labelledby="post-newsletter"
+          className="card mt-12 p-7 sm:p-10"
+        >
           <h2 id="post-newsletter" className="font-display text-2xl font-bold">
             {dict.blog.newsletterTitle}
           </h2>
           <p className="mt-2 text-brand-muted">{dict.blog.newsletterText}</p>
           <div className="mt-6">
-            <NewsletterBlock locale={locale} dict={dict} source="newsletter_blog" />
+            <NewsletterBlock
+              locale={locale}
+              dict={dict}
+              source="newsletter_blog"
+            />
           </div>
         </section>
       </div>

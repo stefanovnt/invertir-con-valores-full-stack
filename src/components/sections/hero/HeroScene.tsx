@@ -23,7 +23,11 @@ export function HeroScene() {
   const reduce = useReducedMotion();
 
   return (
-    <svg viewBox="0 0 520 400" className="h-auto w-full overflow-visible" aria-hidden="true">
+    <svg
+      viewBox="0 0 520 400"
+      className="h-auto w-full overflow-visible"
+      aria-hidden="true"
+    >
       <defs>
         <linearGradient id="hero-line" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0" stopColor="#1c92e1" />
@@ -33,19 +37,35 @@ export function HeroScene() {
           <stop offset="0" stopColor="#1c92e1" stopOpacity=".18" />
           <stop offset="1" stopColor="#31b317" stopOpacity=".18" />
         </linearGradient>
-        {/* fade the water out at the left and bottom edges */}
+        {/* fade the water out at the left, right and bottom edges */}
         <linearGradient id="hero-fade-x" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#fff" stopOpacity="0" />
           <stop offset=".25" stopColor="#fff" />
+          <stop offset=".85" stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="hero-fade-y" x1="0" y1="0" x2="0" y2="1">
           <stop offset=".55" stopColor="#fff" />
           <stop offset="1" stopColor="#000" />
         </linearGradient>
-        <mask id="hero-mask-x" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="400">
+        <mask
+          id="hero-mask-x"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="520"
+          height="400"
+        >
           <rect width="520" height="400" fill="url(#hero-fade-x)" />
         </mask>
-        <mask id="hero-mask-y" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="400">
+        <mask
+          id="hero-mask-y"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="520"
+          height="400"
+        >
           <rect width="520" height="400" fill="url(#hero-fade-y)" />
         </mask>
       </defs>
@@ -59,15 +79,43 @@ export function HeroScene() {
 
       {/* water under the curve */}
       <g mask="url(#hero-mask-x)">
-        <path d={`${CURVE}${CURVE_TAIL}L520 80V400H0V330z`} fill="url(#hero-water)" mask="url(#hero-mask-y)" />
+        <path
+          d={`${CURVE}${CURVE_TAIL}L520 80V400H0V330z`}
+          fill="url(#hero-water)"
+          mask="url(#hero-mask-y)"
+        />
       </g>
 
       {/* rising bubbles */}
       <g fill="#1c92e1" fillOpacity=".25">
-        <circle className="float" cx="120" cy="365" r="5" style={{ animationDelay: "-1s" }} />
-        <circle className="float" cx="250" cy="330" r="3.5" style={{ animationDelay: "-3s" }} />
-        <circle className="float" cx="330" cy="300" r="6" style={{ animationDelay: "-2s" }} />
-        <circle className="float" cx="450" cy="210" r="4" style={{ animationDelay: "-4s" }} />
+        <circle
+          className="float"
+          cx="120"
+          cy="365"
+          r="5"
+          style={{ animationDelay: "-1s" }}
+        />
+        <circle
+          className="float"
+          cx="250"
+          cy="330"
+          r="3.5"
+          style={{ animationDelay: "-3s" }}
+        />
+        <circle
+          className="float"
+          cx="330"
+          cy="300"
+          r="6"
+          style={{ animationDelay: "-2s" }}
+        />
+        <circle
+          className="float"
+          cx="450"
+          cy="210"
+          r="4"
+          style={{ animationDelay: "-4s" }}
+        />
       </g>
 
       {/* growth curve */}
@@ -80,10 +128,22 @@ export function HeroScene() {
         strokeWidth="5"
         strokeLinecap="round"
       />
-      <circle cx="505" cy="80" r="7" fill="#31b317" className="motion-safe:animate-pulse" />
+      <circle
+        cx="505"
+        cy="80"
+        r="7"
+        fill="#31b317"
+        className="motion-safe:animate-pulse"
+      />
 
       {/* swimming turtle */}
-      <g transform={reduce ? `translate(${REST.x} ${REST.y}) rotate(${REST.angle})` : `translate(${START.x} ${START.y})`}>
+      <g
+        transform={
+          reduce
+            ? `translate(${REST.x} ${REST.y}) rotate(${REST.angle})`
+            : `translate(${START.x} ${START.y})`
+        }
+      >
         <g>
           {!reduce && (
             <animateMotion
