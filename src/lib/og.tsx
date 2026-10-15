@@ -9,14 +9,14 @@ export const turtleDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c92e1"/><stop offset="1" stop-color="#31b317"/></linearGradient></defs><g fill="#14250d"><ellipse cx="8.5" cy="11" rx="4.2" ry="2.1" transform="rotate(-35 8.5 11)"/><ellipse cx="23.5" cy="11" rx="4.2" ry="2.1" transform="rotate(35 23.5 11)"/><ellipse cx="10" cy="24.5" rx="2.8" ry="1.6" transform="rotate(35 10 24.5)"/><ellipse cx="22" cy="24.5" rx="2.8" ry="1.6" transform="rotate(-35 22 24.5)"/><circle cx="16" cy="5.2" r="3"/></g><ellipse cx="16" cy="17.5" rx="8.2" ry="9.2" fill="url(#g)"/><path d="M16 12.2l3.4 2.2v4.2L16 20.8l-3.4-2.2v-4.2z" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.3" stroke-linejoin="round"/></svg>`
 )}`;
 
-// Space Grotesk Bold for the headline. Google Fonts serves TTF (which Satori
+// Plus Jakarta Sans ExtraBold for the headline. Google Fonts serves TTF (which Satori
 // needs) when no browser user-agent is sent. Falls back to the default font.
 let fontPromise: Promise<ArrayBuffer | null> | null = null;
 function loadDisplayFont() {
   fontPromise ??= (async () => {
     try {
       const css = await fetch(
-        "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700"
+        "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800"
       ).then((r) => r.text());
       const url = css.match(
         /src: url\((.+?)\) format\('(?:opentype|truetype)'\)/
@@ -72,8 +72,8 @@ export async function brandOgImage({
             style={{
               display: "flex",
               fontSize: 34,
-              fontWeight: 700,
-              ...(font ? { fontFamily: "Space Grotesk" } : {}),
+              fontWeight: 800,
+              ...(font ? { fontFamily: "Plus Jakarta Sans" } : {}),
             }}
           >
             Invertir con&nbsp;<span style={{ color: "#23810f" }}>Valores</span>
@@ -96,11 +96,11 @@ export async function brandOgImage({
           <div
             style={{
               fontSize: title.length > 60 ? 60 : 78,
-              fontWeight: 700,
+              fontWeight: 800,
               lineHeight: 1.05,
               marginTop: 20,
               letterSpacing: -1.5,
-              ...(font ? { fontFamily: "Space Grotesk" } : {}),
+              ...(font ? { fontFamily: "Plus Jakarta Sans" } : {}),
             }}
           >
             {title}
@@ -123,9 +123,9 @@ export async function brandOgImage({
         ? {
             fonts: [
               {
-                name: "Space Grotesk",
+                name: "Plus Jakarta Sans",
                 data: font,
-                weight: 700 as const,
+                weight: 800 as const,
                 style: "normal" as const,
               },
             ],

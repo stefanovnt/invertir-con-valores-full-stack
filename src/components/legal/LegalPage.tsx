@@ -64,7 +64,7 @@ export async function LegalPage({
   return (
     <article className="bg-gradient-to-b from-brand-tint-blue via-white to-white pb-24 pt-32 sm:pt-40">
       <div className="container max-w-3xl">
-        <h1 className="text-4xl font-bold sm:text-5xl">{doc.title}</h1>
+        <h1 className="text-4xl font-extrabold sm:text-5xl">{doc.title}</h1>
         {doc.updated && (
           <p className="mt-4 text-sm text-brand-muted">
             {dict.legal.lastUpdated}:{" "}

@@ -68,7 +68,7 @@ export default async function TagPage({
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           {dict.blog.allPosts}
         </Link>
-        <h1 className="mt-6 text-4xl font-bold sm:text-5xl">
+        <h1 className="mt-6 text-4xl font-extrabold sm:text-5xl">
           {dict.blog.tagTitle} <span className="text-gradient">{label}</span>
         </h1>
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

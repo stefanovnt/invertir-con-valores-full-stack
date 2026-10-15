@@ -26,7 +26,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div id="hero-title">
             <WordReveal
               text={hero.title}
-              className="mt-5 text-[2.6rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.6rem]"
+              className="mt-5 text-[2.6rem] font-extrabold leading-[1.02] sm:text-6xl lg:text-[4.6rem]"
             />
           </div>
           <p className="lead mt-6 max-w-xl animate-in fade-in fill-mode-both delay-500 duration-700">

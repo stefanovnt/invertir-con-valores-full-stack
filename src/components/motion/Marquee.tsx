@@ -22,7 +22,7 @@ export function Marquee({
     >
       {items.map((item) => (
         <li key={item} className="flex items-center">
-          <span className="whitespace-nowrap px-6 font-display text-3xl font-bold tracking-tight sm:px-10 sm:text-5xl">
+          <span className="whitespace-nowrap px-6 font-display text-3xl font-extrabold tracking-tight sm:px-10 sm:text-5xl">
             {item}
           </span>
           <svg

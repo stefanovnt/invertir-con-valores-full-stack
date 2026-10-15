@@ -77,7 +77,7 @@ Locales with no posts show the Spanish ones with a notice.
   exposed to Tailwind as `brand-*` colours in `tailwind.config.ts` (`bg-brand-blue/10`, `text-brand-deep`, …).
 - Use the `*-ink` variants (`text-brand-blue-ink`, `text-brand-green-ink`, `text-brand-muted`) for text on white:
   the pure brand blue/green do not meet WCAG AA contrast for body text.
-- Fonts (Space Grotesk for headings, Inter for body) are loaded with `next/font` in `src/app/[locale]/layout.tsx`.
+- Fonts (Plus Jakarta Sans ExtraBold for headings, Inter for body) are loaded with `next/font` in `src/app/[locale]/layout.tsx`.
 
 ### Forms and leads
 

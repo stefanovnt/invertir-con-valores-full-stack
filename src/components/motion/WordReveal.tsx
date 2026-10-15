@@ -21,11 +21,26 @@ export function WordReveal({
       <span className="word-reveal" aria-hidden="true">
         {words.map((word, i) => (
           <Fragment key={`${word}-${i}`}>
-            <span style={{ "--i": i } as React.CSSProperties}>{word}</span>
+            <span style={{ "--i": i } as React.CSSProperties}>
+              <Word word={word} />
+            </span>
             {i < words.length - 1 ? " " : null}
           </Fragment>
         ))}
       </span>
     </Tag>
+  );
+}
+
+/** Trailing punctuation is pulled in slightly: the display font's heavy
+ * full stop has a wide sidebearing that looks detached at large sizes. */
+function Word({ word }: { word: string }) {
+  const match = word.match(/^(.*?)([.,;:!?…]+)$/);
+  if (!match) return word;
+  return (
+    <>
+      {match[1]}
+      <span className="-ml-[0.06em]">{match[2]}</span>
+    </>
   );
 }

@@ -98,7 +98,7 @@
     @apply h-1.5 w-1.5 rounded-full bg-brand-gradient;
   }
   .h2 {
-    @apply text-balance text-3xl font-bold leading-[1.1] sm:text-4xl lg:text-5xl;
+    @apply text-balance text-3xl font-extrabold leading-[1.1] sm:text-4xl lg:text-5xl;
   }
   .lead {
     @apply text-lg leading-relaxed text-brand-muted sm:text-xl;

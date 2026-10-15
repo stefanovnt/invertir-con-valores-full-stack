@@ -70,7 +70,7 @@ export function Logo({
       <LogoMark />
       <span
         className={cn(
-          "font-display text-[1.05rem] font-bold leading-none tracking-tight",
+          "font-display text-[1.05rem] font-extrabold leading-none tracking-tight",
           onDark ? "text-white" : "text-brand-deep"
         )}
       >

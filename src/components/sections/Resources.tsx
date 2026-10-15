@@ -61,7 +61,7 @@ export function Resources({
                         {card.badge}
                       </span>
                     </div>
-                    <h3 className="mt-6 font-display text-xl font-bold leading-snug">
+                    <h3 className="mt-6 font-display text-xl font-extrabold leading-snug">
                       {card.title}
                     </h3>
                     <p className="mt-3 leading-relaxed text-brand-muted">
@@ -83,7 +83,7 @@ export function Resources({
             <div className="group grid gap-10 rounded-[calc(2.5rem-2px)] bg-white p-7 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
               <div>
                 <Ant className="h-24 w-24" />
-                <h3 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
+                <h3 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
                   {r.formTitle}
                 </h3>
                 <p className="lead mt-3">{r.formText}</p>

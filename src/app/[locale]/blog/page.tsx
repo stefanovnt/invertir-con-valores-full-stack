@@ -40,7 +40,7 @@ export default async function BlogPage({
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
             <p className="eyebrow">{dict.blog.eyebrow}</p>
-            <h1 className="mt-4 text-5xl font-bold sm:text-6xl">
+            <h1 className="mt-4 text-5xl font-extrabold sm:text-6xl">
               {dict.blog.title}
             </h1>
             <p className="lead mt-5 max-w-xl">{dict.blog.pageDescription}</p>
@@ -51,7 +51,7 @@ export default async function BlogPage({
             )}
           </div>
           <div className="card p-6 sm:p-7">
-            <h2 className="font-display text-lg font-bold">
+            <h2 className="font-display text-lg font-extrabold">
               {dict.footer.newsletterTitle}
             </h2>
             <p className="mt-1 text-brand-muted">{dict.blog.newsletterText}</p>

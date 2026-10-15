@@ -122,7 +122,7 @@ export default async function PostPage({
               </li>
             ))}
           </ul>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.08] sm:text-5xl">
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
             {post.title}
           </h1>
           <p className="lead mt-5">{post.description}</p>
@@ -164,7 +164,7 @@ export default async function PostPage({
           aria-labelledby="post-newsletter"
           className="card mt-12 p-7 sm:p-10"
         >
-          <h2 id="post-newsletter" className="font-display text-2xl font-bold">
+          <h2 id="post-newsletter" className="font-display text-2xl font-extrabold">
             {dict.blog.newsletterTitle}
           </h2>
           <p className="mt-2 text-brand-muted">{dict.blog.newsletterText}</p>

@@ -50,7 +50,7 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
           <p className="lead mt-5">
             <Counter
               value={dict.steps.length}
-              className="font-display font-bold text-brand-green-ink"
+              className="font-display font-extrabold text-brand-green-ink"
             />{" "}
             {dict.stepsCountSuffix}
           </p>
@@ -121,7 +121,7 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
                     className="relative z-10 flex h-[72px] w-[72px] items-center justify-center justify-self-center rounded-full border border-brand-line bg-white shadow-[0_10px_30px_-18px_rgb(var(--icv-deep)/0.5)] lg:col-start-2 lg:row-start-1 lg:h-32 lg:w-32"
                   >
                     <Animal className="h-14 w-14 lg:h-24 lg:w-24" />
-                    <span className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand-deep font-display text-sm font-bold text-white lg:h-9 lg:w-9 lg:text-base">
+                    <span className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand-deep font-display text-sm font-extrabold text-white lg:h-9 lg:w-9 lg:text-base">
                       {i + 1}
                     </span>
                   </m.div>
@@ -134,7 +134,7 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
                       left ? "lg:col-start-1 lg:text-right" : "lg:col-start-3"
                     )}
                   >
-                    <h3 className="font-display text-2xl font-bold sm:text-3xl">
+                    <h3 className="font-display text-2xl font-extrabold sm:text-3xl">
                       {step.title}
                     </h3>
                     <p

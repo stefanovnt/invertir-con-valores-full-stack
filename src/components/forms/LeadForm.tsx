@@ -146,7 +146,7 @@ export function LeadForm({
           ref={successRef}
           tabIndex={-1}
           className={cn(
-            "mt-5 font-display text-2xl font-bold outline-none",
+            "mt-5 font-display text-2xl font-extrabold outline-none",
             dark ? "text-white" : "text-brand-deep"
           )}
         >

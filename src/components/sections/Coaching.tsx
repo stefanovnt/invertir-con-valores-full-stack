@@ -48,7 +48,7 @@ export function Coaching({
                       <Counter
                         value={f.value}
                         suffix={f.suffix}
-                        className="block font-display text-3xl font-bold text-brand-deep sm:text-4xl"
+                        className="block font-display text-3xl font-extrabold text-brand-deep sm:text-4xl"
                       />
                       <span className="mt-1 block text-sm text-brand-muted">
                         {f.label}
@@ -66,13 +66,13 @@ export function Coaching({
               <div className="mb-8 flex w-full items-start gap-5 rounded-3xl bg-brand-tint-green/60 p-6 sm:p-8">
                 <Turtle className="hidden h-20 w-20 shrink-0 sm:block" />
                 <div>
-                  <h3 className="font-display text-lg font-bold">
+                  <h3 className="font-display text-lg font-extrabold">
                     {c.stepsTitle}
                   </h3>
                   <ol className="mt-3 space-y-3">
                     {c.steps.map((step, i) => (
                       <li key={step} className="flex gap-3 text-brand-deep">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white font-display text-sm font-bold text-brand-green-ink ring-1 ring-brand-green/30">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white font-display text-sm font-extrabold text-brand-green-ink ring-1 ring-brand-green/30">
                           {i + 1}
                         </span>
                         {step}

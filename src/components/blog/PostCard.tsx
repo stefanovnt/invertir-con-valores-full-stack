@@ -76,7 +76,7 @@ export function PostCard({
             </span>
           )}
         </div>
-        <Heading className="mt-4 font-display text-xl font-bold leading-snug">
+        <Heading className="mt-4 font-display text-xl font-extrabold leading-snug">
           {/* The whole card is clickable through this link's ::after. */}
           <Link
             href={href}

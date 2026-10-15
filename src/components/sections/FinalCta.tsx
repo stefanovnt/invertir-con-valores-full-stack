@@ -37,7 +37,7 @@ export function FinalCta({
           </div>
           <h2
             id="final-cta-title"
-            className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] text-brand-deep sm:text-6xl"
+            className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-6xl"
           >
             {dict.title}
           </h2>

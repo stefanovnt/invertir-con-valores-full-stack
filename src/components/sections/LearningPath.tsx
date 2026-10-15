@@ -75,7 +75,7 @@ export function LearningPath({
                         </span>
                       )}
                     </div>
-                    <h3 className="mt-6 font-display text-2xl font-bold">
+                    <h3 className="mt-6 font-display text-2xl font-extrabold">
                       {o.title}
                     </h3>
                     <p className="mt-3 flex-1 leading-relaxed text-brand-muted">
@@ -119,7 +119,7 @@ export function LearningPath({
           <p className="eyebrow">{l.dialogTitle}</p>
           <h2
             id="waitlist-title"
-            className="mt-3 pr-10 font-display text-3xl font-bold"
+            className="mt-3 pr-10 font-display text-3xl font-extrabold"
           >
             {current?.title}
           </h2>

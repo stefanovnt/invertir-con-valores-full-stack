@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { config } from "@/config";
@@ -25,11 +25,12 @@ const inter = Inter({
   display: "swap",
   variable: "--font-sans",
 });
-const spaceGrotesk = Space_Grotesk({
+// Display font: Plus Jakarta Sans (variable, 200–800) — modern, round, curvy.
+// Headings use ExtraBold (800).
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-display",
-  weight: ["500", "600", "700"],
 });
 
 // Only es/it/en exist; anything else 404s.
@@ -71,7 +72,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={localeTags[locale]}
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      className={`${inter.variable} ${jakarta.variable}`}
     >
       <body>
         <a

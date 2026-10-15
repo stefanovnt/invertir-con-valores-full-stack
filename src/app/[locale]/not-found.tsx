@@ -37,7 +37,7 @@ export default function NotFound() {
   return (
     <section className="container flex min-h-[80vh] flex-col items-center justify-center pb-20 pt-32 text-center">
       <Turtle className="h-32 w-32" />
-      <h1 className="mt-8 text-4xl font-bold sm:text-5xl">{t.title}</h1>
+      <h1 className="mt-8 text-4xl font-extrabold sm:text-5xl">{t.title}</h1>
       <p className="lead mt-4 max-w-md">{t.text}</p>
       <Button asChild size="lg" className="mt-8">
         <Link href={localePath(locale, "/")}>{t.cta}</Link>

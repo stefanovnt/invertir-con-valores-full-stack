@@ -42,7 +42,7 @@ blue `#1c92e1`, green `#31b317`, deep `#14250d` (text, dark sections, footer), s
 tints `tint-blue`/`tint-green`, `line`. For text on white use `brand-blue-ink`, `brand-green-ink`,
 `brand-muted` (AA). Text on the blue→green gradient is `brand-deep`, never white (contrast).
 Light theme only; dark backgrounds only for "El problema" and the footer (add class `on-dark`).
-Fonts: `font-display` (Space Grotesk) for headings, `font-sans` (Inter) for body.
+Fonts: `font-display` (Plus Jakarta Sans, `font-extrabold`) for headings, `font-sans` (Inter) for body.
 Gradient (`bg-brand-gradient`, `.bg-gradient-animated`, `.text-gradient`) is used sparingly: CTAs, highlights.
 
 ## Animation rules
