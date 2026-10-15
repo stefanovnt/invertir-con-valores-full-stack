@@ -294,10 +294,6 @@ const es = {
     reject: "Rechazar",
     more: "Más información",
   },
-  notFound: {
-    title: "Esta página se ha ido a nadar",
-    text: "No encuentro lo que buscas. Vuelve al inicio y seguimos juntas.",
-  },
   legal: {
     lastUpdated: "Última actualización",
     toComplete: "Este texto es una plantilla. Revisa los apartados marcados como [TO COMPLETE] antes de publicar.",

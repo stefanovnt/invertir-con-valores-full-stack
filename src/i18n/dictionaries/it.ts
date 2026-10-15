@@ -285,10 +285,6 @@ const it: Dictionary = {
     reject: "Rifiuta",
     more: "Maggiori informazioni",
   },
-  notFound: {
-    title: "Questa pagina è andata a nuotare",
-    text: "Non trovo quello che cerchi. Torna alla home e andiamo avanti insieme.",
-  },
   legal: {
     lastUpdated: "Ultimo aggiornamento",
     toComplete: "Questo testo è un modello. Rivedi le parti segnate come [TO COMPLETE] prima di pubblicare.",

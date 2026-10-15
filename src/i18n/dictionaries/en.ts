@@ -285,10 +285,6 @@ const en: Dictionary = {
     reject: "Reject",
     more: "Learn more",
   },
-  notFound: {
-    title: "This page went for a swim",
-    text: "I can't find what you're looking for. Head back home and let's keep going together.",
-  },
   legal: {
     lastUpdated: "Last updated",
     toComplete: "This text is a template. Review the sections marked [TO COMPLETE] before publishing.",
