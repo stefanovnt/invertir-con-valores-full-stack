@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { config } from "@/config";
 import { tightPunctuation } from "@/lib/typography";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -13,7 +15,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/blog">): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale)) return {};
+  if (!isLocale(locale) || !config.features.blog) return {};
   const { blog } = await getDictionary(locale);
   return pageMetadata({
     locale,
@@ -27,7 +29,8 @@ export default async function BlogPage({
   params,
 }: PageProps<"/[locale]/blog">) {
   const { locale } = await params;
-  if (!isLocale(locale)) notFound();
+  // The blog is switched off for now (config.features.blog).
+  if (!isLocale(locale) || !config.features.blog) notFound();
   const dict = await getDictionary(locale);
   const { posts, fallback } = await getPosts(locale);
   const tags = [...new Set(posts.flatMap((p) => p.tags))].sort((a, b) =>
@@ -45,6 +48,18 @@ export default async function BlogPage({
               {tightPunctuation(dict.blog.title)}
             </h1>
             <p className="lead mt-5 max-w-xl">{dict.blog.pageDescription}</p>
+            {config.links.substack && (
+              <a
+                href={config.links.substack}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 font-semibold text-brand-blue-ink underline-offset-4 hover:underline"
+              >
+                {dict.blog.substackArchive}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">{dict.common.opensNewTab}</span>
+              </a>
+            )}
             {fallback && (
               <p className="mt-3 font-medium text-brand-blue-ink">
                 {dict.blog.fallbackNotice}

@@ -1,7 +1,7 @@
 import "server-only";
 import { config } from "@/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
-import { isMailgunConfigured, sendEmail } from "@/lib/mailgun";
+import { isEmailConfigured, sendEmail } from "@/lib/email";
 import { escapeHtml, type Lead } from "./providers";
 
 const fill = (template: string, values: Record<string, string>) =>
@@ -32,7 +32,7 @@ ${footer ? `<p style="margin:32px 0 0;font-size:12px;line-height:1.5;color:#5463
 
 /** Confirmation email to the person who signed up, in their language. */
 export async function sendLeadConfirmation(lead: Lead, dict: Dictionary) {
-  if (!isMailgunConfigured()) return;
+  if (!isEmailConfigured()) return;
   const e = dict.emails;
   const replyTo = config.contactEmail || undefined;
 

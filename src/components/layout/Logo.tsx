@@ -1,24 +1,19 @@
-import { useId } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { LOGO_INK, LOGO_INK_ON_DARK, logoMarkInner } from "./logo-mark";
 
-/** Balance scale (planet = money) used as logo mark. Markup lives in logo-mark.ts. */
-export function LogoMark({
-  className,
-  onDark = false,
-}: {
-  className?: string;
-  onDark?: boolean;
-}) {
-  const id = `logo-${useId().replace(/[^a-zA-Z0-9-]/g, "")}`;
+/**
+ * Brand logo: the balance scale with the planet and money in equilibrium.
+ * public/images/logo.png is a transparent cut-out of the original artwork,
+ * so it works on the white navbar and on the dark footer.
+ */
+export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      aria-hidden="true"
-      className={cn("h-9 w-9", className)}
-      dangerouslySetInnerHTML={{
-        __html: logoMarkInner(onDark ? LOGO_INK_ON_DARK : LOGO_INK, id),
-      }}
+    <Image
+      src="/images/logo.png"
+      alt=""
+      width={40}
+      height={40}
+      className={cn("h-10 w-10 object-contain", className)}
     />
   );
 }
@@ -32,7 +27,7 @@ export function Logo({
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <LogoMark onDark={onDark} />
+      <LogoMark />
       <span
         className={cn(
           "font-display text-[1.05rem] font-extrabold leading-none tracking-tight",

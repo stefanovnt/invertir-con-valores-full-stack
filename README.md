@@ -21,7 +21,6 @@ pnpm dev                     # http://localhost:3000
 | `pnpm lint`                 | ESLint                                                 |
 | `pnpm typecheck`            | Route type generation + `tsc --noEmit`                 |
 | `pnpm db:push`              | Create/update the `leads` table (needs `DATABASE_URL`) |
-| `pnpm icons`                | Regenerate `src/app/icon.svg` from `logo-mark.ts`      |
 
 ---
 
@@ -48,6 +47,15 @@ Other content:
 - **Legal pages:** `content/legal/<locale>/{aviso-legal,privacidad,cookies}.mdx`. Fill in every `[TO COMPLETE]`.
 - **Founder photo:** put the image in `public/` and set `founderPhoto` in `src/config.ts`.
 - **Social links, Cal.com, Substack:** environment variables (see `.env.example`).
+
+### Sections switched off for now
+
+`config.features` in `src/config.ts` hides whole sections without deleting them:
+
+- `blog: false` hides the blog link (navbar and footer), the home blog section, `/blog` (404), the sitemap
+  entries and `/rss.xml`. Set it to `true` to bring the blog back.
+- `waitlist: false` hides "Camino de aprendizaje" (the paid-offers waitlist). The `/api/leads` waitlist source
+  keeps working.
 
 ### Adding a blog post
 
@@ -82,27 +90,32 @@ Locales with no posts show the Spanish ones with a notice.
 
 ### Forms and leads
 
-All forms (home/footer/blog newsletter, waitlist) post to `POST /api/leads` with a `source` tag
-(`newsletter_home`, `newsletter_footer`, `newsletter_blog`, `waitlist` + `offer`; `guide` is ready for a
-future lead magnet). The route validates with zod, has a
+**Newsletter (Substack).** With `NEXT_PUBLIC_SUBSTACK_URL` set, the newsletter forms (home, footer, blog index and
+posts) show Substack's official signup form (`<publication>/embed`). It loads only when the visitor clicks the button,
+so no Substack iframe or cookies are loaded before that (see `src/components/forms/SubstackEmbed.tsx`). Substack
+handles confirmation and unsubscribes. The blog page also links to your Substack archive.
+
+**Waitlist and fallback.** The waitlist forms (and the newsletter forms when no Substack URL is set) post to
+`POST /api/leads` with a `source` tag (`newsletter_home`, `newsletter_footer`, `newsletter_blog`, `waitlist` +
+`offer`; `guide` is ready for a future lead magnet). The route validates with zod, has a
 honeypot and a per-IP rate limit, then stores the lead with every configured provider
 (`src/lib/leads/providers.ts`):
 
-| Provider                             | Enabled when                                                  |
-| ------------------------------------ | ------------------------------------------------------------- |
-| Postgres via Drizzle (`leads` table) | `DATABASE_URL`                                                |
-| Mailgun mailing list                 | `MAILGUN_API_KEY` + `MAILGUN_DOMAIN` + `MAILGUN_LIST_ADDRESS` |
-| Email notification to you            | Mailgun + `LEADS_NOTIFY_EMAIL`                                |
+| Provider                             | Enabled when                                           |
+| ------------------------------------ | ------------------------------------------------------ |
+| Postgres via Drizzle (`leads` table) | `DATABASE_URL`                                         |
+| Resend contacts (one segment)        | `RESEND_API_KEY` + `RESEND_SEGMENT_ID`                 |
+| Email notification to you            | `RESEND_API_KEY` + `EMAIL_FROM` + `LEADS_NOTIFY_EMAIL` |
 
-With Mailgun configured, people also get a confirmation email in their language (`GUIDE_URL` is only used by the future `guide` source).
-If no provider is configured, the newsletter forms switch to a Substack link (`NEXT_PUBLIC_SUBSTACK_URL`).
+Emails are sent with [Resend](https://resend.com) (`src/lib/email.ts`). With `RESEND_API_KEY` and `EMAIL_FROM` set,
+people also get a confirmation email in their language (`GUIDE_URL` is only used by the future `guide` source).
 To add another provider (Brevo, Buttondown, ConvertKit…), add an entry to the `providers` array.
 
 ### Analytics and cookies
 
 Set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to enable Plausible. The script loads **only after consent** in the cookie
 banner. Without it there is no banner, because the site sets no non-essential cookies. Tracked events:
-`lead_submit`, `waitlist_submit`, `cal_click`.
+`lead_submit`, `waitlist_submit`, `cal_click`, `substack_open`.
 
 ### Deploying to Vercel
 
@@ -110,14 +123,14 @@ banner. Without it there is no banner, because the site sets no non-essential co
 2. Add the environment variables from `.env.example` (at least `NEXT_PUBLIC_SITE_URL`).
 3. If you use Postgres, create the table once locally: `DATABASE_URL=... pnpm db:push`.
 4. Add your domain in Vercel and make sure it matches `NEXT_PUBLIC_SITE_URL`.
-5. Optional: set up Mailgun DNS records for `MAILGUN_DOMAIN` (EU region recommended).
+5. Optional: verify your sending domain in Resend (DNS records) and set `RESEND_API_KEY` + `EMAIL_FROM`.
 
 ---
 
 ## What changed from ShipFree
 
-Kept and adapted: Next.js/Tailwind/shadcn setup, `src/config.ts`, the Mailgun helper (fixed domain bug, EU region,
-lazy client), the Mailgun reply-forwarding webhook, the Drizzle DB layer and the UI primitives.
+Kept and adapted: Next.js/Tailwind/shadcn setup, `src/config.ts`, the Drizzle DB layer and the UI primitives.
+Email moved from ShipFree's Mailgun helper (and its reply-forwarding webhook) to Resend.
 
 Removed (still available in the first git commit): Supabase auth pages, dashboard, Stripe and LemonSqueezy
 checkout/webhooks, pricing/testimonials/demo sections, Docker files and their dependencies.

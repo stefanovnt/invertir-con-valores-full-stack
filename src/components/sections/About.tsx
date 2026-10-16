@@ -12,7 +12,7 @@ const BLOB =
 /** Founder photo in an organic blob. Shows a placeholder until config.founderPhoto is set. */
 function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
   return (
-    <div className="group relative mx-auto aspect-square w-full max-w-md">
+    <div className="group relative mx-auto aspect-square w-60 sm:w-72">
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <clipPath id="about-blob" clipPathUnits="objectBoundingBox">
           <path d={BLOB} />
@@ -28,8 +28,9 @@ function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
             src={config.founderPhoto}
             alt={alt}
             fill
-            sizes="(min-width: 1024px) 28rem, 90vw"
-            className="object-cover"
+            sizes="(min-width: 640px) 18rem, 15rem"
+            // Cut-out on a transparent background: the blob tint shows behind it.
+            className="object-cover object-[50%_30%]"
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-center">
@@ -52,7 +53,7 @@ export function About({ dict }: { dict: Dictionary["about"] }) {
       aria-labelledby="about-title"
       className="section overflow-hidden"
     >
-      <div className="container grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <div className="container grid items-center gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
         <Reveal>
           <BlobPhoto alt={dict.photoAlt} placeholder={dict.photoPlaceholder} />
         </Reveal>

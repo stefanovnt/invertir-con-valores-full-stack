@@ -24,11 +24,12 @@ src/proxy.ts                     locale routing: / → /es (rewrite), /es/* → 
 src/i18n/                        config (locales, localePath, homeAnchor), dictionaries, getDictionary
 src/app/[locale]/                root layout (html/lang, fonts, navbar, footer, consent), pages
 src/app/api/leads/route.ts       single lead endpoint (zod, honeypot, rate limit) for every form
-src/lib/leads/                   providers (db, mailgun list, notify email), emails, rate limit, types
+src/lib/leads/                   providers (db, Resend contacts, notify email), emails, rate limit, types
+src/lib/email.ts                 Resend client: sendEmail, addContact
 src/lib/blog.ts, seo.ts, og.tsx  MDX loading, metadata helpers (canonical + hreflang), OG images
 src/components/animals/          Ant, Turtle, Bee, Kangaroo (original SVGs) + shared stroke/palette
-src/components/layout/logo-mark.ts  brand mark: balance scale, planet = money (level beam). After
-                                 editing run `pnpm icons` to regenerate src/app/icon.svg
+public/images/logo.png           brand logo (transparent cut-out); favicon src/app/icon.png,
+                                 iOS icon src/app/apple-icon.png (original teal background)
 src/components/motion/           Reveal, WordReveal, Counter, TiltCard/GlowSurface
 src/components/sections/         one file per home section, rendered from the dictionary
 src/components/consent/          ConsentProvider, CookieBanner, Analytics (Plausible after consent)
@@ -37,6 +38,7 @@ src/components/consent/          ConsentProvider, CookieBanner, Analytics (Plaus
 Server components by default; `"use client"` only for interactivity/animation (navbar, forms, FAQ,
 "Cómo funciona" loop, kangaroo stairs, counters, dialog, pointer effects). Pass dictionary slices to client components as props.
 Links: always build them with `localePath(locale, path)` / `homeAnchor(locale, id)`.
+Sections switched off for now live behind `config.features` (`blog`, `waitlist`); hide, don't delete.
 
 ## Design tokens
 

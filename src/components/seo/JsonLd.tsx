@@ -31,7 +31,7 @@ export function organizationJsonLd() {
     "@id": `${absoluteUrl("/")}#organization`,
     name: config.appName,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/images/logo.png"),
     founder: { "@type": "Person", name: config.founder },
     ...(sameAs.length ? { sameAs } : {}),
   };

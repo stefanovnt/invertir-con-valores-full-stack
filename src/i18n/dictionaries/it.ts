@@ -39,6 +39,12 @@ const it: Dictionary = {
       "Impara a investire in modo redditizio e consapevole, in prodotti allineati ai tuoi valori. Semplice, chiaro e in community.",
     primaryCta: "Iscriviti alla newsletter",
     secondaryCta: "Entra nella community",
+    journey: {
+      startTitle: "Oggi",
+      startNote: "I tuoi risparmi",
+      goalTitle: "Il tuo obiettivo",
+      goalNote: "Libertà finanziaria",
+    },
   },
   problem: {
     title: "Sai cosa fa la tua banca con i tuoi soldi?",
@@ -216,6 +222,7 @@ const it: Dictionary = {
     empty: "Presto arriveranno nuovi articoli.",
     fallbackNotice: "Per ora gli articoli sono disponibili solo in spagnolo.",
     backToBlog: "Torna al blog",
+    substackArchive: "Leggi le newsletter precedenti su Substack",
     newsletterTitle: "Ti è stato utile?",
     newsletterText: "Ricevi un nuovo articolo ogni settimana via email.",
     disclaimer:
@@ -283,6 +290,13 @@ const it: Dictionary = {
     rights: "Tutti i diritti riservati.",
   },
   forms: {
+    substack: {
+      cta: "Iscriviti alla newsletter",
+      note: "Cliccando si caricherà il modulo di Substack, la piattaforma con cui invio la newsletter.",
+      privacy: "Maggiori informazioni",
+      iframeTitle: "Modulo di iscrizione alla newsletter (Substack)",
+      loading: "Caricamento del modulo…",
+    },
     name: "Nome",
     namePlaceholder: "Lorena",
     email: "Email",

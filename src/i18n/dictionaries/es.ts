@@ -41,6 +41,13 @@ const es = {
       "Aprende a invertir de forma rentable y consciente, en productos alineados con tus valores. Simple, claro y en comunidad.",
     primaryCta: "Suscribirme a la newsletter",
     secondaryCta: "Unirme a la comunidad",
+    // REVIEW — hero journey labels
+    journey: {
+      startTitle: "Hoy",
+      startNote: "Tus ahorros",
+      goalTitle: "Tu meta",
+      goalNote: "Libertad financiera",
+    },
   },
   problem: {
     title: "¿Sabes lo que hace tu banco con tu dinero?",
@@ -226,6 +233,7 @@ const es = {
     empty: "Pronto habrá artículos nuevos por aquí.",
     fallbackNotice: "", // Spanish is the original language
     backToBlog: "Volver al blog",
+    substackArchive: "Lee las newsletters anteriores en Substack", // REVIEW
     newsletterTitle: "¿Te ha servido?",
     newsletterText: "Recibe un artículo nuevo cada semana en tu email.",
     disclaimer:
@@ -294,6 +302,14 @@ const es = {
     rights: "Todos los derechos reservados.",
   },
   forms: {
+    // REVIEW — Substack newsletter form (loaded on click)
+    substack: {
+      cta: "Suscribirme a la newsletter",
+      note: "Al pulsar se cargará el formulario de Substack, la plataforma donde envío la newsletter.",
+      privacy: "Más información",
+      iframeTitle: "Formulario de suscripción a la newsletter (Substack)",
+      loading: "Cargando formulario…",
+    },
     name: "Nombre",
     namePlaceholder: "Lorena",
     email: "Email",

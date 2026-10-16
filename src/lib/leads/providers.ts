@@ -1,9 +1,5 @@
 import "server-only";
-import {
-  addToMailingList,
-  isMailgunConfigured,
-  sendEmail,
-} from "@/lib/mailgun";
+import { addContact, isEmailConfigured, sendEmail } from "@/lib/email";
 import type { LeadSource, WaitlistOffer } from "./types";
 
 export type Lead = {
@@ -48,19 +44,16 @@ const providers: Provider[] = [
     },
   },
   {
-    // Mailgun mailing list = newsletter audience. Vars keep source/offer/locale for segmenting.
-    name: "mailgun_list",
+    // Resend contacts, added to one segment (Resend's audiences). Source/offer
+    // details live in the database and the notification email.
+    name: "resend_contacts",
     enabled: () =>
-      isMailgunConfigured() && Boolean(process.env.MAILGUN_LIST_ADDRESS),
+      Boolean(process.env.RESEND_API_KEY && process.env.RESEND_SEGMENT_ID),
     save: async (lead) => {
-      await addToMailingList(process.env.MAILGUN_LIST_ADDRESS!, {
+      await addContact({
         email: lead.email,
-        name: lead.name,
-        vars: {
-          source: lead.source,
-          offer: lead.offer ?? "",
-          locale: lead.locale,
-        },
+        firstName: lead.name,
+        segmentId: process.env.RESEND_SEGMENT_ID,
       });
     },
   },
@@ -68,7 +61,7 @@ const providers: Provider[] = [
     // Simple inbox notification: useful as the only "storage" while starting out.
     name: "notify_email",
     enabled: () =>
-      isMailgunConfigured() && Boolean(process.env.LEADS_NOTIFY_EMAIL),
+      isEmailConfigured() && Boolean(process.env.LEADS_NOTIFY_EMAIL),
     save: async (lead) => {
       const rows = Object.entries(lead)
         .map(([k, v]) => `<li><b>${k}:</b> ${escapeHtml(String(v ?? ""))}</li>`)

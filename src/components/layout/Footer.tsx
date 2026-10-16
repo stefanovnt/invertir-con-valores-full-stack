@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isNavLinkEnabled } from "@/config";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
 import { ManageCookiesButton } from "@/components/consent/Consent";
@@ -40,7 +41,7 @@ export function Footer({ locale, dict }: Props) {
               {footer.navTitle}
             </h2>
             <ul className="mt-4 space-y-3">
-              {nav.links.map((l) => (
+              {nav.links.filter(isNavLinkEnabled).map((l) => (
                 <li key={l.label}>
                   <Link
                     className={linkClass}

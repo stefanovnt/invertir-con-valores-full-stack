@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { config } from "@/config";
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { PostCard } from "@/components/blog/PostCard";
@@ -31,7 +32,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/blog/tag/[tag]">): Promise<Metadata> {
   const { locale, tag } = await params;
-  if (!isLocale(locale)) return {};
+  if (!isLocale(locale) || !config.features.blog) return {};
   const [{ blog }, { label }] = await Promise.all([
     getDictionary(locale),
     load(locale, tag),
@@ -51,7 +52,8 @@ export default async function TagPage({
   params,
 }: PageProps<"/[locale]/blog/tag/[tag]">) {
   const { locale, tag } = await params;
-  if (!isLocale(locale)) notFound();
+  // The blog is switched off for now (config.features.blog).
+  if (!isLocale(locale) || !config.features.blog) notFound();
   const [dict, { matching, label }] = await Promise.all([
     getDictionary(locale),
     load(locale, tag),

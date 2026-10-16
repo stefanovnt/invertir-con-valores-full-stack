@@ -16,7 +16,8 @@ import {
 /**
  * Language dropdown (disclosure pattern: a button that shows/hides a list of
  * links). Closes on outside click, Escape (focus returns to the button) and
- * when a language is picked. Links keep the current page in the new locale.
+ * when a language is picked. Links keep the current page in the new locale
+ * and the current scroll position.
  */
 export function LanguageMenu({
   locale,
@@ -94,6 +95,9 @@ export function LanguageMenu({
             <li key={l}>
               <Link
                 href={localePath(l, basePath)}
+                // Same page in another language: keep the reader where they are
+                // (Next.js would otherwise scroll the new page into view).
+                scroll={false}
                 hrefLang={l}
                 lang={l}
                 aria-current={current ? "page" : undefined}

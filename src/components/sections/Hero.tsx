@@ -47,8 +47,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </Button>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-[560px] lg:-mr-6">
-          <HeroScene />
+        <div className="mx-auto w-full max-w-[560px] pr-3 sm:pr-5">
+          <HeroScene labels={hero.journey} />
         </div>
       </div>
     </GlowSurface>

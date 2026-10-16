@@ -12,6 +12,7 @@ import { LatestPosts } from "@/components/sections/LatestPosts";
 import { About } from "@/components/sections/About";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { config } from "@/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { isLocale } from "@/i18n/config";
 
@@ -31,8 +32,8 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <NewsletterSection locale={locale} dict={dict} />
       <Community locale={locale} dict={dict} />
       <Coaching locale={locale} dict={dict} />
-      <LearningPath locale={locale} dict={dict} />
-      <LatestPosts locale={locale} dict={dict} />
+      {config.features.waitlist && <LearningPath locale={locale} dict={dict} />}
+      {config.features.blog && <LatestPosts locale={locale} dict={dict} />}
       <About dict={dict.about} />
       <Faq dict={dict.faq} />
       <FinalCta locale={locale} dict={dict.finalCta} />

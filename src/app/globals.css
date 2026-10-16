@@ -199,6 +199,13 @@
   }
 }
 
+/* Hero "way ahead": dashes flow towards the goal (one dash period = 12). */
+@keyframes icv-journey-flow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
 /* Animal idle loops and hover reactions. Hover works on the animal itself
    or on any `.group` ancestor (cards). */
 @keyframes icv-bob {
@@ -363,6 +370,9 @@
   }
   .draw-path {
     animation: icv-draw 2.2s 0.3s cubic-bezier(0.6, 0, 0.3, 1) both;
+  }
+  .journey-flow {
+    animation: icv-journey-flow 0.8s linear infinite;
   }
   .loop-flow {
     animation: icv-loop-flow 0.9s linear infinite;

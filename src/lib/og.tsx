@@ -1,5 +1,13 @@
 import { ImageResponse } from "next/og";
-import { logoDataUri } from "@/components/layout/logo-mark";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
+// The brand logo (transparent PNG) embedded as a data URI for Satori.
+let logoPromise: Promise<string> | null = null;
+const loadLogo = () =>
+  (logoPromise ??= readFile(
+    path.join(process.cwd(), "public", "images", "logo.png")
+  ).then((buf) => `data:image/png;base64,${buf.toString("base64")}`));
 
 // Brand Open Graph / Twitter card generator (next/og, rendered at build time).
 
@@ -32,7 +40,7 @@ export async function brandOgImage({
   title: string;
   eyebrow: string;
 }) {
-  const font = await loadDisplayFont();
+  const [font, logo] = await Promise.all([loadDisplayFont(), loadLogo()]);
   return new ImageResponse(
     (
       <div
@@ -63,7 +71,7 @@ export async function brandOgImage({
         />
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoDataUri} width={64} height={64} alt="" />
+          <img src={logo} width={72} height={72} alt="" />
           <div
             style={{
               display: "flex",

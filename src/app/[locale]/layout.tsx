@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
-import { config } from "@/config";
+import { config, isNavLinkEnabled } from "@/config";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
@@ -83,7 +83,14 @@ export default async function LocaleLayout({
         </a>
         <ConsentProvider enabled={analyticsEnabled}>
           <MotionProvider>
-            <Navbar locale={locale} nav={dict.nav} common={dict.common} />
+            <Navbar
+              locale={locale}
+              nav={{
+                ...dict.nav,
+                links: dict.nav.links.filter(isNavLinkEnabled),
+              }}
+              common={dict.common}
+            />
             <main id="main" tabIndex={-1} className="outline-none">
               {children}
             </main>

@@ -15,6 +15,7 @@ const esc = (s: string) =>
     .replace(/"/g, "&quot;");
 
 export async function GET() {
+  if (!config.features.blog) return new Response("Not found", { status: 404 });
   const [posts, dict] = await Promise.all([
     getPublishedPosts(defaultLocale),
     getDictionary(defaultLocale),

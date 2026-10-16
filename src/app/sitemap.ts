@@ -1,11 +1,18 @@
 import type { MetadataRoute } from "next";
 import { defaultLocale, localePath, locales, localeTags } from "@/i18n/config";
+import { config } from "@/config";
 import { getPublishedPosts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/seo";
 
 // Every public page in every locale, with hreflang alternates.
 // Drafts and tag listings are left out (they are noindex).
-const pages = ["/", "/blog", "/aviso-legal", "/privacidad", "/cookies"];
+const pages = [
+  "/",
+  ...(config.features.blog ? ["/blog"] : []),
+  "/aviso-legal",
+  "/privacidad",
+  "/cookies",
+];
 
 function languages(path: string) {
   return Object.fromEntries(
@@ -29,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  for (const locale of locales) {
+  for (const locale of config.features.blog ? locales : []) {
     // Posts are listed in the language they are written in only.
     const posts = await getPublishedPosts(locale);
     for (const post of posts) {

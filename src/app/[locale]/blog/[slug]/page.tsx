@@ -34,7 +34,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/blog/[slug]">): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (!isLocale(locale)) return {};
+  if (!isLocale(locale) || !config.features.blog) return {};
   const found = await getPost(locale, slug);
   if (!found) return {};
   const { post, fallback } = found;
@@ -69,7 +69,8 @@ export default async function PostPage({
   params,
 }: PageProps<"/[locale]/blog/[slug]">) {
   const { locale, slug } = await params;
-  if (!isLocale(locale)) notFound();
+  // The blog is switched off for now (config.features.blog).
+  if (!isLocale(locale) || !config.features.blog) notFound();
   const found = await getPost(locale, slug);
   if (!found) notFound();
   const { post, fallback } = found;

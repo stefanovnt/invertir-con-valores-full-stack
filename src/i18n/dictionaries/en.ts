@@ -38,6 +38,12 @@ const en: Dictionary = {
       "Learn to invest profitably and consciously, in products aligned with your values. Simple, clear and together.",
     primaryCta: "Subscribe to the newsletter",
     secondaryCta: "Join the community",
+    journey: {
+      startTitle: "Today",
+      startNote: "Your savings",
+      goalTitle: "Your goal",
+      goalNote: "Financial freedom",
+    },
   },
   problem: {
     title: "Do you know what your bank does with your money?",
@@ -215,6 +221,7 @@ const en: Dictionary = {
     empty: "New articles are coming soon.",
     fallbackNotice: "For now, articles are only available in Spanish.",
     backToBlog: "Back to the blog",
+    substackArchive: "Read past newsletters on Substack",
     newsletterTitle: "Was this helpful?",
     newsletterText: "Get a new article in your inbox every week.",
     disclaimer:
@@ -281,6 +288,13 @@ const en: Dictionary = {
     rights: "All rights reserved.",
   },
   forms: {
+    substack: {
+      cta: "Subscribe to the newsletter",
+      note: "Clicking loads the Substack form, the platform I use to send the newsletter.",
+      privacy: "Learn more",
+      iframeTitle: "Newsletter signup form (Substack)",
+      loading: "Loading form…",
+    },
     name: "Name",
     namePlaceholder: "Lorena",
     email: "Email",
