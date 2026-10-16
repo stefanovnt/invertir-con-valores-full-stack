@@ -41,7 +41,6 @@ const es = {
       "Aprende a invertir de forma rentable y consciente, en productos alineados con tus valores. Simple, claro y en comunidad.",
     primaryCta: "Suscribirme a la newsletter",
     secondaryCta: "Unirme a la comunidad",
-    trust: ["Contenido educativo", "Sin humo", "Para empezar desde cero"],
   },
   problem: {
     title: "¿Sabes lo que hace tu banco con tu dinero?",
@@ -80,7 +79,7 @@ const es = {
       text: "Sé invertir, tengo una cartera alineada con mis valores y mi dinero trabaja por mí y por un mundo mejor.",
     },
     feelingsLabel: "Cómo te sentirás", // REVIEW
-    feelings: ["Valiente", "Confiada", "Liberada"],
+    feelings: ["Valiente", "Confiad@", "Liberad@"],
   },
   how: {
     eyebrow: "Cómo funciona",
@@ -103,7 +102,7 @@ const es = {
       {
         animal: "bee",
         title: "Comparte",
-        text: "Aprende en comunidad, sin sentirte sola.",
+        text: "Aprende en comunidad, sin sentirte sol@.",
       },
       {
         animal: "kangaroo",
@@ -262,7 +261,7 @@ const es = {
       },
       {
         q: "¿Me vas a decir en qué invertir?",
-        a: "No doy asesoramiento financiero personalizado. Te enseño a analizar y decidir por ti misma.",
+        a: "No te voy a decir lo que tienes que hacer. Te doy opciones, te enseño a analizar y decidir por ti mism@.",
       },
       {
         q: "¿Qué es el café financiero?",
@@ -319,7 +318,7 @@ const es = {
         text: "Te acabo de enviar la guía. Si no la ves, mira en spam o en promociones.",
       },
       newsletter: {
-        title: "¡Bienvenida a la newsletter!",
+        title: "¡Bienvenid@ a la newsletter!",
         text: "Te escribiré pronto con la primera idea.",
       },
       waitlist: {
@@ -350,7 +349,7 @@ const es = {
         "La guía está casi lista: te la enviaré en cuanto esté publicada.",
     },
     newsletter: {
-      subject: "¡Bienvenida a Invertir con Valores!",
+      subject: "¡Bienvenid@ a Invertir con Valores!",
       greeting: "Hola,",
       body: "Gracias por suscribirte. Cada semana te enviaré una idea simple para ahorrar e invertir de acuerdo con tus valores.",
     },

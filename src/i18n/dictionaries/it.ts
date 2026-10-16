@@ -39,7 +39,6 @@ const it: Dictionary = {
       "Impara a investire in modo redditizio e consapevole, in prodotti allineati ai tuoi valori. Semplice, chiaro e in community.",
     primaryCta: "Iscriviti alla newsletter",
     secondaryCta: "Entra nella community",
-    trust: ["Contenuti educativi", "Niente fuffa", "Per partire da zero"],
   },
   problem: {
     title: "Sai cosa fa la tua banca con i tuoi soldi?",
@@ -77,7 +76,7 @@ const it: Dictionary = {
       text: "So investire, ho un portafoglio allineato ai miei valori e i miei soldi lavorano per me e per un mondo migliore.",
     },
     feelingsLabel: "Come ti sentirai",
-    feelings: ["Coraggiosa", "Sicura", "Libera"],
+    feelings: ["Coraggios@", "Sicur@", "Liber@"],
   },
   how: {
     eyebrow: "Come funziona",
@@ -99,7 +98,7 @@ const it: Dictionary = {
       {
         animal: "bee",
         title: "Condividi",
-        text: "Impara in community, senza sentirti sola.",
+        text: "Impara in community, senza sentirti sol@.",
       },
       {
         animal: "kangaroo",
@@ -251,7 +250,7 @@ const it: Dictionary = {
       },
       {
         q: "Mi dirai in cosa investire?",
-        a: "Non offro consulenza finanziaria personalizzata. Ti insegno ad analizzare e a decidere da sola.",
+        a: "Non ti dirò cosa devi fare. Ti do delle opzioni, ti insegno ad analizzare e a decidere da sol@.",
       },
       {
         q: "Cos'è il caffè finanziario?",
@@ -307,7 +306,7 @@ const it: Dictionary = {
         text: "Ti ho appena inviato la guida. Se non la vedi, guarda nello spam o in promozioni.",
       },
       newsletter: {
-        title: "Benvenuta nella newsletter!",
+        title: "Benvenut@ nella newsletter!",
         text: "Ti scriverò presto con la prima idea.",
       },
       waitlist: {
@@ -332,23 +331,23 @@ const it: Dictionary = {
     guide: {
       subject: "La tua guida gratuita: primi passi per investire con valori",
       greeting: "Ciao {name},",
-      body: "Grazie per esserti unita. Ecco la tua guida per muovere i primi passi e iniziare a investire in modo consapevole.",
+      body: "Grazie per esserti unit@. Ecco la tua guida per muovere i primi passi e iniziare a investire in modo consapevole.",
       cta: "Scarica la guida",
       pending: "La guida è quasi pronta: te la invierò appena sarà pubblicata.",
     },
     newsletter: {
-      subject: "Benvenuta in Invertir con Valores!",
+      subject: "Benvenut@ in Invertir con Valores!",
       greeting: "Ciao,",
-      body: "Grazie per esserti iscritta. Ogni settimana ti invierò un'idea semplice per risparmiare e investire in linea con i tuoi valori.",
+      body: "Grazie per esserti iscritt@. Ogni settimana ti invierò un'idea semplice per risparmiare e investire in linea con i tuoi valori.",
     },
     waitlist: {
       subject: "Sei in lista d'attesa: {offer}",
       greeting: "Ciao,",
-      body: "Ti ho iscritta alla lista d'attesa di «{offer}». Sarai tra le prime persone a saperlo quando aprirà.",
+      body: "Ti ho iscritt@ alla lista d'attesa di «{offer}». Sarai tra le prime persone a saperlo quando aprirà.",
     },
     signature: "Un abbraccio,\nStefano",
     unsubscribe:
-      "Ricevi questa email perché ti sei iscritta su Invertir con Valores. Rispondi a questa email se vuoi disiscriverti.",
+      "Ricevi questa email perché ti sei iscritt@ su Invertir con Valores. Rispondi a questa email se vuoi disiscriverti.",
   },
 };
 

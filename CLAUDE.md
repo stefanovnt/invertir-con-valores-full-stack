@@ -10,7 +10,8 @@ Package manager: **pnpm**. Checks before committing: `pnpm lint && pnpm typechec
   (source of truth) and to `it.ts`/`en.ts` (typed as `Dictionary`, so missing keys fail the build).
 - **Code, comments, commit messages, docs:** English.
 - Tone: simple, warm, positive, playful. Never preachy, never finance-bro. Prefer "consciente" and
-  "valores" over "ética". Audience is addressed in the feminine in es/it ("sola", "bienvenida").
+  "valores" over "ética". In es/it, words that refer to the reader use the inclusive "@" form
+  ("sol@", "bienvenid@", "por ti mism@", "iscritt@"); words about Stefano stay as they are.
 - Do not invent testimonials, statistics, returns, guarantees or user counts. Use `[TO COMPLETE]` or
   `// REVIEW` placeholders instead.
 

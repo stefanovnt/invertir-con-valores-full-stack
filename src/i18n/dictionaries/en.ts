@@ -38,7 +38,6 @@ const en: Dictionary = {
       "Learn to invest profitably and consciously, in products aligned with your values. Simple, clear and together.",
     primaryCta: "Subscribe to the newsletter",
     secondaryCta: "Join the community",
-    trust: ["Educational content", "No hype", "Start from zero"],
   },
   problem: {
     title: "Do you know what your bank does with your money?",
@@ -250,7 +249,7 @@ const en: Dictionary = {
       },
       {
         q: "Will you tell me what to invest in?",
-        a: "I don't give personalised financial advice. I teach you to analyse and decide for yourself.",
+        a: "I won't tell you what you have to do. I give you options and teach you to analyse and decide for yourself.",
       },
       {
         q: "What is the money coffee?",

@@ -437,7 +437,7 @@ export function KangarooStairs({ dict }: { dict: Dictionary["firstStep"] }) {
         </m.div>
       </div>
 
-      <figcaption className="mt-3 border-t border-brand-line pt-2">
+      <figcaption className="relative mt-3 border-t border-brand-line pt-2">
         {/* Same column grid as the stairs, so the arrow sits right under step 1. */}
         <div className="flex gap-2 pl-20 sm:gap-3 sm:pl-24">
           {STEPS.map((height, i) => (
@@ -454,7 +454,7 @@ export function KangarooStairs({ dict }: { dict: Dictionary["firstStep"] }) {
                       step === GROUND && "motion-safe:animate-bounce"
                     )}
                   />
-                  <span className="mt-1 whitespace-nowrap rounded-full bg-brand-tint-green px-3 py-1 text-sm font-semibold text-brand-green-ink">
+                  <span className="mt-1 whitespace-nowrap rounded-full bg-brand-tint-green px-3 py-1 text-xs font-semibold leading-4 text-brand-green-ink">
                     {dict.firstStepLabel}
                   </span>
                 </>
@@ -462,7 +462,8 @@ export function KangarooStairs({ dict }: { dict: Dictionary["firstStep"] }) {
             </div>
           ))}
         </div>
-        <p className="mt-4 flex items-center justify-end gap-1.5 text-xs text-brand-muted">
+        {/* From sm up: same row as the "Tu primer paso" pill (same height, bottom-aligned). */}
+        <p className="mt-4 flex items-center justify-end gap-1.5 text-xs text-brand-muted sm:absolute sm:bottom-0 sm:right-0 sm:mt-0 sm:min-h-6 sm:max-w-[calc(100%-11.75rem)] sm:text-right">
           <Hand className="h-3.5 w-3.5" aria-hidden="true" />
           {dict.hint}
         </p>

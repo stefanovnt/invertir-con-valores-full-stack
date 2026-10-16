@@ -16,7 +16,7 @@ import {
 const copy: Record<Locale, { title: string; text: string; cta: string }> = {
   es: {
     title: "Esta página se ha ido a nadar",
-    text: "No encuentro lo que buscas. Vuelve al inicio y seguimos juntas.",
+    text: "No encuentro lo que buscas. Vuelve al inicio y seguimos junt@s.",
     cta: "Volver al inicio",
   },
   it: {
