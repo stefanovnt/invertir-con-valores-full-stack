@@ -56,6 +56,8 @@ Other content:
   entries and `/rss.xml`. Set it to `true` to bring the blog back.
 - `waitlist: false` hides "Camino de aprendizaje" (the paid-offers waitlist). The `/api/leads` waitlist source
   keeps working. Before turning it back on, add Resend (and the database, if used) to the privacy policy.
+- `social` picks the networks shown in the footer and in the JSON-LD. Only YouTube is on for now; set
+  `instagram`/`tiktok` to `true` (and their `NEXT_PUBLIC_*_URL`) to show them.
 
 ### Adding a blog post
 

@@ -17,6 +17,8 @@ export const config = {
   features: {
     blog: false,
     waitlist: false, // "Camino de aprendizaje" (paid offers waitlist)
+    // Social networks shown in the footer and JSON-LD (others stay hidden).
+    social: { youtube: true, instagram: false, tiktok: false },
   },
   links: {
     cal: env(process.env.NEXT_PUBLIC_CAL_URL),
@@ -52,5 +54,9 @@ export const config = {
 export type SiteConfig = typeof config;
 
 /** Hide navigation links to sections that are switched off. */
+/** Profile URL of a social network, or "" when it is switched off. */
+export const socialUrl = (network: keyof typeof config.social) =>
+  config.features.social[network] ? config.social[network] : "";
+
 export const isNavLinkEnabled = (link: { href?: string }) =>
   config.features.blog || link.href !== "/blog";

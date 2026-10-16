@@ -39,7 +39,7 @@ src/components/analytics/        Simple Analytics (cookieless: no consent banner
 Server components by default; `"use client"` only for interactivity/animation (navbar, forms, FAQ,
 "Cómo funciona" loop, kangaroo stairs, counters, dialog, pointer effects). Pass dictionary slices to client components as props.
 Links: always build them with `localePath(locale, path)` / `homeAnchor(locale, id)`.
-Sections switched off for now live behind `config.features` (`blog`, `waitlist`); hide, don't delete.
+Sections switched off for now live behind `config.features` (`blog`, `waitlist`, `social`); hide, don't delete.
 
 ## Design tokens
 

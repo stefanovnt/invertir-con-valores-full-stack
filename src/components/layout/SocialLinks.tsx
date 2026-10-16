@@ -1,24 +1,24 @@
 import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
-import { config } from "@/config";
+import { config, socialUrl } from "@/config";
 
 const items = [
   {
     key: "youtube",
     label: "YouTube",
-    href: config.social.youtube,
+    href: socialUrl("youtube"),
     Icon: FaYoutube,
   },
   {
     key: "instagram",
     label: "Instagram",
-    href: config.social.instagram,
+    href: socialUrl("instagram"),
     Icon: FaInstagram,
   },
   {
     key: "tiktok",
     label: "TikTok",
-    href: config.social.tiktok,
+    href: socialUrl("tiktok"),
     Icon: FaTiktok,
   },
   {
@@ -29,7 +29,7 @@ const items = [
   },
 ] as const;
 
-/** Social icons; profiles without a URL configured are hidden. */
+/** Social icons; profiles switched off or without a URL are hidden. */
 export function SocialLinks() {
   const visible = items.filter((i) => i.href);
   if (visible.length === 0) return null;

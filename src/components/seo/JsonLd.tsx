@@ -1,4 +1,4 @@
-import { config } from "@/config";
+import { config, socialUrl } from "@/config";
 import { absoluteUrl } from "@/lib/seo";
 import { localePath, localeTags, type Locale } from "@/i18n/config";
 
@@ -20,9 +20,9 @@ export function JsonLd({
 
 export function organizationJsonLd() {
   const sameAs = [
-    config.social.youtube,
-    config.social.instagram,
-    config.social.tiktok,
+    socialUrl("youtube"),
+    socialUrl("instagram"),
+    socialUrl("tiktok"),
     config.links.substack,
   ].filter(Boolean);
   return {
