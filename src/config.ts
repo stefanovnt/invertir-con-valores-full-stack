@@ -13,7 +13,6 @@ export const config = {
   /** Path to the founder photo in /public (e.g. "/stefano.jpg"). Empty = blob placeholder. */
   founderPhoto: "", // [TO COMPLETE]
   links: {
-    telegram: env(process.env.NEXT_PUBLIC_TELEGRAM_URL),
     cal: env(process.env.NEXT_PUBLIC_CAL_URL),
     substack: env(process.env.NEXT_PUBLIC_SUBSTACK_URL),
   },

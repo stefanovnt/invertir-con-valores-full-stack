@@ -103,13 +103,13 @@ export function Navbar({ locale, nav, common }: Props) {
         <div className="hidden items-center gap-3 xl:flex">
           <LanguageMenu locale={locale} label={common.language} />
           <Button asChild size={scrolled ? "sm" : "default"}>
-            <Link href={homeAnchor(locale, "guia")}>{nav.cta}</Link>
+            <Link href={homeAnchor(locale, "suscribete")}>{nav.cta}</Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 xl:hidden">
           <Button asChild size="sm" className="hidden min-[400px]:inline-flex">
-            <Link href={homeAnchor(locale, "guia")}>{nav.cta}</Link>
+            <Link href={homeAnchor(locale, "suscribete")}>{nav.cta}</Link>
           </Button>
           <button
             ref={toggleRef}
@@ -158,7 +158,7 @@ export function Navbar({ locale, nav, common }: Props) {
             />
             <Button asChild size="sm">
               <Link
-                href={homeAnchor(locale, "guia")}
+                href={homeAnchor(locale, "suscribete")}
                 onClick={() => setOpen(false)}
               >
                 {nav.cta}

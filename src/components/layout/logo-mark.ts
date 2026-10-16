@@ -1,0 +1,51 @@
+// Brand mark: a balance scale with the planet on the left pan and money
+// (a stack of coins) on the right. The beam is perfectly level: both weigh
+// the same. Single source of truth for the navbar/footer mark, OG images and
+// icons. After editing, regenerate the favicon with `pnpm icons`.
+
+export const LOGO_INK = "#14250d";
+export const LOGO_INK_ON_DARK = "#ffffff";
+
+/** Inner SVG markup (viewBox 0 0 48 48). `id` keeps gradient/clip ids unique per instance. */
+export function logoMarkInner(ink: string = LOGO_INK, id = "icv-logo"): string {
+  return [
+    `<defs>`,
+    `<linearGradient id="${id}-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c92e1"/><stop offset="1" stop-color="#31b317"/></linearGradient>`,
+    `<clipPath id="${id}-p"><circle cx="9.5" cy="20.5" r="6"/></clipPath>`,
+    `</defs>`,
+    // strings from the beam ends to the pans
+    `<path d="M9.5 12.5 4 26.5M9.5 12.5 15 26.5M38.5 12.5 33 26.5M38.5 12.5 44 26.5" fill="none" stroke="${ink}" stroke-width="1.6" stroke-linecap="round"/>`,
+    // post, base, level beam and the two pans
+    `<g fill="${ink}">`,
+    `<rect x="22.6" y="10" width="2.8" height="31" rx="1.4"/>`,
+    `<rect x="14" y="40" width="20" height="4" rx="2"/>`,
+    `<rect x="5" y="10.6" width="38" height="2.8" rx="1.4"/>`,
+    `<path d="M2 26.5h15a7.5 4.5 0 0 1-15 0z"/>`,
+    `<path d="M31 26.5h15a7.5 4.5 0 0 1-15 0z"/>`,
+    `</g>`,
+    // pivot
+    `<circle cx="24" cy="8.4" r="3.3" fill="url(#${id}-g)"/>`,
+    // planet (left)
+    `<circle cx="9.5" cy="20.5" r="6" fill="#1c92e1"/>`,
+    `<g clip-path="url(#${id}-p)" fill="#31b317">`,
+    `<path d="M4.4 17.4c2-1.6 5.1-1.2 5.7.6.5 1.6-1.4 2.6-3.2 2.3-1.5-.3-3.6.6-4 2v-3.3c.4-.6.8-1.2 1.5-1.6z"/>`,
+    `<path d="M10.6 22.4c1.6-.9 4.4-.4 5.5.8v3.3c-1.2.6-3 .6-4.3-.1-1.6-.8-2.6-3-1.2-4z"/>`,
+    `</g>`,
+    `<circle cx="9.5" cy="20.5" r="6" fill="none" stroke="${ink}" stroke-width="1.2"/>`,
+    // money (right): a stack of coins
+    `<g fill="#31b317" stroke="${ink}" stroke-width="1.2">`,
+    `<rect x="33.5" y="22.7" width="10" height="3.6" rx="1.8"/>`,
+    `<rect x="33.5" y="18.9" width="10" height="3.6" rx="1.8"/>`,
+    `<rect x="33.5" y="15.1" width="10" height="3.6" rx="1.8"/>`,
+    `</g>`,
+    // lighter top face so the stack reads as coins
+    `<ellipse cx="38.5" cy="16.2" rx="3.6" ry="0.9" fill="#a6e394"/>`,
+  ].join("");
+}
+
+export function logoMarkSvg(ink: string = LOGO_INK, extra = ""): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">${extra}${logoMarkInner(ink)}</svg>`;
+}
+
+/** Data URI for next/og images (Satori renders <img> SVGs reliably). */
+export const logoDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(logoMarkSvg())}`;

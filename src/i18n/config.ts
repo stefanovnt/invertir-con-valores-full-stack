@@ -31,7 +31,7 @@ export function localePath(locale: Locale, path = "/"): string {
   return clean === "/" ? `/${locale}` : `/${locale}${clean}`;
 }
 
-/** Link to a section anchor on the home page of a locale ("/#recursos", "/it#recursos"). */
+/** Link to a section anchor on the home page of a locale ("/#comunidad", "/it#comunidad"). */
 export function homeAnchor(locale: Locale, id: string): string {
   return `${localePath(locale, "/")}#${id}`;
 }

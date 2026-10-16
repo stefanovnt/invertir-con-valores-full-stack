@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { Bee } from "@/components/animals";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/Reveal";
-import { config } from "@/config";
-import { TelegramButton } from "./TelegramButton";
-import type { Locale } from "@/i18n/config";
+import { tightPunctuation } from "@/lib/typography";
+import { homeAnchor, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
 // Abstract "avatar" bubbles floating around the bee (no fake people or counts).
@@ -98,22 +99,14 @@ export function Community({
           <Reveal>
             <p className="eyebrow">{c.eyebrow}</p>
             <h2 id="community-title" className="h2 mt-4">
-              {c.title}
+              {tightPunctuation(c.title)}
             </h2>
             <p className="lead mt-5">{c.text}</p>
-            {!config.links.telegram && (
-              <p className="mt-4 font-medium text-brand-deep">{c.fallback}</p>
-            )}
+            <p className="mt-4 font-medium text-brand-deep">{c.note}</p>
             <div className="mt-8">
-              <TelegramButton
-                locale={locale}
-                label={c.cta}
-                fallbackLabel={c.fallbackCta}
-                location="community"
-                newTabLabel={dict.common.opensNewTab}
-                variant="dark"
-                size="lg"
-              />
+              <Button asChild variant="dark" size="lg">
+                <Link href={homeAnchor(locale, "suscribete")}>{c.cta}</Link>
+              </Button>
             </div>
           </Reveal>
           <Reveal delay={0.1}>

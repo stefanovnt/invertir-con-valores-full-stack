@@ -177,13 +177,6 @@
   animation-delay: calc(var(--i) * 70ms);
 }
 
-/* Values marquee: two identical tracks translate -50% for a seamless loop. */
-@keyframes icv-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* SVG path drawing (wave in hero, arrows). Uses pathLength="1" on the path. */
 @keyframes icv-draw {
   from {
@@ -196,6 +189,14 @@
 .draw-path {
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
+}
+
+/* "Cómo funciona" loop: dashes flow clockwise around the ring.
+   One dash period (4 + 14) per cycle keeps the loop seamless. */
+@keyframes icv-loop-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
 }
 
 /* Animal idle loops and hover reactions. Hover works on the animal itself
@@ -363,12 +364,8 @@
   .draw-path {
     animation: icv-draw 2.2s 0.3s cubic-bezier(0.6, 0, 0.3, 1) both;
   }
-  .marquee-track {
-    animation: icv-marquee 32s linear infinite;
-  }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
+  .loop-flow {
+    animation: icv-loop-flow 0.9s linear infinite;
   }
   .float {
     animation: icv-float 6s ease-in-out infinite;
@@ -450,6 +447,15 @@
     animation-duration: 0.9s;
   }
 
+  /* Draggable kangaroo (KangarooStairs): no hover-hop (it jumps for real),
+     and no idle loop while it's being dragged or mid-jump. */
+  .kangaroo-interactive .animal-kangaroo:hover .a-body {
+    animation: icv-bob 3.2s ease-in-out infinite;
+  }
+  .kangaroo-interactive.is-busy .animal-kangaroo .a-body,
+  .kangaroo-interactive.is-busy .animal-kangaroo .a-ear {
+    animation: none;
+  }
   .burst-dot {
     animation: icv-burst 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) both;
   }

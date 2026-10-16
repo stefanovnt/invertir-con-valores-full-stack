@@ -9,7 +9,7 @@ const es = {
     titleTemplate: "%s · Invertir con Valores",
     // REVIEW
     description:
-      "Aprende a invertir de forma rentable y consciente, sin financiar armas ni explotación. Guía gratis, comunidad en Telegram y café financiero de 30 minutos.",
+      "Aprende a invertir de forma rentable y consciente, en productos alineados con tus valores. Newsletter semanal, comunidad y un café financiero gratuito de 15 minutos.",
     ogAlt: "Invertir con Valores: tu dinero también tiene valores.",
   },
   common: {
@@ -27,35 +27,25 @@ const es = {
     label: "Navegación principal",
     links: [
       { label: "Cómo funciona", anchor: "como-funciona" },
-      { label: "Recursos", anchor: "recursos" },
       { label: "Comunidad", anchor: "comunidad" },
+      { label: "Café financiero", anchor: "coaching" }, // REVIEW
       { label: "Blog", href: "/blog" },
       { label: "Sobre mí", anchor: "sobre-mi" },
     ],
-    cta: "Guía gratis",
+    cta: "Newsletter",
   },
   hero: {
     eyebrow: "Inversión consciente para personas con valores",
     title: "Tu dinero también tiene valores.",
     subtitle:
-      "Aprende a invertir de forma rentable y consciente, sin financiar armas ni explotación. Simple, claro y en comunidad.",
-    primaryCta: "Descargar la guía gratis",
-    secondaryCta: "Unirme a la comunidad (Telegram)",
+      "Aprende a invertir de forma rentable y consciente, en productos alineados con tus valores. Simple, claro y en comunidad.",
+    primaryCta: "Suscribirme a la newsletter",
+    secondaryCta: "Unirme a la comunidad",
     trust: ["Contenido educativo", "Sin humo", "Para empezar desde cero"],
-  },
-  values: {
-    label: "Nuestros valores",
-    items: [
-      "Positividad",
-      "Ambición",
-      "Libertad",
-      "Valentía",
-      "Sostenibilidad",
-    ],
   },
   problem: {
     title: "¿Sabes lo que hace tu banco con tu dinero?",
-    text: "Mientras tu dinero duerme en la cuenta, pierde valor cada año. Y mientras tanto, tu banco lo invierte por ti: te da poco retorno y puede financiar armas, petróleo y explotación. Tú mereces decidir.",
+    text: "Mientras tu dinero duerme en la cuenta, pierde valor cada año. Y mientras tanto, tu banco lo invierte por ti: te da poco retorno y puede usarlo en productos que no están alineados con tus valores. Tú mereces decidir.",
     // REVIEW — comparison visual (no figures on purpose: illustrative only)
     bank: {
       title: "Tu dinero en el banco",
@@ -63,8 +53,8 @@ const es = {
       trend: "Inflación",
       caption:
         "La inflación se come tus ahorros poco a poco. Y el banco usa tu dinero sin preguntarte.",
-      itemsLabel: "Puede financiar",
-      items: ["Armas", "Petróleo", "Explotación"],
+      itemsLabel: "Puede invertirlo en",
+      items: ["Productos no alineados con tus valores"],
     },
     invested: {
       title: "Tu dinero invertido con valores",
@@ -95,8 +85,10 @@ const es = {
   how: {
     eyebrow: "Cómo funciona",
     title: "Te acompaño desde cero hasta tu primera cartera consciente",
-    // REVIEW — the number is animated
-    stepsCountSuffix: "pasos, a tu ritmo",
+    // REVIEW — the four stages form a continuous loop, not a ladder
+    lead: "No es una escalera, es un ciclo: mientras ahorras e inviertes, también compartes y creces. Y cada vuelta te hace más fuerte.",
+    loopLabel: "Un ciclo continuo",
+    loopNote: "a tu ritmo",
     steps: [
       {
         animal: "ant",
@@ -120,53 +112,51 @@ const es = {
       },
     ],
   },
-  resources: {
-    eyebrow: "Recursos gratis",
-    title: "Empieza hoy, gratis",
-    // REVIEW — card descriptions
-    cards: [
-      {
-        title: "Guía digital: tus primeros pasos para invertir",
-        text: "Qué es invertir, por dónde empezar y cómo hacerlo sin traicionar tus valores.",
-        badge: "Gratis",
-        soon: false,
-      },
-      {
-        title: "Checklist: cómo analizar una empresa",
-        text: "Preguntas sencillas para saber si una empresa encaja contigo.",
-        badge: "Gratis",
-        soon: false,
-      },
-      {
-        title: "Calculadora de impacto",
-        text: "Descubre qué está financiando tu dinero hoy.",
-        badge: "Próximamente",
-        soon: true,
-      },
-      {
-        title: "Plantilla de control de gastos (Excel/Notion)",
-        text: "Controla tus gastos en minutos y encuentra tu capacidad de ahorro.",
-        badge: "Gratis",
-        soon: false,
-      },
+  // REVIEW — whole section (copy not in the original spec)
+  firstStep: {
+    eyebrow: "Sin perfeccionismo",
+    title: "La perfección puede esperar. Tu primer paso, no.",
+    text: "Invertir de forma 100% coherente con tus valores es muy difícil, casi imposible: casi todo está conectado con algo que no nos gusta. Pero esperar a hacerlo perfecto es la forma más segura de no empezar nunca. Lo que sí está en tu mano hoy es dar el primer paso para proteger tu patrimonio.",
+    listTitle: "Tu primer paso puede ser tan sencillo como:",
+    steps: [
+      "Saber cuánto tienes y a dónde va tu dinero cada mes.",
+      "Crear tu colchón de seguridad.",
+      "Entender qué hace hoy tu banco con tus ahorros.",
     ],
-    formTitle: "Recibe la guía en tu email", // REVIEW
-    formText:
-      "Te la envío al momento. Sin spam, y puedes darte de baja cuando quieras.", // REVIEW
-    submit: "Quiero mi guía gratis",
+    cta: "Dar mi primer paso",
+    firstStepLabel: "Tu primer paso",
+    perfectLabel: "La perfección",
+    perfectNote: "casi imposible",
+    hint: "Toca un escalón o arrastra al canguro", // REVIEW
+    stepLabel: "Saltar al escalón {n}",
+    status: "El canguro está en el escalón {n} de {total}",
+    statusGround: "El canguro espera al pie de la escalera",
+    visualAlt:
+      "Una escalera: el canguro espera al pie, el primer escalón está a tu alcance y la cima, la perfección, se pierde a lo lejos.",
+  },
+  // REVIEW — newsletter signup (replaces the free resources until the guide exists)
+  newsletter: {
+    eyebrow: "Newsletter",
+    title: "Una idea simple cada semana, directa a tu email",
+    text: "Aprende a ahorrar e invertir de acuerdo con tus valores, paso a paso y sin jerga.",
+    points: [
+      "Ideas prácticas para ahorrar e invertir desde cero",
+      "Novedades de la comunidad y de las quedadas",
+      "Sin spam: puedes darte de baja cuando quieras",
+    ],
+    submit: "Suscribirme",
   },
   community: {
     eyebrow: "Comunidad", // REVIEW
     title: "Una colmena de gente que invierte con conciencia",
-    text: "Únete a nuestro grupo gratuito de Telegram: comparte dudas, aprende y conoce a personas con tus mismos valores. También organizamos quedadas presenciales.",
-    cta: "Entrar en Telegram",
-    // REVIEW — fallback when NEXT_PUBLIC_TELEGRAM_URL is empty
-    fallback: "El grupo abre muy pronto. Déjame tu email y te aviso.",
-    fallbackCta: "Avísame",
+    // REVIEW
+    text: "Un espacio para compartir dudas, aprender y conocer a personas con tus mismos valores. También organizamos quedadas presenciales.",
+    note: "Suscríbete a la newsletter y te aviso de cada novedad.", // REVIEW
+    cta: "Quiero formar parte", // REVIEW
   },
   coaching: {
     eyebrow: "Coaching gratuito", // REVIEW
-    title: "Café financiero de 30 minutos, sin compromiso",
+    title: "Café financiero de 15 minutos, sin compromiso",
     text: "Cuéntame dónde estás y qué quieres lograr. Te daré consejos rápidos para tu situación, sin venderte nada.",
     cta: "Reservar mi café virtual",
     // REVIEW
@@ -177,7 +167,7 @@ const es = {
       "Te llevas consejos prácticos para tu situación.",
     ], // REVIEW
     facts: [
-      { value: 30, suffix: " min", label: "de conversación" },
+      { value: 15, suffix: " min", label: "de conversación" },
       { value: 1, suffix: " a 1", label: "por videollamada" },
       { value: 0, suffix: " €", label: "sin compromiso" },
     ],
@@ -186,7 +176,7 @@ const es = {
     loading: "Cargando calendario…",
     // REVIEW — fallback when NEXT_PUBLIC_CAL_URL is empty
     fallback:
-      "La agenda abre muy pronto. Mientras tanto, escríbeme por Telegram o apúntate a la newsletter.",
+      "La agenda abre muy pronto. Mientras tanto, suscríbete a la newsletter y te aviso en cuanto abra.",
     fallbackCta: "Avísame cuando abra",
   },
   learning: {
@@ -252,28 +242,37 @@ const es = {
   faq: {
     eyebrow: "FAQ", // REVIEW
     title: "Preguntas frecuentes", // REVIEW
+    // REVIEW — questions and answers
     items: [
       {
-        q: "¿Necesito ser vegana para unirme?",
-        a: "No. La comunidad está pensada para personas veganas y con valores, pero cualquier persona consciente es bienvenida.",
-      },
-      {
-        q: "¿Cuánto dinero necesito para empezar?",
-        a: "Puedes empezar a aprender con cualquier cantidad. La guía te explica por dónde comenzar.",
+        q: "¿Para quién es Invertir con Valores?",
+        a: "Para personas que quieren hacer crecer su dinero sin renunciar a lo que les importa. No necesitas saber nada de finanzas: empezamos desde cero.",
       },
       {
         q: "¿Qué significa invertir con valores?",
         a: "Elegir en qué empresas y fondos pones tu dinero según su impacto en las personas, los animales y el planeta.",
       },
       {
+        q: "¿Cuánto dinero necesito para empezar?",
+        a: "Para aprender, nada. Para invertir, puedes empezar con poco: lo importante es tener antes tu colchón de seguridad y entender bien lo que haces.",
+      },
+      {
+        q: "¿Invertir con valores es menos rentable?",
+        a: "No tiene por qué. Existen productos alineados con valores, diversificados y con costes bajos. Eso sí, ninguna inversión garantiza resultados: por eso aprendemos a entender el riesgo antes de decidir.",
+      },
+      {
         q: "¿Me vas a decir en qué invertir?",
         a: "No doy asesoramiento financiero personalizado. Te enseño a analizar y decidir por ti misma.",
+      },
+      {
+        q: "¿Qué es el café financiero?",
+        a: "Una videollamada gratuita de 15 minutos para conocerte, entender tu situación y darte ideas para tus próximos pasos. Sin compromiso y sin venderte nada.",
       },
     ],
   },
   finalCta: {
     title: "Haz que tu dinero trabaje con tus valores",
-    cta: "Descargar la guía gratis",
+    cta: "Suscribirme a la newsletter",
   },
   footer: {
     tagline: "Inversión consciente para personas con valores.",

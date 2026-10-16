@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier . --write",
     "db:push": "drizzle-kit push",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "icons": "tsx scripts/generate-favicon.ts"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.1",

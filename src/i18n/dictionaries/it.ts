@@ -7,7 +7,7 @@ const it: Dictionary = {
       "Invertir con Valores · Investimenti consapevoli per persone con valori",
     titleTemplate: "%s · Invertir con Valores",
     description:
-      "Impara a investire in modo redditizio e consapevole, senza finanziare armi né sfruttamento. Guida gratuita, community su Telegram e un caffè finanziario di 30 minuti.",
+      "Impara a investire in modo redditizio e consapevole, in prodotti allineati ai tuoi valori. Newsletter settimanale, community e un caffè finanziario gratuito di 15 minuti.",
     ogAlt: "Invertir con Valores: anche i tuoi soldi hanno dei valori.",
   },
   common: {
@@ -25,37 +25,33 @@ const it: Dictionary = {
     label: "Navigazione principale",
     links: [
       { label: "Come funziona", anchor: "como-funciona" },
-      { label: "Risorse", anchor: "recursos" },
       { label: "Community", anchor: "comunidad" },
+      { label: "Caffè finanziario", anchor: "coaching" },
       { label: "Blog", href: "/blog" },
       { label: "Chi sono", anchor: "sobre-mi" },
     ],
-    cta: "Guida gratis",
+    cta: "Newsletter",
   },
   hero: {
     eyebrow: "Investimenti consapevoli per persone con valori",
     title: "Anche i tuoi soldi hanno dei valori.",
     subtitle:
-      "Impara a investire in modo redditizio e consapevole, senza finanziare armi né sfruttamento. Semplice, chiaro e in community.",
-    primaryCta: "Scarica la guida gratis",
-    secondaryCta: "Entra nella community (Telegram)",
+      "Impara a investire in modo redditizio e consapevole, in prodotti allineati ai tuoi valori. Semplice, chiaro e in community.",
+    primaryCta: "Iscriviti alla newsletter",
+    secondaryCta: "Entra nella community",
     trust: ["Contenuti educativi", "Niente fuffa", "Per partire da zero"],
-  },
-  values: {
-    label: "I nostri valori",
-    items: ["Positività", "Ambizione", "Libertà", "Coraggio", "Sostenibilità"],
   },
   problem: {
     title: "Sai cosa fa la tua banca con i tuoi soldi?",
-    text: "Mentre i tuoi soldi dormono sul conto, perdono valore ogni anno. E nel frattempo la tua banca li investe al posto tuo: ti dà un rendimento basso e può finanziare armi, petrolio e sfruttamento. Meriti di decidere tu.",
+    text: "Mentre i tuoi soldi dormono sul conto, perdono valore ogni anno. E nel frattempo la tua banca li investe al posto tuo: ti dà un rendimento basso e può usarli in prodotti non allineati ai tuoi valori. Meriti di decidere tu.",
     bank: {
       title: "I tuoi soldi in banca",
       chartLabel: "Cosa possono comprare i tuoi risparmi",
       trend: "Inflazione",
       caption:
         "L'inflazione si mangia i tuoi risparmi poco a poco. E la banca usa i tuoi soldi senza chiedertelo.",
-      itemsLabel: "Può finanziare",
-      items: ["Armi", "Petrolio", "Sfruttamento"],
+      itemsLabel: "Può investirli in",
+      items: ["Prodotti non allineati ai tuoi valori"],
     },
     invested: {
       title: "I tuoi soldi investiti con valori",
@@ -86,7 +82,9 @@ const it: Dictionary = {
   how: {
     eyebrow: "Come funziona",
     title: "Ti accompagno da zero fino al tuo primo portafoglio consapevole",
-    stepsCountSuffix: "passi, al tuo ritmo",
+    lead: "Non è una scala, è un ciclo: mentre risparmi e investi, condividi e cresci. E ogni giro ti rende più forte.",
+    loopLabel: "Un ciclo continuo",
+    loopNote: "al tuo ritmo",
     steps: [
       {
         animal: "ant",
@@ -110,51 +108,48 @@ const it: Dictionary = {
       },
     ],
   },
-  resources: {
-    eyebrow: "Risorse gratuite",
-    title: "Inizia oggi, gratis",
-    cards: [
-      {
-        title: "Guida digitale: i tuoi primi passi per investire",
-        text: "Cos'è investire, da dove iniziare e come farlo senza tradire i tuoi valori.",
-        badge: "Gratis",
-        soon: false,
-      },
-      {
-        title: "Checklist: come analizzare un'azienda",
-        text: "Domande semplici per capire se un'azienda fa per te.",
-        badge: "Gratis",
-        soon: false,
-      },
-      {
-        title: "Calcolatore d'impatto",
-        text: "Scopri cosa stanno finanziando i tuoi soldi oggi.",
-        badge: "Prossimamente",
-        soon: true,
-      },
-      {
-        title: "Modello per controllare le spese (Excel/Notion)",
-        text: "Tieni sotto controllo le spese in pochi minuti e scopri quanto puoi risparmiare.",
-        badge: "Gratis",
-        soon: false,
-      },
+  firstStep: {
+    eyebrow: "Senza perfezionismo",
+    title: "La perfezione può aspettare. Il tuo primo passo, no.",
+    text: "Investire in modo coerente al 100% con i tuoi valori è molto difficile, quasi impossibile: quasi tutto è collegato a qualcosa che non ci piace. Ma aspettare di farlo alla perfezione è il modo più sicuro per non iniziare mai. Quello che puoi fare oggi è il primo passo per proteggere il tuo patrimonio.",
+    listTitle: "Il tuo primo passo può essere semplice come:",
+    steps: [
+      "Sapere quanto hai e dove vanno i tuoi soldi ogni mese.",
+      "Creare il tuo cuscinetto di sicurezza.",
+      "Capire cosa fa oggi la tua banca con i tuoi risparmi.",
     ],
-    formTitle: "Ricevi la guida via email",
-    formText:
-      "Te la mando subito. Niente spam, e puoi disiscriverti quando vuoi.",
-    submit: "Voglio la mia guida gratis",
+    cta: "Fare il mio primo passo",
+    firstStepLabel: "Il tuo primo passo",
+    perfectLabel: "La perfezione",
+    perfectNote: "quasi impossibile",
+    hint: "Tocca un gradino o trascina il canguro",
+    stepLabel: "Salta al gradino {n}",
+    status: "Il canguro è sul gradino {n} di {total}",
+    statusGround: "Il canguro aspetta ai piedi della scala",
+    visualAlt:
+      "Una scala: il canguro aspetta ai piedi, il primo gradino è alla tua portata e la cima, la perfezione, si perde in lontananza.",
+  },
+  newsletter: {
+    eyebrow: "Newsletter",
+    title: "Un'idea semplice ogni settimana, direttamente nella tua email",
+    text: "Impara a risparmiare e investire in linea con i tuoi valori, passo dopo passo e senza gergo tecnico.",
+    points: [
+      "Idee pratiche per risparmiare e investire partendo da zero",
+      "Novità della community e degli incontri",
+      "Niente spam: puoi disiscriverti quando vuoi",
+    ],
+    submit: "Iscrivimi",
   },
   community: {
     eyebrow: "Community",
     title: "Un alveare di persone che investono con consapevolezza",
-    text: "Unisciti al nostro gruppo gratuito su Telegram: condividi i tuoi dubbi, impara e conosci persone con i tuoi stessi valori. Organizziamo anche incontri dal vivo.",
-    cta: "Entra su Telegram",
-    fallback: "Il gruppo apre a breve. Lasciami la tua email e ti avviso.",
-    fallbackCta: "Avvisami",
+    text: "Uno spazio per condividere dubbi, imparare e conoscere persone con i tuoi stessi valori. Organizziamo anche incontri dal vivo.",
+    note: "Iscriviti alla newsletter e ti avviso di ogni novità.",
+    cta: "Voglio farne parte",
   },
   coaching: {
     eyebrow: "Coaching gratuito",
-    title: "Un caffè finanziario di 30 minuti, senza impegno",
+    title: "Un caffè finanziario di 15 minuti, senza impegno",
     text: "Raccontami dove sei e cosa vuoi ottenere. Ti darò consigli rapidi per la tua situazione, senza venderti niente.",
     cta: "Prenota il mio caffè virtuale",
     stepsTitle: "Come funziona",
@@ -164,7 +159,7 @@ const it: Dictionary = {
       "Porti a casa consigli pratici per la tua situazione.",
     ],
     facts: [
-      { value: 30, suffix: " min", label: "di chiacchierata" },
+      { value: 15, suffix: " min", label: "di chiacchierata" },
       { value: 1, suffix: " a 1", label: "in videochiamata" },
       { value: 0, suffix: " €", label: "senza impegno" },
     ],
@@ -172,7 +167,7 @@ const it: Dictionary = {
     openInNewTab: "Apri il calendario in una nuova scheda",
     loading: "Caricamento del calendario…",
     fallback:
-      "L'agenda apre a breve. Nel frattempo scrivimi su Telegram o iscriviti alla newsletter.",
+      "L'agenda apre a breve. Nel frattempo iscriviti alla newsletter e ti avviso appena apre.",
     fallbackCta: "Avvisami quando apre",
   },
   learning: {
@@ -239,26 +234,34 @@ const it: Dictionary = {
     title: "Domande frequenti",
     items: [
       {
-        q: "Devo essere vegana per unirmi?",
-        a: "No. La community è pensata per persone vegane e con valori, ma ogni persona consapevole è benvenuta.",
-      },
-      {
-        q: "Quanti soldi mi servono per iniziare?",
-        a: "Puoi iniziare a imparare con qualsiasi cifra. La guida ti spiega da dove cominciare.",
+        q: "A chi si rivolge Invertir con Valores?",
+        a: "A chi vuole far crescere i propri soldi senza rinunciare a ciò che gli sta a cuore. Non serve sapere nulla di finanza: partiamo da zero.",
       },
       {
         q: "Cosa significa investire con valori?",
         a: "Scegliere in quali aziende e fondi mettere i tuoi soldi in base al loro impatto su persone, animali e pianeta.",
       },
       {
+        q: "Quanti soldi mi servono per iniziare?",
+        a: "Per imparare, niente. Per investire puoi partire con poco: l'importante è avere prima il tuo cuscinetto di sicurezza e capire bene cosa fai.",
+      },
+      {
+        q: "Investire con valori rende meno?",
+        a: "Non necessariamente. Esistono prodotti allineati ai valori, diversificati e con costi bassi. Ma nessun investimento garantisce risultati: per questo impariamo a capire il rischio prima di decidere.",
+      },
+      {
         q: "Mi dirai in cosa investire?",
         a: "Non offro consulenza finanziaria personalizzata. Ti insegno ad analizzare e a decidere da sola.",
+      },
+      {
+        q: "Cos'è il caffè finanziario?",
+        a: "Una videochiamata gratuita di 15 minuti per conoscerti, capire la tua situazione e darti idee per i prossimi passi. Senza impegno e senza venderti niente.",
       },
     ],
   },
   finalCta: {
     title: "Fai lavorare i tuoi soldi con i tuoi valori",
-    cta: "Scarica la guida gratis",
+    cta: "Iscriviti alla newsletter",
   },
   footer: {
     tagline: "Investimenti consapevoli per persone con valori.",

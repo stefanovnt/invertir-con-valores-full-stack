@@ -21,6 +21,7 @@ pnpm dev                     # http://localhost:3000
 | `pnpm lint`                 | ESLint                                                 |
 | `pnpm typecheck`            | Route type generation + `tsc --noEmit`                 |
 | `pnpm db:push`              | Create/update the `leads` table (needs `DATABASE_URL`) |
+| `pnpm icons`                | Regenerate `src/app/icon.svg` from `logo-mark.ts`      |
 
 ---
 
@@ -46,7 +47,7 @@ Other content:
 
 - **Legal pages:** `content/legal/<locale>/{aviso-legal,privacidad,cookies}.mdx`. Fill in every `[TO COMPLETE]`.
 - **Founder photo:** put the image in `public/` and set `founderPhoto` in `src/config.ts`.
-- **Social links, Telegram, Cal.com, Substack:** environment variables (see `.env.example`).
+- **Social links, Cal.com, Substack:** environment variables (see `.env.example`).
 
 ### Adding a blog post
 
@@ -81,8 +82,9 @@ Locales with no posts show the Spanish ones with a notice.
 
 ### Forms and leads
 
-All forms (guide, footer/blog newsletter, waitlist) post to `POST /api/leads` with a `source` tag
-(`guide`, `newsletter_footer`, `newsletter_blog`, `waitlist` + `offer`). The route validates with zod, has a
+All forms (home/footer/blog newsletter, waitlist) post to `POST /api/leads` with a `source` tag
+(`newsletter_home`, `newsletter_footer`, `newsletter_blog`, `waitlist` + `offer`; `guide` is ready for a
+future lead magnet). The route validates with zod, has a
 honeypot and a per-IP rate limit, then stores the lead with every configured provider
 (`src/lib/leads/providers.ts`):
 
@@ -92,7 +94,7 @@ honeypot and a per-IP rate limit, then stores the lead with every configured pro
 | Mailgun mailing list                 | `MAILGUN_API_KEY` + `MAILGUN_DOMAIN` + `MAILGUN_LIST_ADDRESS` |
 | Email notification to you            | Mailgun + `LEADS_NOTIFY_EMAIL`                                |
 
-With Mailgun configured, people also get a confirmation email in their language (with `GUIDE_URL` for the guide).
+With Mailgun configured, people also get a confirmation email in their language (`GUIDE_URL` is only used by the future `guide` source).
 If no provider is configured, the newsletter forms switch to a Substack link (`NEXT_PUBLIC_SUBSTACK_URL`).
 To add another provider (Brevo, Buttondown, ConvertKit…), add an entry to the `providers` array.
 
@@ -100,7 +102,7 @@ To add another provider (Brevo, Buttondown, ConvertKit…), add an entry to the 
 
 Set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to enable Plausible. The script loads **only after consent** in the cookie
 banner. Without it there is no banner, because the site sets no non-essential cookies. Tracked events:
-`lead_submit`, `waitlist_submit`, `telegram_click`, `cal_click`.
+`lead_submit`, `waitlist_submit`, `cal_click`.
 
 ### Deploying to Vercel
 

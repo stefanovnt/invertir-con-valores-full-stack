@@ -2,10 +2,8 @@
 
 import { m, type Variants } from "framer-motion";
 import {
-  Crosshair,
+  Ban,
   Earth,
-  Factory,
-  Fuel,
   HeartHandshake,
   Landmark,
   PawPrint,
@@ -20,7 +18,7 @@ import type { Dictionary } from "@/i18n/dictionaries/es";
 const BANK = [1, 0.9, 0.8, 0.71, 0.63, 0.55]; // real value eroded by inflation
 const INVESTED = [0.3, 0.38, 0.48, 0.6, 0.76, 1]; // long-term growth
 
-const bankIcons = [Crosshair, Fuel, Factory];
+const bankIcons = [Ban];
 const investedIcons = [HeartHandshake, PawPrint, Earth];
 
 /*

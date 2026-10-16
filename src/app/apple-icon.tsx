@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og";
-import { turtleDataUri } from "@/lib/og";
+import { logoDataUri } from "@/components/layout/logo-mark";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-/** iOS home-screen icon: the turtle mark on a soft tint. */
+/** iOS home-screen icon: the balance-scale mark on a soft tint. */
 export default function AppleIcon() {
   return new ImageResponse(
     (
@@ -18,7 +18,7 @@ export default function AppleIcon() {
           background: "#f2faef",
         }}
       >
-        <img src={turtleDataUri} width={132} height={132} alt="" />
+        <img src={logoDataUri} width={132} height={132} alt="" />
       </div>
     ),
     size

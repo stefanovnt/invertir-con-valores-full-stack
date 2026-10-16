@@ -10,8 +10,13 @@ import type { LeadSource } from "@/lib/leads/types";
 type Props = {
   locale: Locale;
   dict: Dictionary;
-  source: Extract<LeadSource, "newsletter_footer" | "newsletter_blog">;
+  source: Extract<
+    LeadSource,
+    "newsletter_home" | "newsletter_footer" | "newsletter_blog"
+  >;
   tone?: "light" | "dark";
+  /** Button label (defaults to the footer's "Suscribirme"). */
+  submitLabel?: string;
 };
 
 /**
@@ -23,6 +28,7 @@ export function NewsletterBlock({
   dict,
   source,
   tone = "light",
+  submitLabel,
 }: Props) {
   if (!leadsBackendReady() && config.links.substack) {
     return (
@@ -45,7 +51,7 @@ export function NewsletterBlock({
       locale={locale}
       dict={dict.forms}
       source={source}
-      submitLabel={dict.footer.newsletterSubmit}
+      submitLabel={submitLabel ?? dict.footer.newsletterSubmit}
       tone={tone}
       compact
     />

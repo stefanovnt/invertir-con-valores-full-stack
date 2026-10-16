@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { tightPunctuation } from "@/lib/typography";
 import { ImpactCompare } from "./ImpactCompare";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
@@ -20,7 +21,7 @@ export function Problem({ dict }: { dict: Dictionary["problem"] }) {
       <div className="container relative">
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 id="problem-title" className="h2 text-white">
-            {dict.title}
+            {tightPunctuation(dict.title)}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-brand-on-dark sm:text-xl">
             {dict.text}

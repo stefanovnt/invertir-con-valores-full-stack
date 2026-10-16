@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { tightPunctuation } from "@/lib/typography";
 import { GraduationCap, UserRound, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LeadForm } from "@/components/forms/LeadForm";
@@ -51,7 +52,7 @@ export function LearningPath({
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{l.eyebrow}</p>
           <h2 id="learning-title" className="h2 mt-4">
-            {l.title}
+            {tightPunctuation(l.title)}
           </h2>
           <p className="lead mt-5">{l.text}</p>
         </Reveal>

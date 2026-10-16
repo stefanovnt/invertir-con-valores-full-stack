@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tightPunctuation } from "@/lib/typography";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, Info } from "lucide-react";
@@ -123,7 +124,7 @@ export default async function PostPage({
             ))}
           </ul>
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
-            {post.title}
+            {tightPunctuation(post.title)}
           </h1>
           <p className="lead mt-5">{post.description}</p>
           <p className="mt-6 text-sm text-brand-muted">
@@ -164,7 +165,10 @@ export default async function PostPage({
           aria-labelledby="post-newsletter"
           className="card mt-12 p-7 sm:p-10"
         >
-          <h2 id="post-newsletter" className="font-display text-2xl font-extrabold">
+          <h2
+            id="post-newsletter"
+            className="font-display text-2xl font-extrabold"
+          >
             {dict.blog.newsletterTitle}
           </h2>
           <p className="mt-2 text-brand-muted">{dict.blog.newsletterText}</p>

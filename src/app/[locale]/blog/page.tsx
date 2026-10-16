@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tightPunctuation } from "@/lib/typography";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PostCard } from "@/components/blog/PostCard";
@@ -41,7 +42,7 @@ export default async function BlogPage({
           <div>
             <p className="eyebrow">{dict.blog.eyebrow}</p>
             <h1 className="mt-4 text-5xl font-extrabold sm:text-6xl">
-              {dict.blog.title}
+              {tightPunctuation(dict.blog.title)}
             </h1>
             <p className="lead mt-5 max-w-xl">{dict.blog.pageDescription}</p>
             {fallback && (

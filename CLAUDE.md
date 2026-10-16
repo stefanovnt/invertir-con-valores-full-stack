@@ -26,13 +26,15 @@ src/app/api/leads/route.ts       single lead endpoint (zod, honeypot, rate limit
 src/lib/leads/                   providers (db, mailgun list, notify email), emails, rate limit, types
 src/lib/blog.ts, seo.ts, og.tsx  MDX loading, metadata helpers (canonical + hreflang), OG images
 src/components/animals/          Ant, Turtle, Bee, Kangaroo (original SVGs) + shared stroke/palette
-src/components/motion/           Reveal, WordReveal, Counter, Marquee, TiltCard/GlowSurface
+src/components/layout/logo-mark.ts  brand mark: balance scale, planet = money (level beam). After
+                                 editing run `pnpm icons` to regenerate src/app/icon.svg
+src/components/motion/           Reveal, WordReveal, Counter, TiltCard/GlowSurface
 src/components/sections/         one file per home section, rendered from the dictionary
 src/components/consent/          ConsentProvider, CookieBanner, Analytics (Plausible after consent)
 ```
 
 Server components by default; `"use client"` only for interactivity/animation (navbar, forms, FAQ,
-journey, counters, dialog, pointer effects). Pass dictionary slices to client components as props.
+"Cómo funciona" loop, kangaroo stairs, counters, dialog, pointer effects). Pass dictionary slices to client components as props.
 Links: always build them with `localePath(locale, path)` / `homeAnchor(locale, id)`.
 
 ## Design tokens
@@ -43,6 +45,7 @@ tints `tint-blue`/`tint-green`, `line`. For text on white use `brand-blue-ink`, 
 `brand-muted` (AA). Text on the blue→green gradient is `brand-deep`, never white (contrast).
 Light theme only; dark backgrounds only for "El problema" and the footer (add class `on-dark`).
 Fonts: `font-display` (Plus Jakarta Sans, `font-extrabold`) for headings, `font-sans` (Inter) for body.
+Wrap heading text in `tightPunctuation()` (src/lib/typography.tsx) to fix the font's detached punctuation.
 Gradient (`bg-brand-gradient`, `.bg-gradient-animated`, `.text-gradient`) is used sparingly: CTAs, highlights.
 
 ## Animation rules

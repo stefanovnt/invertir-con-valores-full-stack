@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { tightPunctuation } from "@/lib/typography";
 import { Plus } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,7 @@ export function Faq({ dict }: { dict: Dictionary["faq"] }) {
         <Reveal>
           <p className="eyebrow">{dict.eyebrow}</p>
           <h2 id="faq-title" className="h2 mt-4">
-            {dict.title}
+            {tightPunctuation(dict.title)}
           </h2>
         </Reveal>
         <Reveal delay={0.1}>

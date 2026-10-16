@@ -1,6 +1,7 @@
 "use client";
 
 import { m } from "framer-motion";
+import { tightPunctuation } from "@/lib/typography";
 import { Kangaroo } from "@/components/animals";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import type { Dictionary } from "@/i18n/dictionaries/es";
@@ -17,7 +18,7 @@ export function Transformation({
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{dict.eyebrow}</p>
           <h2 id="transformation-title" className="h2 mt-4">
-            {dict.title}
+            {tightPunctuation(dict.title)}
           </h2>
         </Reveal>
 

@@ -1,60 +1,25 @@
+import { useId } from "react";
 import { cn } from "@/lib/utils";
+import { LOGO_INK, LOGO_INK_ON_DARK, logoMarkInner } from "./logo-mark";
 
-/** Small top-down sea turtle used as logo mark and favicon (see app/icon.svg). */
-export function LogoMark({ className }: { className?: string }) {
+/** Balance scale (planet = money) used as logo mark. Markup lives in logo-mark.ts. */
+export function LogoMark({
+  className,
+  onDark = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+}) {
+  const id = `logo-${useId().replace(/[^a-zA-Z0-9-]/g, "")}`;
   return (
     <svg
-      viewBox="0 0 32 32"
+      viewBox="0 0 48 48"
       aria-hidden="true"
-      className={cn("h-8 w-8", className)}
-    >
-      <defs>
-        <linearGradient id="logo-shell" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#1c92e1" />
-          <stop offset="1" stopColor="#31b317" />
-        </linearGradient>
-      </defs>
-      <g fill="#14250d">
-        <ellipse
-          cx="8.5"
-          cy="11"
-          rx="4.2"
-          ry="2.1"
-          transform="rotate(-35 8.5 11)"
-        />
-        <ellipse
-          cx="23.5"
-          cy="11"
-          rx="4.2"
-          ry="2.1"
-          transform="rotate(35 23.5 11)"
-        />
-        <ellipse
-          cx="10"
-          cy="24.5"
-          rx="2.8"
-          ry="1.6"
-          transform="rotate(35 10 24.5)"
-        />
-        <ellipse
-          cx="22"
-          cy="24.5"
-          rx="2.8"
-          ry="1.6"
-          transform="rotate(-35 22 24.5)"
-        />
-        <circle cx="16" cy="5.2" r="3" />
-      </g>
-      <ellipse cx="16" cy="17.5" rx="8.2" ry="9.2" fill="url(#logo-shell)" />
-      <path
-        d="M16 12.2l3.4 2.2v4.2L16 20.8l-3.4-2.2v-4.2z"
-        fill="none"
-        stroke="#fff"
-        strokeOpacity=".75"
-        strokeWidth="1.3"
-        strokeLinejoin="round"
-      />
-    </svg>
+      className={cn("h-9 w-9", className)}
+      dangerouslySetInnerHTML={{
+        __html: logoMarkInner(onDark ? LOGO_INK_ON_DARK : LOGO_INK, id),
+      }}
+    />
   );
 }
 
@@ -67,7 +32,7 @@ export function Logo({
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <LogoMark />
+      <LogoMark onDark={onDark} />
       <span
         className={cn(
           "font-display text-[1.05rem] font-extrabold leading-none tracking-tight",

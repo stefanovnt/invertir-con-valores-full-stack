@@ -6,7 +6,7 @@ const en: Dictionary = {
     title: "Invertir con Valores · Conscious investing for people with values",
     titleTemplate: "%s · Invertir con Valores",
     description:
-      "Learn to invest profitably and consciously, without funding weapons or exploitation. Free guide, Telegram community and a free 30-minute money chat.",
+      "Learn to invest profitably and consciously, in products aligned with your values. Weekly newsletter, community and a free 15-minute money coffee.",
     ogAlt: "Invertir con Valores: your money has values too.",
   },
   common: {
@@ -24,37 +24,33 @@ const en: Dictionary = {
     label: "Main navigation",
     links: [
       { label: "How it works", anchor: "como-funciona" },
-      { label: "Resources", anchor: "recursos" },
       { label: "Community", anchor: "comunidad" },
+      { label: "Money coffee", anchor: "coaching" },
       { label: "Blog", href: "/blog" },
       { label: "About", anchor: "sobre-mi" },
     ],
-    cta: "Free guide",
+    cta: "Newsletter",
   },
   hero: {
     eyebrow: "Conscious investing for people with values",
     title: "Your money has values too.",
     subtitle:
-      "Learn to invest profitably and consciously, without funding weapons or exploitation. Simple, clear and together.",
-    primaryCta: "Download the free guide",
-    secondaryCta: "Join the community (Telegram)",
+      "Learn to invest profitably and consciously, in products aligned with your values. Simple, clear and together.",
+    primaryCta: "Subscribe to the newsletter",
+    secondaryCta: "Join the community",
     trust: ["Educational content", "No hype", "Start from zero"],
-  },
-  values: {
-    label: "Our values",
-    items: ["Positivity", "Ambition", "Freedom", "Courage", "Sustainability"],
   },
   problem: {
     title: "Do you know what your bank does with your money?",
-    text: "While your money sleeps in your account, it loses value every year. Meanwhile, your bank invests it for you: it pays you little and may fund weapons, oil and exploitation. You deserve to decide.",
+    text: "While your money sleeps in your account, it loses value every year. Meanwhile, your bank invests it for you: it pays you little and may put it into products that aren't aligned with your values. You deserve to decide.",
     bank: {
       title: "Your money in the bank",
       chartLabel: "What your savings can buy",
       trend: "Inflation",
       caption:
         "Inflation slowly eats away at your savings. And the bank uses your money without asking you.",
-      itemsLabel: "May fund",
-      items: ["Weapons", "Oil", "Exploitation"],
+      itemsLabel: "May invest it in",
+      items: ["Products not aligned with your values"],
     },
     invested: {
       title: "Your money invested with values",
@@ -85,7 +81,9 @@ const en: Dictionary = {
   how: {
     eyebrow: "How it works",
     title: "I'll walk with you from zero to your first conscious portfolio",
-    stepsCountSuffix: "steps, at your own pace",
+    lead: "It's not a ladder, it's a cycle: while you save and invest, you also share and grow. And every round makes you stronger.",
+    loopLabel: "A continuous cycle",
+    loopNote: "at your own pace",
     steps: [
       {
         animal: "ant",
@@ -109,52 +107,48 @@ const en: Dictionary = {
       },
     ],
   },
-  resources: {
-    eyebrow: "Free resources",
-    title: "Start today, for free",
-    cards: [
-      {
-        title: "Digital guide: your first steps to investing",
-        text: "What investing is, where to start and how to do it without betraying your values.",
-        badge: "Free",
-        soon: false,
-      },
-      {
-        title: "Checklist: how to analyse a company",
-        text: "Simple questions to find out whether a company fits your values.",
-        badge: "Free",
-        soon: false,
-      },
-      {
-        title: "Impact calculator",
-        text: "Find out what your money is funding today.",
-        badge: "Coming soon",
-        soon: true,
-      },
-      {
-        title: "Expense tracking template (Excel/Notion)",
-        text: "Track your spending in minutes and find out how much you can save.",
-        badge: "Free",
-        soon: false,
-      },
+  firstStep: {
+    eyebrow: "No perfectionism",
+    title: "Perfection can wait. Your first step can't.",
+    text: "Investing in a way that's 100% aligned with your values is really hard, almost impossible: almost everything is connected to something we don't like. But waiting to do it perfectly is the surest way to never start. What you can do today is take the first step to protect your wealth.",
+    listTitle: "Your first step can be as simple as:",
+    steps: [
+      "Knowing how much you have and where your money goes each month.",
+      "Building your safety net.",
+      "Understanding what your bank does with your savings today.",
     ],
-    formTitle: "Get the guide by email",
-    formText:
-      "I'll send it right away. No spam, and you can unsubscribe whenever you like.",
-    submit: "Send me the free guide",
+    cta: "Take my first step",
+    firstStepLabel: "Your first step",
+    perfectLabel: "Perfection",
+    perfectNote: "almost impossible",
+    hint: "Tap a step or drag the kangaroo",
+    stepLabel: "Jump to step {n}",
+    status: "The kangaroo is on step {n} of {total}",
+    statusGround: "The kangaroo is waiting at the bottom of the stairs",
+    visualAlt:
+      "A staircase: the kangaroo waits at the bottom, the first step is within reach, and the top, perfection, fades into the distance.",
+  },
+  newsletter: {
+    eyebrow: "Newsletter",
+    title: "One simple idea a week, straight to your inbox",
+    text: "Learn to save and invest in line with your values, step by step and without jargon.",
+    points: [
+      "Practical ideas to save and invest from zero",
+      "News about the community and meetups",
+      "No spam: unsubscribe whenever you like",
+    ],
+    submit: "Subscribe",
   },
   community: {
     eyebrow: "Community",
     title: "A hive of people investing with awareness",
-    text: "Join our free Telegram group: ask questions, learn and meet people who share your values. We also organise in-person meetups.",
-    cta: "Join on Telegram",
-    fallback:
-      "The group opens very soon. Leave your email and I'll let you know.",
-    fallbackCta: "Let me know",
+    text: "A space to ask questions, learn and meet people who share your values. We also organise in-person meetups.",
+    note: "Subscribe to the newsletter and I'll keep you posted.",
+    cta: "I want to join",
   },
   coaching: {
     eyebrow: "Free coaching",
-    title: "A 30-minute money coffee, no strings attached",
+    title: "A 15-minute money coffee, no strings attached",
     text: "Tell me where you are and what you want to achieve. I'll give you quick tips for your situation, without selling you anything.",
     cta: "Book my virtual coffee",
     stepsTitle: "How it works",
@@ -164,7 +158,7 @@ const en: Dictionary = {
       "Leave with practical tips for your situation.",
     ],
     facts: [
-      { value: 30, suffix: " min", label: "of conversation" },
+      { value: 15, suffix: " min", label: "of conversation" },
       { value: 1, suffix: " to 1", label: "on a video call" },
       { value: 0, suffix: " €", label: "no commitment" },
     ],
@@ -172,7 +166,7 @@ const en: Dictionary = {
     openInNewTab: "Open the calendar in a new tab",
     loading: "Loading calendar…",
     fallback:
-      "Booking opens very soon. In the meantime, message me on Telegram or join the newsletter.",
+      "Booking opens very soon. In the meantime, subscribe to the newsletter and I'll let you know when it opens.",
     fallbackCta: "Tell me when it opens",
   },
   learning: {
@@ -239,26 +233,34 @@ const en: Dictionary = {
     title: "Frequently asked questions",
     items: [
       {
-        q: "Do I need to be vegan to join?",
-        a: "No. The community is designed for vegans and values-driven people, but every conscious person is welcome.",
-      },
-      {
-        q: "How much money do I need to start?",
-        a: "You can start learning with any amount. The guide explains where to begin.",
+        q: "Who is Invertir con Valores for?",
+        a: "For people who want their money to grow without giving up what they care about. You don't need to know anything about finance: we start from zero.",
       },
       {
         q: "What does investing with values mean?",
         a: "Choosing which companies and funds get your money based on their impact on people, animals and the planet.",
       },
       {
+        q: "How much money do I need to start?",
+        a: "To learn, nothing. To invest, you can start small: what matters is having your safety net first and understanding what you're doing.",
+      },
+      {
+        q: "Is investing with values less profitable?",
+        a: "Not necessarily. There are values-aligned products that are diversified and low-cost. Still, no investment guarantees results: that's why we learn to understand risk before deciding.",
+      },
+      {
         q: "Will you tell me what to invest in?",
         a: "I don't give personalised financial advice. I teach you to analyse and decide for yourself.",
+      },
+      {
+        q: "What is the money coffee?",
+        a: "A free 15-minute video call to get to know you, understand your situation and give you ideas for your next steps. No commitment, and I won't sell you anything.",
       },
     ],
   },
   finalCta: {
     title: "Make your money work with your values",
-    cta: "Download the free guide",
+    cta: "Subscribe to the newsletter",
   },
   footer: {
     tagline: "Conscious investing for people with values.",

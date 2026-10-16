@@ -1,13 +1,9 @@
 import { ImageResponse } from "next/og";
+import { logoDataUri } from "@/components/layout/logo-mark";
 
 // Brand Open Graph / Twitter card generator (next/og, rendered at build time).
 
 export const ogSize = { width: 1200, height: 630 };
-
-// Same top-down turtle as the logo mark, as a data URI (Satori renders <img> reliably).
-export const turtleDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c92e1"/><stop offset="1" stop-color="#31b317"/></linearGradient></defs><g fill="#14250d"><ellipse cx="8.5" cy="11" rx="4.2" ry="2.1" transform="rotate(-35 8.5 11)"/><ellipse cx="23.5" cy="11" rx="4.2" ry="2.1" transform="rotate(35 23.5 11)"/><ellipse cx="10" cy="24.5" rx="2.8" ry="1.6" transform="rotate(35 10 24.5)"/><ellipse cx="22" cy="24.5" rx="2.8" ry="1.6" transform="rotate(-35 22 24.5)"/><circle cx="16" cy="5.2" r="3"/></g><ellipse cx="16" cy="17.5" rx="8.2" ry="9.2" fill="url(#g)"/><path d="M16 12.2l3.4 2.2v4.2L16 20.8l-3.4-2.2v-4.2z" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.3" stroke-linejoin="round"/></svg>`
-)}`;
 
 // Plus Jakarta Sans ExtraBold for the headline. Google Fonts serves TTF (which Satori
 // needs) when no browser user-agent is sent. Falls back to the default font.
@@ -67,7 +63,7 @@ export async function brandOgImage({
         />
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={turtleDataUri} width={64} height={64} alt="" />
+          <img src={logoDataUri} width={64} height={64} alt="" />
           <div
             style={{
               display: "flex",

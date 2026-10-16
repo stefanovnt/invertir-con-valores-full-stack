@@ -23,7 +23,6 @@ export function organizationJsonLd() {
     config.social.youtube,
     config.social.instagram,
     config.social.tiktok,
-    config.links.telegram,
     config.links.substack,
   ].filter(Boolean);
   return {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tightPunctuation } from "@/lib/typography";
 import { ArrowRight } from "lucide-react";
 import { Turtle } from "@/components/animals";
 import { Button } from "@/components/ui/button";
@@ -39,11 +40,11 @@ export function FinalCta({
             id="final-cta-title"
             className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] text-brand-deep sm:text-6xl"
           >
-            {dict.title}
+            {tightPunctuation(dict.title)}
           </h2>
           <div className="mt-10">
             <Button asChild size="lg" variant="dark">
-              <Link href={homeAnchor(locale, "guia")}>
+              <Link href={homeAnchor(locale, "suscribete")}>
                 {dict.cta}
                 <ArrowRight aria-hidden="true" />
               </Link>

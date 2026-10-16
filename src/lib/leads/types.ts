@@ -2,6 +2,7 @@
 
 export const leadSources = [
   "guide",
+  "newsletter_home",
   "newsletter_footer",
   "newsletter_blog",
   "waitlist",

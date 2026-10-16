@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tightPunctuation } from "@/lib/typography";
 import { ArrowRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/blog/PostCard";
@@ -26,7 +27,7 @@ export async function LatestPosts({
           <div>
             <p className="eyebrow">{b.eyebrow}</p>
             <h2 id="blog-title" className="h2 mt-4">
-              {b.title}
+              {tightPunctuation(b.title)}
             </h2>
             {fallback && (
               <p className="mt-3 text-brand-muted">{b.fallbackNotice}</p>
@@ -34,7 +35,7 @@ export async function LatestPosts({
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="secondary">
-              <Link href="#newsletter">
+              <Link href="#suscribete">
                 <Mail aria-hidden="true" />
                 {b.subscribe}
               </Link>

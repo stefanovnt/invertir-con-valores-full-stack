@@ -5,12 +5,11 @@ import { GlowSurface } from "@/components/motion/Interactive";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { HeroBackdrop } from "./hero/HeroBackdrop";
 import { HeroScene } from "./hero/HeroScene";
-import { TelegramButton } from "./TelegramButton";
 import { homeAnchor, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const { hero, common } = dict;
+  const { hero } = dict;
   return (
     <GlowSurface
       as="section"
@@ -35,22 +34,17 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="mt-9 flex flex-col gap-3 animate-in fade-in fill-mode-both delay-700 duration-700 sm:flex-row sm:items-center">
             <div>
               <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href={homeAnchor(locale, "guia")}>
+                <Link href={homeAnchor(locale, "suscribete")}>
                   {hero.primaryCta}
                   <ArrowDown aria-hidden="true" />
                 </Link>
               </Button>
             </div>
-            <TelegramButton
-              locale={locale}
-              label={hero.secondaryCta}
-              fallbackLabel={hero.secondaryCta.replace(/\s*\(Telegram\)/, "")}
-              fallbackAnchor="comunidad"
-              location="hero"
-              newTabLabel={common.opensNewTab}
-              variant="secondary"
-              size="lg"
-            />
+            <Button asChild variant="secondary" size="lg">
+              <Link href={homeAnchor(locale, "comunidad")}>
+                {hero.secondaryCta}
+              </Link>
+            </Button>
           </div>
           <ul className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-brand-muted animate-in fade-in fill-mode-both delay-1000 duration-700">
             {hero.trust.map((item, i) => (

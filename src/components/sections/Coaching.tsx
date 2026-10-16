@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tightPunctuation } from "@/lib/typography";
 import { Coffee } from "lucide-react";
 import { Turtle } from "@/components/animals";
 import { config } from "@/config";
@@ -6,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/motion/Counter";
 import { Reveal } from "@/components/motion/Reveal";
 import { CalBooking } from "./CalBooking";
-import { TelegramButton } from "./TelegramButton";
 import { homeAnchor, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
@@ -37,7 +37,7 @@ export function Coaching({
               </span>
               <p className="eyebrow mt-6">{c.eyebrow}</p>
               <h2 id="coaching-title" className="h2 mt-4">
-                {c.title}
+                {tightPunctuation(c.title)}
               </h2>
               <p className="lead mt-5">{c.text}</p>
               <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-brand-line pt-6">
@@ -94,18 +94,8 @@ export function Coaching({
                 <div className="w-full rounded-3xl bg-brand-tint-blue/70 p-7 sm:p-9">
                   <p className="text-lg text-brand-deep">{c.fallback}</p>
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                    {config.links.telegram ? (
-                      <TelegramButton
-                        locale={locale}
-                        label={dict.community.cta}
-                        fallbackLabel={c.fallbackCta}
-                        location="coaching"
-                        newTabLabel={dict.common.opensNewTab}
-                        variant="dark"
-                      />
-                    ) : null}
-                    <Button asChild variant="secondary">
-                      <Link href={homeAnchor(locale, "guia")}>
+                    <Button asChild variant="dark">
+                      <Link href={homeAnchor(locale, "suscribete")}>
                         {c.fallbackCta}
                       </Link>
                     </Button>

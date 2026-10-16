@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { tightPunctuation } from "@/lib/typography";
 import { Kangaroo } from "@/components/animals";
-import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { config } from "@/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
 
@@ -44,13 +45,7 @@ function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
   );
 }
 
-export function About({
-  dict,
-  values,
-}: {
-  dict: Dictionary["about"];
-  values: Dictionary["values"];
-}) {
+export function About({ dict }: { dict: Dictionary["about"] }) {
   return (
     <section
       id="sobre-mi"
@@ -64,18 +59,11 @@ export function About({
         <Reveal delay={0.1}>
           <p className="eyebrow">{dict.eyebrow}</p>
           <h2 id="about-title" className="h2 mt-4">
-            {dict.title}
+            {tightPunctuation(dict.title)}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-brand-deep/85 sm:text-xl">
             {dict.text}
           </p>
-          <RevealGroup as="ul" className="mt-8 flex flex-wrap gap-2">
-            {values.items.map((v) => (
-              <RevealItem as="li" key={v} className="chip">
-                {v}
-              </RevealItem>
-            ))}
-          </RevealGroup>
         </Reveal>
       </div>
     </section>
