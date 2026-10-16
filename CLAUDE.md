@@ -22,7 +22,7 @@ content/blog/<locale>/*.mdx      blog posts (frontmatter: title, description, da
 content/legal/<locale>/*.mdx     aviso-legal, privacidad, cookies (slugs stay Spanish in every locale)
 src/proxy.ts                     locale routing: / → /es (rewrite), /es/* → /* (308), /it, /en as is
 src/i18n/                        config (locales, localePath, homeAnchor), dictionaries, getDictionary
-src/app/[locale]/                root layout (html/lang, fonts, navbar, footer, consent), pages
+src/app/[locale]/                root layout (html/lang, fonts, navbar, footer, analytics), pages
 src/app/api/leads/route.ts       single lead endpoint (zod, honeypot, rate limit) for every form
 src/lib/leads/                   providers (db, Resend contacts, notify email), emails, rate limit, types
 src/lib/email.ts                 Resend client: sendEmail, addContact
@@ -32,7 +32,8 @@ public/images/logo.png           brand logo (transparent cut-out); favicon src/a
                                  iOS icon src/app/apple-icon.png (original teal background)
 src/components/motion/           Reveal, WordReveal, Counter, TiltCard/GlowSurface
 src/components/sections/         one file per home section, rendered from the dictionary
-src/components/consent/          ConsentProvider, CookieBanner, Analytics (Plausible after consent)
+src/components/analytics/        Simple Analytics (cookieless: no consent banner; keep it that way
+                                 or add consent + update /cookies if a cookie-setting tool is added)
 ```
 
 Server components by default; `"use client"` only for interactivity/animation (navbar, forms, FAQ,

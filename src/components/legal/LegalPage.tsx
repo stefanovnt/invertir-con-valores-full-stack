@@ -38,12 +38,16 @@ export async function legalMetadata(
   slug: LegalSlug
 ): Promise<Metadata> {
   if (!isLocale(rawLocale)) return {};
-  const doc = await readLegal(rawLocale, slug);
+  const [doc, dict] = await Promise.all([
+    readLegal(rawLocale, slug),
+    getDictionary(rawLocale),
+  ]);
   return pageMetadata({
     locale: rawLocale,
     path: `/${slug}`,
     title: doc.title,
     description: doc.description,
+    imageAlt: dict.meta.ogAlt,
   });
 }
 
@@ -76,9 +80,6 @@ export async function LegalPage({
             </time>
           </p>
         )}
-        <p className="mt-8 rounded-2xl bg-amber-50 px-4 py-3 text-sm font-medium text-amber-900 ring-1 ring-amber-200">
-          {dict.legal.toComplete}
-        </p>
         <div className={`${proseClass} mt-10`}>{content}</div>
       </div>
     </article>

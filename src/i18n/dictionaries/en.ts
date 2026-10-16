@@ -7,7 +7,18 @@ const en: Dictionary = {
     titleTemplate: "%s · Invertir con Valores",
     description:
       "Learn to invest profitably and consciously, in products aligned with your values. Weekly newsletter, community and a free 15-minute money coffee.",
-    ogAlt: "Invertir con Valores: your money has values too.",
+    ogAlt:
+      "Invertir con Valores: reach financial freedom without compromising your values.",
+    keywords: [
+      "investing with values",
+      "conscious investing",
+      "sustainable investing",
+      "personal finance",
+      "saving",
+      "financial freedom",
+      "learn to invest",
+      "long-term investing",
+    ],
   },
   common: {
     skipToContent: "Skip to content",
@@ -281,7 +292,6 @@ const en: Dictionary = {
       notice: "Legal notice",
       privacy: "Privacy",
       cookies: "Cookies",
-      manageCookies: "Manage cookies",
     },
     disclaimer:
       "Educational content. It is not financial advice or an investment recommendation. Investing involves risks, including the loss of capital.",
@@ -327,17 +337,8 @@ const en: Dictionary = {
       },
     },
   },
-  cookies: {
-    title: "Cookies",
-    text: "I only use privacy-friendly analytics if you accept, to learn which content is useful to you.",
-    accept: "Accept",
-    reject: "Reject",
-    more: "Learn more",
-  },
   legal: {
     lastUpdated: "Last updated",
-    toComplete:
-      "This text is a template. Review the sections marked [TO COMPLETE] before publishing.",
   },
   emails: {
     guide: {

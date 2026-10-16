@@ -16,12 +16,13 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/blog">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale) || !config.features.blog) return {};
-  const { blog } = await getDictionary(locale);
+  const { blog, meta } = await getDictionary(locale);
   return pageMetadata({
     locale,
     path: "/blog",
     title: blog.pageTitle,
     description: blog.pageDescription,
+    imageAlt: meta.ogAlt,
   });
 }
 

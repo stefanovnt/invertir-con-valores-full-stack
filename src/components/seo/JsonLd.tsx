@@ -32,7 +32,14 @@ export function organizationJsonLd() {
     name: config.appName,
     url: absoluteUrl("/"),
     logo: absoluteUrl("/images/logo.png"),
-    founder: { "@type": "Person", name: config.founder },
+    image: absoluteUrl("/images/og-banner.jpg"),
+    founder: {
+      "@type": "Person",
+      name: config.founder,
+      ...(config.founderPhoto
+        ? { image: absoluteUrl(config.founderPhoto) }
+        : {}),
+    },
     ...(sameAs.length ? { sameAs } : {}),
   };
 }

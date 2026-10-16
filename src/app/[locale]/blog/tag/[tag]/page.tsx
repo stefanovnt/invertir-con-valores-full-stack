@@ -45,6 +45,7 @@ export async function generateMetadata({
     title: `${blog.tagTitle} ${label}`,
     description: blog.pageDescription,
     noindex: true,
+    imageAlt: blog.pageTitle,
   });
 }
 

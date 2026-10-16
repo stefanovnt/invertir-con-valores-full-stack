@@ -55,7 +55,7 @@ Other content:
 - `blog: false` hides the blog link (navbar and footer), the home blog section, `/blog` (404), the sitemap
   entries and `/rss.xml`. Set it to `true` to bring the blog back.
 - `waitlist: false` hides "Camino de aprendizaje" (the paid-offers waitlist). The `/api/leads` waitlist source
-  keeps working.
+  keeps working. Before turning it back on, add Resend (and the database, if used) to the privacy policy.
 
 ### Adding a blog post
 
@@ -113,9 +113,13 @@ To add another provider (Brevo, Buttondown, ConvertKit…), add an entry to the 
 
 ### Analytics and cookies
 
-Set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to enable Plausible. The script loads **only after consent** in the cookie
-banner. Without it there is no banner, because the site sets no non-essential cookies. Tracked events:
+Set `NEXT_PUBLIC_SIMPLE_ANALYTICS=true` to load [Simple Analytics](https://simpleanalytics.com) (add the domain in
+your Simple Analytics dashboard first). It is cookieless and collects no personal data, so the site has **no
+cookie banner**. Third-party embeds (Substack, Cal.com) only load after a click. Tracked events (`sa_event`):
 `lead_submit`, `waitlist_submit`, `cal_click`, `substack_open`.
+
+If you ever add a tool that sets cookies, you'll need a consent banner again (see the git history for the
+previous `src/components/consent/` implementation) and an updated cookie policy.
 
 ### Deploying to Vercel
 

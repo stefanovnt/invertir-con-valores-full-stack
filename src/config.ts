@@ -30,11 +30,17 @@ export const config = {
   },
   /** Contact email shown in legal pages and used as Reply-To. [TO COMPLETE] */
   contactEmail: env(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
+  seo: {
+    // Google Search Console HTML-tag verification code (content="...").
+    googleVerification: env(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION),
+  },
   analytics: {
-    plausibleDomain: env(process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN),
-    plausibleSrc:
-      env(process.env.NEXT_PUBLIC_PLAUSIBLE_SRC) ||
-      "https://plausible.io/js/script.js",
+    // Simple Analytics: cookieless, no personal data, so no consent banner.
+    simpleAnalytics: ["true", "1"].includes(
+      env(process.env.NEXT_PUBLIC_SIMPLE_ANALYTICS)
+    ),
+    // Optional: report under this hostname (e.g. when previewing on another domain).
+    hostname: env(process.env.NEXT_PUBLIC_SIMPLE_ANALYTICS_HOSTNAME),
   },
   email: {
     // Sender for emails sent with Resend; must be on a domain verified in Resend,

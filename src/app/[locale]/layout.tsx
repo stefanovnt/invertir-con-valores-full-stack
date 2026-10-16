@@ -6,18 +6,14 @@ import { config, isNavLinkEnabled } from "@/config";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import {
-  Analytics,
-  ConsentProvider,
-  CookieBanner,
-} from "@/components/consent/Consent";
+import { SimpleAnalytics } from "@/components/analytics/SimpleAnalytics";
 import {
   JsonLd,
   organizationJsonLd,
   websiteJsonLd,
 } from "@/components/seo/JsonLd";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { isLocale, localePath, locales, localeTags } from "@/i18n/config";
+import { isLocale, locales, localeTags } from "@/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 
 const inter = Inter({
@@ -54,9 +50,33 @@ export async function generateMetadata({
     metadataBase: new URL(config.domainName),
     title: { default: dict.meta.title, template: dict.meta.titleTemplate },
     applicationName: config.appName,
-    authors: [{ name: config.founder }],
+    keywords: dict.meta.keywords,
+    authors: [{ name: config.founder, url: config.domainName }],
     creator: config.founder,
-    ...pageMetadata({ locale, path: "/", description: dict.meta.description }),
+    publisher: config.appName,
+    category: "finance",
+    // Let Google show large image previews and full snippets.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    formatDetection: { telephone: false, email: false, address: false },
+    ...(config.seo.googleVerification
+      ? { verification: { google: config.seo.googleVerification } }
+      : {}),
+    ...pageMetadata({
+      locale,
+      path: "/",
+      description: dict.meta.description,
+      imageAlt: dict.meta.ogAlt,
+    }),
   };
 }
 
@@ -67,7 +87,6 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
-  const analyticsEnabled = Boolean(config.analytics.plausibleDomain);
 
   return (
     <html
@@ -81,30 +100,23 @@ export default async function LocaleLayout({
         >
           {dict.common.skipToContent}
         </a>
-        <ConsentProvider enabled={analyticsEnabled}>
-          <MotionProvider>
-            <Navbar
-              locale={locale}
-              nav={{
-                ...dict.nav,
-                links: dict.nav.links.filter(isNavLinkEnabled),
-              }}
-              common={dict.common}
-            />
-            <main id="main" tabIndex={-1} className="outline-none">
-              {children}
-            </main>
-            <Footer locale={locale} dict={dict} />
-          </MotionProvider>
-          <CookieBanner
-            dict={dict.cookies}
-            privacyHref={localePath(locale, "/cookies")}
+        <MotionProvider>
+          <Navbar
+            locale={locale}
+            nav={{
+              ...dict.nav,
+              links: dict.nav.links.filter(isNavLinkEnabled),
+            }}
+            common={dict.common}
           />
-          <Analytics
-            domain={config.analytics.plausibleDomain}
-            src={config.analytics.plausibleSrc}
-          />
-        </ConsentProvider>
+          <main id="main" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer locale={locale} dict={dict} />
+        </MotionProvider>
+        {config.analytics.simpleAnalytics && (
+          <SimpleAnalytics hostname={config.analytics.hostname || undefined} />
+        )}
         <JsonLd
           data={[
             organizationJsonLd(),

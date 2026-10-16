@@ -2,7 +2,6 @@ import Link from "next/link";
 import { isNavLinkEnabled } from "@/config";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
-import { ManageCookiesButton } from "@/components/consent/Consent";
 import { NewsletterBlock } from "@/components/forms/NewsletterBlock";
 import { homeAnchor, localePath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/es";
@@ -86,9 +85,6 @@ export function Footer({ locale, dict }: Props) {
                 >
                   {footer.legal.cookies}
                 </Link>
-              </li>
-              <li className="text-brand-on-dark">
-                <ManageCookiesButton label={footer.legal.manageCookies} />
               </li>
             </ul>
           </nav>

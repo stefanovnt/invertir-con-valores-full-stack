@@ -47,6 +47,7 @@ export async function generateMetadata({
     type: "article",
     // Drafts are visible (clearly labelled) but never indexed.
     noindex: post.draft,
+    imageAlt: post.title,
   });
   return {
     ...meta,

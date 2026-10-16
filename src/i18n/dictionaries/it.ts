@@ -8,7 +8,18 @@ const it: Dictionary = {
     titleTemplate: "%s · Invertir con Valores",
     description:
       "Impara a investire in modo redditizio e consapevole, in prodotti allineati ai tuoi valori. Newsletter settimanale, community e un caffè finanziario gratuito di 15 minuti.",
-    ogAlt: "Invertir con Valores: anche i tuoi soldi hanno dei valori.",
+    ogAlt:
+      "Invertir con Valores: raggiungi la libertà finanziaria senza rinunciare ai tuoi valori.",
+    keywords: [
+      "investire con valori",
+      "investimenti consapevoli",
+      "investimenti sostenibili",
+      "finanza personale",
+      "risparmio",
+      "libertà finanziaria",
+      "imparare a investire",
+      "investire nel lungo periodo",
+    ],
   },
   common: {
     skipToContent: "Vai al contenuto",
@@ -283,7 +294,6 @@ const it: Dictionary = {
       notice: "Note legali",
       privacy: "Privacy",
       cookies: "Cookie",
-      manageCookies: "Gestisci i cookie",
     },
     disclaimer:
       "Contenuti educativi. Non costituiscono consulenza finanziaria né raccomandazione di investimento. Investire comporta rischi, inclusa la perdita del capitale.",
@@ -329,17 +339,8 @@ const it: Dictionary = {
       },
     },
   },
-  cookies: {
-    title: "Cookie",
-    text: "Uso un'analitica rispettosa della privacy solo se la accetti, per capire quali contenuti ti sono utili.",
-    accept: "Accetta",
-    reject: "Rifiuta",
-    more: "Maggiori informazioni",
-  },
   legal: {
     lastUpdated: "Ultimo aggiornamento",
-    toComplete:
-      "Questo testo è un modello. Rivedi le parti segnate come [TO COMPLETE] prima di pubblicare.",
   },
   emails: {
     guide: {

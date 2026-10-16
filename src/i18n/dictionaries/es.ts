@@ -10,7 +10,19 @@ const es = {
     // REVIEW
     description:
       "Aprende a invertir de forma rentable y consciente, en productos alineados con tus valores. Newsletter semanal, comunidad y un café financiero gratuito de 15 minutos.",
-    ogAlt: "Invertir con Valores: tu dinero también tiene valores.",
+    ogAlt:
+      "Invertir con Valores: alcanza la libertad financiera sin comprometer tus valores.",
+    // REVIEW
+    keywords: [
+      "invertir con valores",
+      "inversión consciente",
+      "inversión sostenible",
+      "finanzas personales",
+      "ahorro",
+      "libertad financiera",
+      "aprender a invertir",
+      "inversión a largo plazo",
+    ],
   },
   common: {
     skipToContent: "Saltar al contenido",
@@ -295,7 +307,6 @@ const es = {
       notice: "Aviso legal",
       privacy: "Privacidad",
       cookies: "Cookies",
-      manageCookies: "Gestionar cookies",
     },
     disclaimer:
       "Contenido educativo. No constituye asesoramiento financiero ni recomendación de inversión. Invertir conlleva riesgos, incluida la pérdida de capital.",
@@ -343,17 +354,8 @@ const es = {
       },
     },
   },
-  cookies: {
-    title: "Cookies", // REVIEW
-    text: "Uso analítica respetuosa con la privacidad solo si la aceptas, para saber qué contenido te resulta útil.",
-    accept: "Aceptar",
-    reject: "Rechazar",
-    more: "Más información",
-  },
   legal: {
     lastUpdated: "Última actualización",
-    toComplete:
-      "Este texto es una plantilla. Revisa los apartados marcados como [TO COMPLETE] antes de publicar.",
   },
   emails: {
     guide: {

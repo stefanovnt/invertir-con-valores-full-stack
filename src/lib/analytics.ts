@@ -1,5 +1,5 @@
-// Tiny analytics facade. Plausible is only loaded after cookie consent
-// (see components/consent), so until then every call is a no-op.
+// Tiny analytics facade over Simple Analytics events (no-op when the script
+// isn't loaded, e.g. NEXT_PUBLIC_SIMPLE_ANALYTICS is off or a blocker is on).
 
 export type AnalyticsEvent =
   | "lead_submit"
@@ -7,21 +7,19 @@ export type AnalyticsEvent =
   | "waitlist_submit"
   | "substack_open";
 
-type Plausible = (
-  event: string,
-  options?: { props?: Record<string, string> }
-) => void;
-
 declare global {
   interface Window {
-    plausible?: Plausible & { q?: unknown[] };
+    sa_event?: (event: string, metadata?: Record<string, string>) => void;
   }
 }
 
-export function track(event: AnalyticsEvent, props?: Record<string, string>) {
+export function track(
+  event: AnalyticsEvent,
+  metadata?: Record<string, string>
+) {
   if (typeof window === "undefined") return;
   try {
-    window.plausible?.(event, props ? { props } : undefined);
+    window.sa_event?.(event, metadata);
   } catch {
     // Analytics must never break the UI.
   }
