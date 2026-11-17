@@ -24,6 +24,14 @@ const R = 150; // ring radius
 // Stages sit on the diagonals, clockwise from top-left: save → invest → share → grow.
 const STAGE_ANGLES = [-135, -45, 45, 135];
 const LAP_SECONDS = 16; // one full turn = 4 s per stage
+// Hover travel: base time plus time per degree (~160°/s), so a long trip
+// stays calm instead of whipping the dot around (and under the nodes).
+const TRAVEL_BASE_S = 0.45;
+const TRAVEL_DEG_PER_S = 160;
+
+/** Angle travelled since the first stage, normalised to [0, 360). */
+const travelledFromStart = (a: number) =>
+  (((a - STAGE_ANGLES[0]) % 360) + 360) % 360;
 
 const point = (deg: number) => {
   const rad = (deg * Math.PI) / 180;
@@ -60,16 +68,26 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
   const dotY = useTransform(angle, (a) => point(a).y);
   const loop = useRef<AnimationPlaybackControls | null>(null);
   const hovering = useRef(false);
+  // True while the dot is still on its way to a hovered stage. The highlight
+  // stays on that stage until it arrives, even if the pointer has already
+  // left; otherwise it would snap back to the stage the dot is crossing.
+  const travelling = useRef(false);
+  const inViewRef = useRef(inView);
+  useEffect(() => {
+    inViewRef.current = inView;
+  }, [inView]);
 
   useMotionValueEvent(angle, "change", (a) => {
-    if (hovering.current) return;
-    const travelled = (((a - STAGE_ANGLES[0]) % 360) + 360) % 360;
-    const stage = Math.floor(travelled / 90) % 4;
+    if (hovering.current || travelling.current) return;
+    // Small epsilon: after a hover the dot rests exactly on a stage, and float
+    // error (359.9999…) would otherwise flash the previous stage for a frame.
+    const stage = Math.floor((travelledFromStart(a) + 0.01) / 90) % 4;
     setActive((prev) => (prev === stage ? prev : stage));
   });
 
   const startLoop = useCallback(() => {
     loop.current?.stop();
+    travelling.current = false;
     const from = angle.get();
     loop.current = animate(angle, [from, from + 360], {
       duration: LAP_SECONDS,
@@ -83,6 +101,7 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
     if (reduce || !inView) {
       loop.current?.stop();
       loop.current = null;
+      travelling.current = false;
       return;
     }
     if (!hovering.current) startLoop();
@@ -94,12 +113,23 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
     setActive(i);
     if (reduce) return;
     loop.current?.stop();
-    // Travel forward (clockwise) to the stage, never backwards.
+    // Travel clockwise to the stage. Exception: if the dot has just passed it
+    // (still inside that stage's segment), step back to it instead of
+    // running a whole lap.
     const current = angle.get();
-    const delta = (((STAGE_ANGLES[i] - current) % 360) + 360) % 360;
-    loop.current = animate(angle, current + delta, {
-      duration: 0.35 + delta / 360,
-      ease: [0.3, 0, 0.2, 1],
+    let delta = (((STAGE_ANGLES[i] - current) % 360) + 360) % 360;
+    if (delta > 270) delta -= 360;
+    travelling.current = true;
+    const travel = animate(angle, current + delta, {
+      duration: TRAVEL_BASE_S + Math.abs(delta) / TRAVEL_DEG_PER_S,
+      ease: [0.4, 0, 0.2, 1],
+    });
+    loop.current = travel;
+    travel.then(() => {
+      if (loop.current !== travel) return; // superseded by another hover/loop
+      travelling.current = false;
+      // Pointer left mid-travel: resume the loop now that the dot has arrived.
+      if (!hovering.current && inViewRef.current) startLoop();
     });
   };
   const release = () => {
@@ -108,6 +138,8 @@ export function HowItWorks({ dict }: { dict: Dictionary["how"] }) {
       setActive(null);
       return;
     }
+    // Still travelling: the travel's completion resumes the loop.
+    if (travelling.current) return;
     if (inView) startLoop();
   };
 

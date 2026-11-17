@@ -27,10 +27,16 @@ function BlobPhoto({ alt, placeholder }: { alt: string; placeholder: string }) {
           <Image
             src={config.founderPhoto}
             alt={alt}
-            fill
-            sizes="(min-width: 640px) 18rem, 15rem"
+            width={536}
+            height={613}
+            sizes="(min-width: 640px) 17rem, 14rem"
             // Cut-out on a transparent background: the blob tint shows behind it.
-            className="object-cover object-[50%_30%]"
+            // The face sits at ~32% of the photo's width, which object-cover can't
+            // shift sideways in a square box. So the photo is drawn at 94% width
+            // and moved right until the face is centred (20.2% + 0.317 × 94% ≈ 50%).
+            // The photo's left edge cuts through the shoulder; the mask fades
+            // that edge into the blob tint so no hard line shows.
+            className="absolute left-[20.2%] top-[3%] h-auto w-[94%] max-w-none [mask-image:linear-gradient(to_right,transparent,#000_12%)]"
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-center">
